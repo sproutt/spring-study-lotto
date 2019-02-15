@@ -1,24 +1,28 @@
 package controller;
 
-import model.Result;
+import model.Function;
+import utils.StringUtils;
 
 public class CalculatorController {
 
     private initController initController = new initController();
-    private Result result = new Result();
+    StringUtils stringUtils = new StringUtils();
+    Function function = new Function();
 
     private int getResult() {
-        return this.result.getResult();
+        return this.function.getResult();
     }
 
-    public void addNumbers(String[] numbers) {
+    public void addNumbers() {
+        String[] numbers = function.getNumbers();
         for (String number : numbers) {
-            result.addResult(Integer.parseInt(number));
+            function.addNumber(stringUtils.parseInt(number));
         }
     }
 
     public int add(String function) {
-        addNumbers(initController.initFunction(function));
+        this.function = initController.initFunction(function);
+        addNumbers();
         return getResult();
     }
 

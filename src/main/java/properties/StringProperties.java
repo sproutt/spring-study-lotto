@@ -2,21 +2,35 @@ package properties;
 
 public class StringProperties {
 
-    private final char CUSTOMSTARTER = '\\';
-    private final char CUSTOMFINISHER = '\n';
+    private final String CUSTOMCHECKERFRONT = "//";
+    private final String CUSTOMCHECKERREAR = "\\n";
     private final char INITADDERFIRST = ':';
     private final char INITADDERSECOND = ',';
-    private final int CUSTOMSTARTPOSITION = 0;
-    private final int CUSTOMFINISHPOSITION = 1;
     private final int CUSTOMPOSITION = 2;
-    private final int FUNCTIONSTARTPOSITION = 3;
+    private final int CUSTOMCHECKERFIRST = 0;
+    private final int CUSTOMCHECKERSECOND = 2;
+    private final int CUSTOMCHECKERTHIRD = 3;
+    private final int CUSTOMCHECKERFORTH = 5;
+    private final int CUTPOSITION = 5;
 
-    public char getCUSTOMSTARTER() {
-        return CUSTOMSTARTER;
+    public String getCUSTOMCHECKERREAR() {
+        return CUSTOMCHECKERREAR;
     }
 
-    public char getCUSTOMFINISHER() {
-        return CUSTOMFINISHER;
+    public int getCUSTOMCHECKERTHIRD() {
+        return CUSTOMCHECKERTHIRD;
+    }
+
+    public int getCUSTOMCHECKERFORTH() {
+        return CUSTOMCHECKERFORTH;
+    }
+
+    public int getCUTPOSITION() {
+        return CUTPOSITION;
+    }
+
+    public String getCUSTOMCHECKERFRONT() {
+        return CUSTOMCHECKERFRONT;
     }
 
     public char getINITADDERFIRST() {
@@ -27,20 +41,16 @@ public class StringProperties {
         return INITADDERSECOND;
     }
 
-    public int getCUSTOMSTARTPOSITION() {
-        return CUSTOMSTARTPOSITION;
+    public int getCUSTOMCHECKERSECOND() {
+        return CUSTOMCHECKERSECOND;
     }
 
-    public int getCUSTOMFINISHPOSITION() {
-        return CUSTOMFINISHPOSITION;
+    public int getCUSTOMCHECKERFIRST() {
+        return CUSTOMCHECKERFIRST;
     }
 
     public int getCUSTOMPOSITION() {
         return CUSTOMPOSITION;
-    }
-
-    public int getFUNCTIONSTARTPOSITION() {
-        return FUNCTIONSTARTPOSITION;
     }
 
 }

@@ -7,7 +7,8 @@ import java.util.List;
 
 public class StringUtils {
 
-    private StringProperties stringProperties = new StringProperties();
+    private final int FIRSTSPLITTER = 0;
+    private final int SECONDSPLITTER = 1;
     private final String OR = "|";
 
     public boolean isNULLFunction(String function) {
@@ -20,20 +21,9 @@ public class StringUtils {
         return false;
     }
 
-    public boolean isCustomSetting(String function) {
-        if (function.charAt(stringProperties.getCUSTOMSTARTPOSITION()) == stringProperties.getCUSTOMSTARTER() && function.charAt(stringProperties.getCUSTOMFINISHPOSITION()) == stringProperties.getCUSTOMFINISHER()) {
-            return true;
-        }
-        return false;
-    }
-
-    public String stringCutter(String function) {
-        return function.substring(stringProperties.getFUNCTIONSTARTPOSITION());
-    }
-
     public String makeSplitString(List<Splitter> splitters) {
-        String splitString = splitters.get(0).getSplitString();
-        for (int i = 1; i < splitters.size(); i++) {
+        String splitString = splitters.get(FIRSTSPLITTER).getSplitString();
+        for (int i = SECONDSPLITTER; i < splitters.size(); i++) {
             splitString += (OR + splitters.get(i).getSplitString());
         }
         return splitString;
@@ -44,8 +34,26 @@ public class StringUtils {
         return function.split(splitString);
     }
 
-    public int parseInt(String number) {
-        return Integer.parseInt(number);
+    public int parseInt(String string) {
+        int number = Integer.parseInt(string);
+        if (number < 0) {
+            throw new RuntimeException();
+        }
+        return number;
+    }
+
+    public void numberChecker(String number) {
+        try {
+            Integer.parseInt(number);
+        } catch (Exception e) {
+            throw new RuntimeException();
+        }
+    }
+
+    public void numbersChecker(String[] numbers) {
+        for (String number : numbers) {
+            numberChecker(number);
+        }
     }
 
 }

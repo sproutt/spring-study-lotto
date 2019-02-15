@@ -1,6 +1,6 @@
 package controller;
 
-import model.Result;
+import model.Function;
 import model.Splitter;
 import properties.StringProperties;
 import utils.StringUtils;
@@ -11,9 +11,9 @@ import java.util.List;
 public class initController {
 
     private final int NULLRESULT = 0;
+    private Function function = new Function();
     private StringProperties stringProperties = new StringProperties();
     private StringUtils stringUtils = new StringUtils();
-    private String functionString = new String();
 
     public void checkNULLString(String function) {
         if (stringUtils.isNULLFunction(function)) {
@@ -22,26 +22,39 @@ public class initController {
         }
     }
 
-    public List<Splitter> settingSplitter(String function) {
-        List<Splitter> splitters = new ArrayList<Splitter>();
-        if (stringUtils.isCustomSetting(function)) {
-            splitters.add(new Splitter(function.charAt(stringProperties.getCUSTOMPOSITION())));
-            functionString = stringUtils.stringCutter(function);
+    public boolean isCustomSetting(String function) {
+        if (function.substring(stringProperties.getCUSTOMCHECKERFIRST(), stringProperties.getCUSTOMCHECKERSECOND()).equals(stringProperties.getCUSTOMCHECKERFRONT())
+                && function.substring(stringProperties.getCUSTOMCHECKERTHIRD(), stringProperties.getCUSTOMCHECKERFORTH()).equals(stringProperties.getCUSTOMCHECKERREAR())) {
+            return true;
         }
-        splitters.add(new Splitter(stringProperties.getINITADDERFIRST()));
-        splitters.add(new Splitter(stringProperties.getINITADDERSECOND()));
-        return splitters;
+        return false;
     }
 
-    public String[] settingNumbers(String function, List<Splitter> splitters) {
-        return stringUtils.stringSplitter(function, splitters);
+    public void settingCustomSplitter() {
+        if (isCustomSetting(function.getFunctionString())) {
+            String functionString = function.getFunctionString();
+            char split = functionString.charAt(stringProperties.getCUSTOMPOSITION());
+            function.addSplitters(new Splitter(split));
+            functionString = functionString.substring(stringProperties.getCUTPOSITION());
+            function.setFunctionString(functionString);
+        }
     }
 
-    public String[] initFunction(String function) {
-        checkNULLString(function);
-        functionString = function;
-        List<Splitter> splitters = settingSplitter(function);
-        return settingNumbers(functionString, splitters);
+    public void settingNumbers() {
+        function.setNumbers(stringUtils.stringSplitter(function.getFunctionString(), function.getSplitters()));
+    }
+
+    private void checkNumbers() {
+        stringUtils.numbersChecker(function.getNumbers());
+    }
+
+    public Function initFunction(String input) {
+        checkNULLString(input);
+        function.setFunctionString(input);
+        settingCustomSplitter();
+        settingNumbers();
+        checkNumbers();
+        return function;
     }
 
 }
