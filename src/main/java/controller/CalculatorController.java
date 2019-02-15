@@ -5,7 +5,7 @@ import utils.StringUtils;
 
 public class CalculatorController {
 
-    private initController initController = new initController();
+    private InitController initController = new InitController();
     StringUtils stringUtils = new StringUtils();
 
     public int add(String functionString) {

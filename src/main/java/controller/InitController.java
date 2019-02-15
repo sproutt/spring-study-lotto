@@ -5,7 +5,7 @@ import model.Splitter;
 import properties.StringProperties;
 import utils.StringUtils;
 
-public class initController {
+public class InitController {
 
     private final int NULLRESULT = 0;
     private Function function = new Function();
