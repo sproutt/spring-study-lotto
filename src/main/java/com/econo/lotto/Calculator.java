@@ -4,48 +4,65 @@ import com.econo.lotto.exception.NagativeNumberException;
 import com.econo.lotto.exception.NumberFormatException;
 
 import java.util.Arrays;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 
 public class Calculator {
 
-    public int calculate(String input){
-        //문자열에서 토큰을 얻어옴, char 토큰 리턴
-        //토큰으로 문자열을 분리 , 숫자의 list 리턴  &&
-        //compute메서드 : int 리턴   && 숫자 이외값 들어있는 경우 예외, 음수일경우 예외
-
-        return 0;
+    public int calculate(String input) {
+        
+        return compute(toNumbers(tokenize(input)));
     }
 
-    public String getToken(String stringWithToken) {
-        return "a";
+    public String getSeparator(String stringWithSeparator) {
+        Matcher matcher = Pattern.compile("//(.)\n(.*)").matcher(stringWithSeparator);
+        matcher.matches();
+
+        return matcher.group(1);
     }
 
-    public boolean findToken() {
-        return false;
+    public boolean hasSeparator(String stringWithSeparator) {
+
+        return Pattern.compile("//(.)\n(.*)").matcher(stringWithSeparator).find();
     }
 
-    public String[] tokenize(String stringWithToken){
-        if(findToken()){
-            return stringWithToken.split(getToken(stringWithToken));
+    public String[] tokenize(String stringWithSeparator) {
+        if (hasSeparator(stringWithSeparator)) {
+
+            return toStringWithoutSeparator(stringWithSeparator).split(getSeparator(stringWithSeparator));
         }
-        return stringWithToken.split(",|:");
+
+        return stringWithSeparator.split(",|:");
     }
 
-    public int[] toNumbers(String[] numberStrings){
+    public String toStringWithoutSeparator(String stringWithSeparator) {
+        if (!hasSeparator(stringWithSeparator)) {
 
-       return Arrays.stream(numberStrings).mapToInt(number->{
-           try{
+            return stringWithSeparator;
+        }
 
-               return Integer.parseInt(number);
-           }catch (NumberFormatException e){
+        Matcher matcher = Pattern.compile("//(.)\n(.*)").matcher(stringWithSeparator);
+        matcher.matches();
 
-               throw new NumberFormatException(number);
-           }
-       }).toArray();
+        return matcher.group(2);
     }
 
-    public int compute(int[] numbers){
-        if(findNagativeNumber(numbers)){
+    public int[] toNumbers(String[] numberStrings) {
+
+        return Arrays.stream(numberStrings).mapToInt(number -> {
+            try {
+
+                return Integer.parseInt(number);
+            } catch (NumberFormatException e) {
+
+                throw new NumberFormatException(number);
+            }
+        }).toArray();
+    }
+
+    public int compute(int[] numbers) {
+        if (!isAllPositive(numbers)) {
 
             throw new NagativeNumberException("-1");
         }
@@ -53,7 +70,7 @@ public class Calculator {
         return Arrays.stream(numbers).sum();
     }
 
-    private boolean findNagativeNumber(int[] numbers) {
-        return false;
+    private boolean isAllPositive(int[] numbers) {
+        return Arrays.stream(numbers).allMatch(number -> number > 0);
     }
 }
