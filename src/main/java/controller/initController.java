@@ -5,9 +5,6 @@ import model.Splitter;
 import properties.StringProperties;
 import utils.StringUtils;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class initController {
 
     private final int NULLRESULT = 0;

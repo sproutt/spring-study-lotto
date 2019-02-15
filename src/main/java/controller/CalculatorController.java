@@ -7,23 +7,14 @@ public class CalculatorController {
 
     private initController initController = new initController();
     StringUtils stringUtils = new StringUtils();
-    Function function = new Function();
 
-    private int getResult() {
-        return this.function.getResult();
-    }
-
-    public void addNumbers() {
+    public int add(String functionString) {
+        Function function = initController.initFunction(functionString);
         String[] numbers = function.getNumbers();
         for (String number : numbers) {
             function.addNumber(stringUtils.parseInt(number));
         }
-    }
-
-    public int add(String function) {
-        this.function = initController.initFunction(function);
-        addNumbers();
-        return getResult();
+        return function.getResult();
     }
 
 }
