@@ -1,7 +1,6 @@
 package utils;
 
 import model.Splitter;
-import properties.StringProperties;
 
 import java.util.List;
 
