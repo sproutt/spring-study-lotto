@@ -4,7 +4,10 @@ import model.Function;
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.Assert.assertArrayEquals;
+import static org.junit.Assert.assertEquals;
+
 
 public class InitControllerTest {
 
@@ -17,7 +20,7 @@ public class InitControllerTest {
 
     @Test
     public void isCustomSetting() {
-        assertEquals(true,initController.isCustomSetting("//;\n1;2;3"));
+        assertEquals(true,initController.isCustomSetting("//;\\n1;2;3"));
     }
 
     @Test
