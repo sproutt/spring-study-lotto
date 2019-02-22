@@ -8,7 +8,7 @@ public class CustomSplitter implements Splitter {
     @Override
     public boolean supports(String string) {
 
-        return Pattern.compile("//(.)\n(.*)").matcher(string).find();
+        return pattern.matcher(string).find();
     }
 
     @Override
@@ -18,14 +18,14 @@ public class CustomSplitter implements Splitter {
     }
 
     public String toStringWithoutSeparator(String string) {
-        Matcher matcher = Pattern.compile("//(.)\n(.*)").matcher(string);
+        Matcher matcher = pattern.matcher(string);
         matcher.matches();
 
         return matcher.group(2);
     }
 
     public String getSeparator(String stringWithSeparator) {
-        Matcher matcher = Pattern.compile("//(.)\n(.*)").matcher(stringWithSeparator);
+        Matcher matcher = pattern.matcher(stringWithSeparator);
         matcher.matches();
 
         return matcher.group(1);

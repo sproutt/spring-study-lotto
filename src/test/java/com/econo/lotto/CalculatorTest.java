@@ -23,12 +23,6 @@ public class CalculatorTest {
         Assertions.assertThat(calculator.calculate(test)).isEqualTo(6);
         test = "1,5:3";
         Assertions.assertThat(calculator.calculate(test)).isEqualTo(9);
-//        String test = "//a\n1a2a3";
-//        Assertions.assertThat(calculator.calculate(test)).isEqualTo(6);
-//        String test = "//a\n1a2a3";
-//        Assertions.assertThat(calculator.calculate(test)).isEqualTo(6);
-//        String test = "//a\n1a2a3";
-//        Assertions.assertThat(calculator.calculate(test)).isEqualTo(6);
     }
 
     @Test

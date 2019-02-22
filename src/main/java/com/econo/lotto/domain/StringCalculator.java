@@ -1,10 +1,10 @@
-package com.econo.lotto.controller;
+package com.econo.lotto.domain;
 
-import com.econo.lotto.model.Positive;
 import com.econo.lotto.utils.CustomSplitter;
 import com.econo.lotto.utils.DefaultSplitter;
 
 import java.util.Arrays;
+import java.util.stream.Stream;
 
 
 public class StringCalculator {
@@ -20,14 +20,15 @@ public class StringCalculator {
     }
 
     public int calculate(String input) {
-        if (isDefault(input)) {
-            positives = Arrays.stream(defaultSplitter.split(input)).
-                    map(Positive::new).toArray(Positive[]::new);
+        String[] splitedInput;
 
-            return add(positives);
+        if (isDefault(input)) {
+            splitedInput = defaultSplitter.split(input);
         }
-        positives = Arrays.stream(customSplitter.split(input)).
-                map(Positive::new).toArray(Positive[]::new);
+        splitedInput=customSplitter.split(input);
+        positives = Arrays.stream(splitedInput)
+                .map(Positive::new)
+                .toArray(Positive[]::new);
 
         return add(positives);
     }
