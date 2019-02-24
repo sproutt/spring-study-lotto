@@ -2,9 +2,9 @@ package com.econo.lotto.domain;
 
 import com.econo.lotto.utils.CustomSplitter;
 import com.econo.lotto.utils.DefaultSplitter;
+import com.econo.lotto.utils.Positive;
 
 import java.util.Arrays;
-import java.util.stream.Stream;
 
 
 public class StringCalculator {

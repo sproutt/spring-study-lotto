@@ -1,4 +1,4 @@
-package com.econo.lotto.domain;
+package com.econo.lotto.utils;
 
 import com.econo.lotto.exception.NagativeNumberException;
 import lombok.Getter;

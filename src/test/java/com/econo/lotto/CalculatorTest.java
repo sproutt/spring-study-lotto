@@ -1,6 +1,10 @@
 package com.econo.lotto;
 
+import com.econo.lotto.domain.StringCalculator;
 import com.econo.lotto.exception.NagativeNumberException;
+import com.econo.lotto.utils.CustomSplitter;
+import com.econo.lotto.utils.DefaultSplitter;
+import com.econo.lotto.utils.Positive;
 import org.assertj.core.api.Assertions;
 import org.junit.Before;
 import org.junit.Test;
@@ -10,60 +14,54 @@ import java.util.regex.Pattern;
 import static org.junit.Assert.*;
 
 public class CalculatorTest {
-    private Calculator calculator;
+    private StringCalculator calculator;
+    private CustomSplitter customSplitter;
+    private DefaultSplitter defaultSplitter;
 
     @Before
     public void setup() {
-        calculator = new Calculator();
+        calculator = new StringCalculator();
+        customSplitter = new CustomSplitter();
+        defaultSplitter = new DefaultSplitter();
     }
 
     @Test
     public void calculateTest() {
         String test = "//a\n1a2a3";
         Assertions.assertThat(calculator.calculate(test)).isEqualTo(6);
-        test = "1,5:3";
-        Assertions.assertThat(calculator.calculate(test)).isEqualTo(9);
     }
 
     @Test
     public void getSeparatorTest() {
         String test = "//a\n1a2a3";
-        Assertions.assertThat(calculator.getSeparator(test)).isEqualTo("a");
+        Assertions.assertThat(customSplitter.getSeparator(test)).isEqualTo("a");
     }
 
     @Test
     public void findSeparatorTest() {
         String test = "//a\n1a2a3";
-        Assertions.assertThat(calculator.hasSeparator(test)).isEqualTo(true);
+        Assertions.assertThat(defaultSplitter.supports(test)).isEqualTo(false);
     }
 
     @Test
     public void toStringWithoutSeparatorTest() {
         String test = "//'\n1'2'3";
-        Assertions.assertThat(calculator.toStringWithoutSeparator(test)).isEqualTo("1'2'3");
+        Assertions.assertThat(customSplitter.toStringWithoutSeparator(test)).isEqualTo("1'2'3");
     }
 
     @Test
     public void tokenizeTest() {
         String test = "//'\n1'2'3";
         String[] tokens = {"1", "2", "3"};
-        Assertions.assertThat(calculator.tokenize(test)).isEqualTo(tokens);
-    }
-
-    @Test
-    public void toNumbersTest() {
-        String[] test = {"1", "2", "3"};
-        int[] answer = {1, 2, 3};
-        Assertions.assertThat(calculator.toNumbers(test)).isEqualTo(answer);
+        Assertions.assertThat(customSplitter.split(test)).isEqualTo(tokens);
     }
 
     @Test
     public void toNumbersExceptionTest() {
         boolean thrown = false;
-        String[] test = {"a", "0", "3"};
         try {
-            calculator.toNumbers(test);
-        } catch (NumberFormatException e) {
+            new Positive(-1);
+        } catch (NagativeNumberException e) {
             thrown = true;
         }
         assertTrue(thrown);
@@ -71,19 +69,7 @@ public class CalculatorTest {
 
     @Test
     public void computeTest() {
-        int[] test = {1, 2, 3};
-        Assertions.assertThat(calculator.compute(test)).isEqualTo(6);
-    }
-
-    @Test
-    public void computeExceptionTest() {
-        boolean thrown = false;
-        int[] test = {-1, 0, 3};
-        try {
-            calculator.compute(test);
-        } catch (NagativeNumberException e) {
-            thrown = true;
-        }
-        assertTrue(thrown);
+        Positive[] test = {new Positive(1), new Positive(2), new Positive(3)};
+        Assertions.assertThat(calculator.add(test)).isEqualTo(6);
     }
 }
