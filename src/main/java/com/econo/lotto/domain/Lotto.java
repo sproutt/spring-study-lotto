@@ -3,6 +3,7 @@ package com.econo.lotto.domain;
 import lombok.*;
 
 import java.util.List;
+import java.util.stream.Stream;
 
 @Getter
 @Setter
@@ -13,5 +14,16 @@ public class Lotto {
 
     public Lotto(List<Integer> numbers) {
         this.numbers = numbers;
+    }
+
+    public Stream<Integer> stream(){
+        return numbers.stream();
+    }
+
+    public boolean contains(Integer number){
+        if(numbers.contains(number)){
+            return true;
+        }
+        return false;
     }
 }

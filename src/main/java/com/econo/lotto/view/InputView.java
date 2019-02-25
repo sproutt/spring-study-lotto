@@ -11,6 +11,11 @@ public class InputView {
         System.out.println("구입금액을 입력해 주세요.");
 
         return bufferedReader.readLine();
-}
+    }
+
+    public static String readWinNumbers() throws IOException {
+        System.out.println("\n\n지난 주 당첨 번호를 입력해 주세요.");
+        return bufferedReader.readLine();
+    }
 
 }
