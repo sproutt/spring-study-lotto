@@ -7,6 +7,7 @@ import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 public class LottoMatcher {
+    public static final int[] rewards = {0, 0, 0, 5000, 500000, 1500000, 2000000000};
     private Lotto winNumbers;
     private int[] winCounts;
 
@@ -14,18 +15,22 @@ public class LottoMatcher {
         winCounts = new int[7];
     }
 
-    public String[] getResult(List<Lotto> lottos, int expenditure) {
+    public String[] getResult(List<Lotto> lottos) {
         this.countMatches(lottos);
-        String[] results = {this.getWinCounts(lottos), this.getProfitRate(lottos, expenditure)};
+        String[] results = {this.getWinCounts(lottos), this.getProfitRate(lottos)};
         return results;
     }
 
-    public String getProfitRate(List<Lotto> lottos, int expenditure) {
-        return String.format("%.1f", lottos.size()/this.getProfit());
+    public String getProfitRate(List<Lotto> lottos) {
+        return String.format("%.1f", (  this.getProfit()/ (lottos.size() * LottoGame.LOTTO_PRICE)) * 100);
+    }
+
+    public double getProfit() {
+        return IntStream.range(0, 7).map(number -> rewards[number] * winCounts[number]).sum();
     }
 
     public String getWinCounts(List<Lotto> lottos) {
-        return Stream.of(3,4,5,6)
+        return Stream.of(3, 4, 5, 6)
                 .map(i -> Integer.toString(winCounts[i]))
                 .collect(Collectors.joining(","));
     }

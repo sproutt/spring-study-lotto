@@ -5,6 +5,7 @@ import org.junit.Test;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Stream;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.*;
@@ -47,8 +48,32 @@ public class LottoMatcherTest {
     }
 
     @Test
+    public void getProfitTest(){
+        lottoMatcher.setWinNumbers("1, 2, 3, 4, 5, 6");
+        List<Lotto> lottos = new ArrayList<>();
+        Lotto lotto1 = new Lotto(Arrays.asList(1, 2, 33, 48, 45, 41));
+        Lotto lotto2 = new Lotto(Arrays.asList(1, 2, 3, 48, 4, 41));
+        Lotto lotto3 = new Lotto(Arrays.asList(1, 4, 5, 6, 3, 2));
+        lottos.add(lotto1);
+        lottos.add(lotto2);
+        lottos.add(lotto3);
+        lottoMatcher.countMatches(lottos);
+        assertThat(String.format("%.0f",lottoMatcher.getProfit()), is("2000500000"));
+    }
+
+    @Test
     public void getProfitRateTest(){
-        public
+        lottoMatcher.setWinNumbers("1, 2, 3, 4, 5, 6");
+        List<Lotto> lottos = new ArrayList<>();
+        Lotto lotto1 = new Lotto(Arrays.asList(1, 2, 33, 48, 45, 41));
+        Lotto lotto3 = new Lotto(Arrays.asList(1, 10, 11, 12, 3, 2));
+        lottos.add(lotto1);
+        lottos.add(lotto3);
+        lottoMatcher.countMatches(lottos);
+        System.out.println(lottos.size());
+        System.out.println(lottoMatcher.getProfit());
+        assertThat(lottoMatcher.getProfitRate(lottos), is("250.0"));
+
     }
 
 

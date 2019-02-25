@@ -17,21 +17,25 @@ public class OutputView {
         bufferedWriter.flush();
     }
 
+    public static void printResults(String[] results) throws IOException {
+        printResult(results[0]);
+        printProfit(results[1]);
+    }
     public static void printResult(String result) throws IOException {
         String[] results = result.split(",");
-        bufferedWriter.write("\n당첨 통계\n---------");
+        bufferedWriter.write("\n당첨 통계\n---------\n");
         bufferedWriter.write(new StringBuffer("3개 일치 (5000원)- ")
                 .append(results[0])
-                .append("개").toString());
+                .append("개\n").toString());
         bufferedWriter.write(new StringBuffer("4개 일치 (50000원)- ")
                 .append(results[1])
-                .append("개").toString());
+                .append("개\n").toString());
         bufferedWriter.write(new StringBuffer("5개 일치 (1500000원)- ")
                 .append(results[2])
-                .append("개").toString());
+                .append("개\n").toString());
         bufferedWriter.write(new StringBuffer("6개 일치 (2000000000원)- ")
                 .append(results[3])
-                .append("개").toString());
+                .append("개\n").toString());
         bufferedWriter.flush();
     }
     public static void printProfit(String profit) throws IOException {

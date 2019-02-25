@@ -11,12 +11,15 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class LottoGame {
-    private static final int LOTTO_PRICE = 1000;
+    public static final int LOTTO_PRICE = 1000;
+
+    private LottoMatcher lottoMatcher;
 
     private List<Lotto> lottos;
-
     public LottoGame() {
         lottos = new ArrayList<>();
+
+        lottoMatcher= new LottoMatcher();
     }
 
     public void setLottos(String expenditure) throws IOException {
@@ -26,6 +29,13 @@ public class LottoGame {
         }
         OutputView.printLottoNumber(lottoCount);
         OutputView.printLottos(getLottosPrintFormat(lottos));
+    }
+
+    public void setWinNumbers(String winNumbers){
+        lottoMatcher.setWinNumbers(winNumbers);
+    }
+    public String[] getResult(){
+        return lottoMatcher.getResult(lottos);
     }
 
     public String getLottosPrintFormat(List<Lotto> lottos) {
@@ -55,9 +65,4 @@ public class LottoGame {
     public int getLottoCount(String expenditure) {
         return Integer.parseInt(expenditure) / LOTTO_PRICE;
     }
-
-
-
-
-
 }

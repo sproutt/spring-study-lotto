@@ -11,9 +11,9 @@ public class LottoClient {
 
     public static void main(String[] args) throws IOException {
         LottoGame lottoGame = new LottoGame();
-        LottoMatcher lottoMatcher = new LottoMatcher();
 
         lottoGame.setLottos(InputView.readExpenditure());
-        lottoMatcher.setWinNumbers(InputView.readWinNumbers());
+        lottoGame.setWinNumbers(InputView.readWinNumbers());
+        OutputView.printResults(lottoGame.getResult());
     }
 }
