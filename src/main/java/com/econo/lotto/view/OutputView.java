@@ -1,13 +1,14 @@
 package com.econo.lotto.view;
 
-import java.io.*;
-import java.sql.SQLOutput;
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.io.OutputStreamWriter;
 
 public class OutputView {
-    private static final BufferedWriter bufferedWriter= new BufferedWriter(new OutputStreamWriter(System.out));
+    private static final BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(System.out));
 
     public static void printLottoNumber(int lottoNumber) throws IOException {
-        bufferedWriter.write(""+lottoNumber);
+        bufferedWriter.write("" + lottoNumber);
         bufferedWriter.write("개를 구매했습니다.\n");
         bufferedWriter.flush();
     }
@@ -21,6 +22,7 @@ public class OutputView {
         printResult(results[0]);
         printProfit(results[1]);
     }
+
     public static void printResult(String result) throws IOException {
         String[] results = result.split(",");
         bufferedWriter.write("\n당첨 통계\n---------\n");
@@ -38,6 +40,7 @@ public class OutputView {
                 .append("개\n").toString());
         bufferedWriter.flush();
     }
+
     public static void printProfit(String profit) throws IOException {
         bufferedWriter.write("총 수익률은 ");
         bufferedWriter.write(profit);

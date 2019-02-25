@@ -1,6 +1,9 @@
 package com.econo.lotto.domain;
 
-import lombok.*;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
 
 import java.util.List;
 import java.util.stream.Stream;
@@ -16,12 +19,13 @@ public class Lotto {
         this.numbers = numbers;
     }
 
-    public Stream<Integer> stream(){
+    public Stream<Integer> stream() {
         return numbers.stream();
     }
 
-    public boolean contains(Integer number){
-        if(numbers.contains(number)){
+    public boolean contains(Integer number) {
+        if (numbers.contains(number)) {
+
             return true;
         }
         return false;

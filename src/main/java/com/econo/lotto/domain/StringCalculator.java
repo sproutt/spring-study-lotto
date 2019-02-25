@@ -25,7 +25,7 @@ public class StringCalculator {
         if (isDefault(input)) {
             splitedInput = defaultSplitter.split(input);
         }
-        splitedInput=customSplitter.split(input);
+        splitedInput = customSplitter.split(input);
         positives = Arrays.stream(splitedInput)
                 .map(Positive::new)
                 .toArray(Positive[]::new);

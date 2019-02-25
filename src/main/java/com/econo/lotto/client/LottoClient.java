@@ -1,7 +1,6 @@
 package com.econo.lotto.client;
 
 import com.econo.lotto.domain.LottoGame;
-import com.econo.lotto.domain.LottoMatcher;
 import com.econo.lotto.view.InputView;
 import com.econo.lotto.view.OutputView;
 
@@ -14,6 +13,6 @@ public class LottoClient {
 
         lottoGame.setLottos(InputView.readExpenditure());
         lottoGame.setWinNumbers(InputView.readWinNumbers());
-        OutputView.printResults(lottoGame.getResult());
+        OutputView.printResults(lottoGame.getResults());
     }
 }

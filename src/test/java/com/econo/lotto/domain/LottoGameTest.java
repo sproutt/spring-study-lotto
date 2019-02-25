@@ -1,19 +1,13 @@
 package com.econo.lotto.domain;
 
-import com.econo.lotto.utils.LottoGenerator;
 import org.assertj.core.api.Assertions;
-import org.junit.Before;
 import org.junit.Test;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 import static org.hamcrest.CoreMatchers.is;
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertThat;
 
 public class LottoGameTest {
 
@@ -26,6 +20,7 @@ public class LottoGameTest {
     @Test
     public void getLottoCountTest() {
         String testExpenditure = "14000";
+
         Assertions.assertThat(lottoGame.getLottoCount(testExpenditure)).isEqualTo(14);
     }
 
@@ -39,6 +34,7 @@ public class LottoGameTest {
     public void getLottoPrintFormatTest() {
         Lotto lotto = new Lotto(Arrays.asList(7, 2, 4, 45, 22, 6));
         String lottoPrintFormat = "[7, 2, 4, 45, 22, 6]";
+
         assertThat(lottoGame.getLottoPrintFormat(lotto), is(lottoPrintFormat));
     }
 
@@ -47,6 +43,7 @@ public class LottoGameTest {
         lottoGame.save(new Lotto(Arrays.asList(7, 2, 4, 45, 22, 6)));
         lottoGame.save(new Lotto(Arrays.asList(1, 2, 33, 48, 2, 41)));
         String lottoPrintFormat = "[7, 2, 4, 45, 22, 6]\n[1, 2, 33, 48, 2, 41]";
+
         assertThat(lottoGame.getLottosPrintFormat(lottoGame.getLottos()), is(lottoPrintFormat));
     }
 }

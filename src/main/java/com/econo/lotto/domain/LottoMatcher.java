@@ -1,6 +1,5 @@
 package com.econo.lotto.domain;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
@@ -15,14 +14,15 @@ public class LottoMatcher {
         winCounts = new int[7];
     }
 
-    public String[] getResult(List<Lotto> lottos) {
+    public String[] getResults(List<Lotto> lottos) {
         this.countMatches(lottos);
         String[] results = {this.getWinCounts(lottos), this.getProfitRate(lottos)};
+
         return results;
     }
 
     public String getProfitRate(List<Lotto> lottos) {
-        return String.format("%.1f", (  this.getProfit()/ (lottos.size() * LottoGame.LOTTO_PRICE)) * 100);
+        return String.format("%.1f", (this.getProfit() / (lottos.size() * LottoGame.LOTTO_PRICE)) * 100);
     }
 
     public double getProfit() {

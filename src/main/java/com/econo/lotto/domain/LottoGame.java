@@ -5,10 +5,8 @@ import com.econo.lotto.view.OutputView;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 public class LottoGame {
     public static final int LOTTO_PRICE = 1000;
@@ -16,10 +14,10 @@ public class LottoGame {
     private LottoMatcher lottoMatcher;
 
     private List<Lotto> lottos;
+
     public LottoGame() {
         lottos = new ArrayList<>();
-
-        lottoMatcher= new LottoMatcher();
+        lottoMatcher = new LottoMatcher();
     }
 
     public void setLottos(String expenditure) throws IOException {
@@ -31,11 +29,8 @@ public class LottoGame {
         OutputView.printLottos(getLottosPrintFormat(lottos));
     }
 
-    public void setWinNumbers(String winNumbers){
+    public void setWinNumbers(String winNumbers) {
         lottoMatcher.setWinNumbers(winNumbers);
-    }
-    public String[] getResult(){
-        return lottoMatcher.getResult(lottos);
     }
 
     public String getLottosPrintFormat(List<Lotto> lottos) {
@@ -51,6 +46,7 @@ public class LottoGame {
                 .collect(Collectors.joining(", "));
         stringBuffer.append(middleString);
         stringBuffer.append("]");
+
         return stringBuffer.toString();
     }
 
@@ -64,5 +60,9 @@ public class LottoGame {
 
     public int getLottoCount(String expenditure) {
         return Integer.parseInt(expenditure) / LOTTO_PRICE;
+    }
+
+    public String[] getResults() {
+        return lottoMatcher.getResults(lottos);
     }
 }

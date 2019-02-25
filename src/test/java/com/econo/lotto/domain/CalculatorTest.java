@@ -1,6 +1,5 @@
-package com.econo.lotto;
+package com.econo.lotto.domain;
 
-import com.econo.lotto.domain.StringCalculator;
 import com.econo.lotto.exception.NagativeNumberException;
 import com.econo.lotto.utils.CustomSplitter;
 import com.econo.lotto.utils.DefaultSplitter;
@@ -9,9 +8,7 @@ import org.assertj.core.api.Assertions;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.util.regex.Pattern;
-
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertTrue;
 
 public class CalculatorTest {
     private StringCalculator calculator;
