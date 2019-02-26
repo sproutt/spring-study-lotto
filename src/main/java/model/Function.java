@@ -1,52 +1,29 @@
 package model;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class Function {
 
-    final char FIRSTSPLITER = ':';
-    final char SECONDSPLITER = ',';
-    private String functionString = new String();
-    private List<Splitter> splitters = new ArrayList<Splitter>();
-    private String[] numbers;
-    private int result = 0;
+    private int result;
 
     public Function() {
-        splitters.add(new Splitter(FIRSTSPLITER));
-        splitters.add(new Splitter(SECONDSPLITER));
+        result = 0;
     }
 
-    public void addSplitters(Splitter splitter) {
-        splitters.add(splitter);
+    public int parseInt(String number) {
+        int intNumber = Integer.parseInt(number);
+        if (intNumber < 0) {
+            throw new RuntimeException();
+        }
+        return intNumber;
     }
 
-    public String getFunctionString() {
-        return functionString;
-    }
-
-    public void setFunctionString(String functionString) {
-        this.functionString = functionString;
-    }
-
-    public List<Splitter> getSplitters() {
-        return splitters;
-    }
-
-    public String[] getNumbers() {
-        return numbers;
-    }
-
-    public void setNumbers(String[] numbers) {
-        this.numbers = numbers;
+    public void addNumbers(String[] numbers) {
+        for (String number : numbers) {
+            result += parseInt(number);
+        }
     }
 
     public int getResult() {
         return result;
-    }
-
-    public void addNumber(int number) {
-        result += number;
     }
 
 }

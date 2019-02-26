@@ -1,6 +1,6 @@
 package app;
 
-import controller.CalculatorController;
+import controller.CalculateController;
 import view.InputView;
 import view.OutputView;
 
@@ -8,8 +8,8 @@ import view.OutputView;
 public class StringAddCalculator {
 
     public static void main(String[] args) {
-        CalculatorController calculatorController = new CalculatorController();
-        OutputView.printResult(calculatorController.add(InputView.inputFunction()));
+        CalculateController calculateController = new CalculateController();
+        OutputView.printResult(calculateController.add(InputView.inputFunction()));
     }
 
 }
