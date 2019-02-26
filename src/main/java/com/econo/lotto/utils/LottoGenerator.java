@@ -6,8 +6,9 @@ import java.util.List;
 import java.util.stream.IntStream;
 
 public class LottoGenerator {
-    private static final int LOTTO_MAX = 50;
-    private static final int LOTTO_COUNT = 6;
+    private static final int LOTTO_MAX = 45;
+    public static final int LOTTO_COUNT = 6;
+
     private static List<Integer> lottoNumbers;
 
     static {

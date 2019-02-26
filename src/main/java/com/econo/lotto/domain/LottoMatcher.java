@@ -1,19 +1,20 @@
 package com.econo.lotto.domain;
 
+import com.econo.lotto.utils.LottoGenerator;
+
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 public class LottoMatcher {
-    private final int LOTTO_ARRAY_NUMBERS = 7;
     private static final int[] rewards = {0, 0, 0, 5000, 500000, 1500000, 2000000000};
 
     private Lotto winNumbers;
     private int[] winCounts;
 
     public LottoMatcher() {
-        winCounts = new int[LOTTO_ARRAY_NUMBERS];
+        winCounts = new int[LottoGenerator.LOTTO_COUNT + 1];
     }
 
     public String[] getResults(List<Lotto> lottos) {
