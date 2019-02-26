@@ -6,12 +6,14 @@ import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 public class LottoMatcher {
-    public static final int[] rewards = {0, 0, 0, 5000, 500000, 1500000, 2000000000};
+    private final int LOTTO_ARRAY_NUMBERS = 7;
+    private static final int[] rewards = {0, 0, 0, 5000, 500000, 1500000, 2000000000};
+
     private Lotto winNumbers;
     private int[] winCounts;
 
     public LottoMatcher() {
-        winCounts = new int[7];
+        winCounts = new int[LOTTO_ARRAY_NUMBERS];
     }
 
     public String[] getResults(List<Lotto> lottos) {

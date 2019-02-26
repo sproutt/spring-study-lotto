@@ -40,14 +40,14 @@ public class LottoGame {
     }
 
     public String getLottoPrintFormat(Lotto lotto) {
-        StringBuffer stringBuffer = new StringBuffer("[");
+        StringBuilder stringBuidler = new StringBuilder("[");
         String middleString = lotto.stream()
                 .map(number -> Integer.toString(number))
                 .collect(Collectors.joining(", "));
-        stringBuffer.append(middleString);
-        stringBuffer.append("]");
+        stringBuidler.append(middleString);
+        stringBuidler.append("]");
 
-        return stringBuffer.toString();
+        return stringBuidler.toString();
     }
 
     public List<Lotto> getLottos() {
