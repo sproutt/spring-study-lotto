@@ -22,10 +22,10 @@ public class StringCalculator {
     public int calculate(String input) {
         String[] splitedInput;
 
+        splitedInput = customSplitter.split(input);
         if (isDefault(input)) {
             splitedInput = defaultSplitter.split(input);
         }
-        splitedInput = customSplitter.split(input);
         positives = Arrays.stream(splitedInput)
                 .map(Positive::new)
                 .toArray(Positive[]::new);
