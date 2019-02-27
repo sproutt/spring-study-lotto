@@ -38,4 +38,5 @@ public class Positive {
     public int hashCode() {
         return Objects.hash(number);
     }
+
 }

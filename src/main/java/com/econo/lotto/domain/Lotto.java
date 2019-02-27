@@ -11,7 +11,6 @@ import java.util.stream.Stream;
 @Getter
 @Setter
 @EqualsAndHashCode
-@ToString
 public class Lotto {
     private List<Integer> numbers;
 
@@ -29,5 +28,10 @@ public class Lotto {
             return true;
         }
         return false;
+    }
+
+    @Override
+    public String toString() {
+        return ""+numbers;
     }
 }
