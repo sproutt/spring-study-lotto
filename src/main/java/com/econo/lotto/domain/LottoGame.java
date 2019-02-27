@@ -21,11 +21,10 @@ public class LottoGame {
     }
 
     public void setLottos(String expenditure) throws IOException {
-        int lottoCount = getLottoCount(expenditure);
         for (int i = 0; i < getLottoCount(expenditure); i++) {
             this.save(new Lotto(LottoGenerator.getLotto()));
         }
-        OutputView.printLottoNumber(lottoCount);
+        OutputView.printLottoNumber(getLottoCount(expenditure));
         OutputView.printLottos(getLottosPrintFormat(lottos));
     }
 

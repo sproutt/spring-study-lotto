@@ -35,10 +35,8 @@ public class StringCalculator {
 
     public boolean isDefault(String string) {
         if (defaultSplitter.supports(string)) {
-
             return true;
         }
-
         return false;
     }
 
