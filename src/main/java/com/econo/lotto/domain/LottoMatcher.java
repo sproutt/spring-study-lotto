@@ -38,7 +38,8 @@ public class LottoMatcher {
                 .collect(Collectors.joining(","));
     }
 
-    public void countMatches(List<Lotto> lottos) {
+    public void countMatches(List<Lotto
+            > lottos) {
         lottos.stream().forEach(lotto -> winCounts[this.getWinCount(lotto)]++);
     }
 

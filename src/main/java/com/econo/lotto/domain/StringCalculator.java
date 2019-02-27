@@ -37,7 +37,6 @@ public class StringCalculator {
         if (defaultSplitter.supports(string)) {
             return true;
         }
-
         return false;
     }
 

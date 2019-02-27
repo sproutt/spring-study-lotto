@@ -24,7 +24,6 @@ public class Lotto {
 
     public boolean contains(Integer number) {
         if (numbers.contains(number)) {
-
             return true;
         }
         return false;
