@@ -7,6 +7,7 @@ public class StringAddCalculator {
 
     private final String CUSTOMCHECKER = "//(.)\n(.*)";
     private final String DEFAULTSPLITTER = ",|:";
+    private final Pattern pattern = Pattern.compile(CUSTOMCHECKER);
 
     public boolean isNull(String input) {
         if (input == null) {
@@ -19,7 +20,7 @@ public class StringAddCalculator {
     }
 
     public String[] splitString(String input) {
-        Matcher matcher = Pattern.compile(CUSTOMCHECKER).matcher(input);
+        Matcher matcher = pattern.matcher(input);
         if (matcher.find()) {
             String customDelimiter = matcher.group(1);
             return matcher.group(2).split(customDelimiter);
