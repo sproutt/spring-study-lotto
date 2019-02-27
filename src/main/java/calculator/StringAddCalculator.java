@@ -8,10 +8,8 @@ public class StringAddCalculator {
     private final String CUSTOMCHECKER = "//(.)\n(.*)";
     private final String DEFAULTSPLITTER = ",|:";
 
-    private int result;
-
-    private boolean isNull(String input) {
-        if(input == null){
+    public boolean isNull(String input) {
+        if (input == null) {
             return true;
         }
         if (input.isEmpty()) {
@@ -37,18 +35,19 @@ public class StringAddCalculator {
         return intNumber;
     }
 
-    public void addNumbers(String[] numbers) {
+    public int addNumbers(String[] numbers) {
+        int result = 0;
         for (String number : numbers) {
             result += parseInt(number);
         }
+        return result;
     }
 
     public int add(String input) {
-        if(isNull(input)){
+        if (isNull(input)) {
             return 0;
         }
-        addNumbers(splitString(input));
-        return this.result;
+        return addNumbers(splitString(input));
     }
 
 }
