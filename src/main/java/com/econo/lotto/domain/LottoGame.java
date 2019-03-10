@@ -34,19 +34,8 @@ public class LottoGame {
 
     public String getLottosPrintFormat(List<Lotto> lottos) {
         return lottos.stream()
-                .map(this::getLottoPrintFormat)
+                .map(lotto -> toString())
                 .collect(Collectors.joining("\n"));
-    }
-
-    public String getLottoPrintFormat(Lotto lotto) {
-        StringBuilder stringBuidler = new StringBuilder("[");
-        String middleString = lotto.stream()
-                .map(number -> Integer.toString(number))
-                .collect(Collectors.joining(", "));
-        stringBuidler.append(middleString);
-        stringBuidler.append("]");
-
-        return stringBuidler.toString();
     }
 
     public List<Lotto> getLottos() {

@@ -35,15 +35,7 @@ public class LottoGameTest {
         Lotto lotto = new Lotto(Arrays.asList(7, 2, 4, 45, 22, 6));
         String lottoPrintFormat = "[7, 2, 4, 45, 22, 6]";
 
-        assertThat(lottoGame.getLottoPrintFormat(lotto), is(lottoPrintFormat));
+        assertThat(lotto.toString(), is(lottoPrintFormat));
     }
 
-    @Test
-    public void getLottosPrintFormatTest() {
-        lottoGame.save(new Lotto(Arrays.asList(7, 2, 4, 45, 22, 6)));
-        lottoGame.save(new Lotto(Arrays.asList(1, 2, 33, 48, 2, 41)));
-        String lottoPrintFormat = "[7, 2, 4, 45, 22, 6]\n[1, 2, 33, 48, 2, 41]";
-
-        assertThat(lottoGame.getLottosPrintFormat(lottoGame.getLottos()), is(lottoPrintFormat));
-    }
 }
