@@ -42,7 +42,7 @@ public class StringCalculator {
 
     public int add(Positive[] numbers) {
 
-        return Arrays.stream(numbers).mapToInt(Positive::getNumber).sum();
+        return Arrays.stream(numbers).mapToInt(positive -> positive.getNumber()).sum();
     }
 
 }
