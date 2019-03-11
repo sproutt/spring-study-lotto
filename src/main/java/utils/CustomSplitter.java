@@ -10,11 +10,11 @@ public class CustomSplitter implements Spliter {
     public String[] split(String expression) {
         Pattern pattern = Pattern.compile("^//(.)\\n(.*)$");
         Matcher matcher = pattern.matcher(expression);
-        if(matcher.find()) {
+        if (matcher.find()) {
             symbol = matcher.group(1);
             expression = matcher.group(2);
         }
-        if(isPossible(expression)){
+        if (isPossible(expression)) {
             return expression.split(symbol);
         }
         throw new RuntimeException();
@@ -22,7 +22,7 @@ public class CustomSplitter implements Spliter {
 
     @Override
     public boolean isPossible(String expression) {
-        if(expression.matches("^[0-9,|"+symbol+"]*$")){
+        if (expression.matches("^[0-9,|" + symbol + "]*$")) {
             return true;
         }
         return false;

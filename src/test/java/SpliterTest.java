@@ -9,14 +9,14 @@ public class SpliterTest {
     Spliter spliter;
 
     @Test
-    public void defaultSplit(){
+    public void defaultSplit() throws Exception {
         spliter = new DefaultSplitter();
-        assertArrayEquals(new String[]{"1","2","3"},spliter.split("1,2:3"));
+        assertArrayEquals(new String[]{"1", "2", "3"}, spliter.split("1,2:3"));
     }
 
     @Test
-    public void CustomSplitter(){
+    public void CustomSplitter() throws Exception {
         spliter = new CustomSplitter();
-        assertArrayEquals(new String[]{"1","2","3"},spliter.split("//;\n1;2;3"));
+        assertArrayEquals(new String[]{"1", "2", "3"}, spliter.split("//;\n1;2;3"));
     }
 }

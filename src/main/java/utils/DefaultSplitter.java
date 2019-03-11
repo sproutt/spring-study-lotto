@@ -3,7 +3,7 @@ package utils;
 public class DefaultSplitter implements Spliter {
     @Override
     public String[] split(String expression) {
-        if(isPossible(expression)) {
+        if (isPossible(expression)) {
             return expression.split(",|:");
         }
         throw new RuntimeException();
@@ -11,7 +11,7 @@ public class DefaultSplitter implements Spliter {
 
     @Override
     public boolean isPossible(String expression) {
-        if(expression.matches("^[0-9,:]*$")){
+        if (expression.matches("^[0-9,:]*$")) {
             return true;
         }
         return false;
