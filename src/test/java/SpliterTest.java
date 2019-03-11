@@ -1,0 +1,20 @@
+import org.junit.Before;
+import org.junit.Test;
+
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.junit.Assert.assertArrayEquals;
+
+public class SpliterTest {
+    Spliter spliter;
+
+    @Test
+    public void defaultSplit(){
+        spliter = new DefaultSplitter();
+        assertArrayEquals(new String[]{"1","2","3"},spliter.split("1,2:3"));
+    }
+
+    @Test void CustomSplitter(){
+        spliter = new CustomSplitter();
+        assertArrayEquals(new String[]{"1","2","3"},spliter.split("//;\n1;2;3"));
+    }
+}

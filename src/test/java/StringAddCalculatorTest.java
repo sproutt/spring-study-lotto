@@ -1,3 +1,4 @@
+import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.*;
 
 import org.junit.Before;
@@ -35,6 +36,11 @@ public class StringAddCalculatorTest {
     @Test
     public void add_custom_구분자() throws Exception {
         assertEquals(6, cal.add("//;\n1;2;3"));
+    }
+
+    @Test
+    public void isCustom_커스텀인지_확인() throws Exception{
+        assertThat(cal.isCustom("//;\n1;2;3"),is(true));
     }
 
     @Test(expected = RuntimeException.class)
