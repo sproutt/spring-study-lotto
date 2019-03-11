@@ -1,12 +1,28 @@
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public class CustomSplitter implements Spliter {
+    private String symbol;
 
     @Override
     public String[] split(String expression) {
-        return new String[0];
+        Pattern pattern = Pattern.compile("^//(.)\\n(.*)$");
+        Matcher matcher = pattern.matcher(expression);
+        if(matcher.find()) {
+            symbol = matcher.group(1);
+            expression = matcher.group(2);
+        }
+        if(isPossible(expression)){
+            return expression.split(symbol);
+        }
+        throw new RuntimeException();
     }
 
     @Override
-    public boolean support(String expression) {
+    public boolean isPossible(String expression) {
+        if(expression.matches("^[0-9,|"+symbol+"]*$")){
+            return true;
+        }
         return false;
     }
 }

@@ -1,12 +1,17 @@
 public class DefaultSplitter implements Spliter {
-
     @Override
     public String[] split(String expression) {
-        return expression.split(",|:");
+        if(isPossible(expression)) {
+            return expression.split(",|:");
+        }
+        throw new RuntimeException();
     }
 
     @Override
-    public boolean support(String expression) {
+    public boolean isPossible(String expression) {
+        if(expression.matches("^[0-9,:]*$")){
+            return true;
+        }
         return false;
     }
 }
