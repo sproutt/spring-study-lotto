@@ -13,9 +13,13 @@ public class StringAddCalculatorTest {
     }
 
     @Test
-    public void add_null_또는_빈문자() {
-        assertEquals(0, cal.add(null));
-        assertEquals(0, cal.add(""));
+    public void add_null_또는_빈문자() {;
+        assertThat(cal.add(null),is(0));
+    }
+
+    @Test
+    public void addsad(){
+        assertThat(cal.add(""),is(0));
     }
 
     @Test
