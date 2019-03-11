@@ -1,3 +1,5 @@
+package utils;
+
 public class DefaultSplitter implements Spliter {
     @Override
     public String[] split(String expression) {
