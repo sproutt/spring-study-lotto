@@ -3,7 +3,7 @@ package utils;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class CustomSplitter implements Spliter {
+public class CustomSplitter implements Splitter {
     private String symbol;
 
     @Override
@@ -14,10 +14,7 @@ public class CustomSplitter implements Spliter {
             symbol = matcher.group(1);
             expression = matcher.group(2);
         }
-        if (isPossible(expression)) {
-            return expression.split(symbol);
-        }
-        throw new RuntimeException();
+        return selectResult(expression);
     }
 
     @Override
@@ -26,5 +23,12 @@ public class CustomSplitter implements Spliter {
             return true;
         }
         return false;
+    }
+
+    private String[] selectResult(String expression){
+        if (isPossible(expression)) {
+            return expression.split(symbol);
+        }
+        throw new RuntimeException();
     }
 }

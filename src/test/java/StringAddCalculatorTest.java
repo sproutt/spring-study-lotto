@@ -13,12 +13,12 @@ public class StringAddCalculatorTest {
     }
 
     @Test
-    public void add_null_또는_빈문자() throws Exception {
+    public void add_null() throws Exception {
         assertThat(cal.add(null), is(0));
     }
 
     @Test
-    public void addsad() throws Exception {
+    public void add_빈문자() throws Exception {
         assertThat(cal.add(""), is(0));
     }
 
