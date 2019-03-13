@@ -25,7 +25,7 @@ public class CustomSplitter implements Splitter {
         return false;
     }
 
-    private String[] selectResult(String expression){
+    private String[] selectResult(String expression) {
         if (isPossible(expression)) {
             return expression.split(symbol);
         }
