@@ -14,7 +14,7 @@ public class StringAddCalculator {
         selectSplitter(isCustom(expression));
         String[] textNumbers = splitter.split(expression);
         return Arrays.stream(textNumbers)
-                .mapToInt(n -> Integer.parseInt(n))
+                .mapToInt(element -> Integer.parseInt(element))
                 .sum();
     }
 
