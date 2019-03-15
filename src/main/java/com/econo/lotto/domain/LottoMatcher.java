@@ -10,7 +10,7 @@ import java.util.stream.Stream;
 public class LottoMatcher {
     private static final int[] rewards = {0, 0, 0, 5000, 500000, 1500000, 2000000000};
 
-    private Lotto winNumbers;
+    private List<Integer> winNumbers;
     private int[] winCounts;
 
     public LottoMatcher() {
@@ -38,8 +38,7 @@ public class LottoMatcher {
                 .collect(Collectors.joining(","));
     }
 
-    public void countMatches(List<Lotto
-            > lottos) {
+    public void countMatches(List<Lotto> lottos) {
         lottos.stream().forEach(lotto -> winCounts[this.getWinCount(lotto)]++);
     }
 
@@ -48,15 +47,13 @@ public class LottoMatcher {
     }
 
     public void setWinNumbers(String readWinNumbers) {
-        winNumbers = toWinNumberList(readWinNumbers);
+        this.winNumbers = toWinNumberList(readWinNumbers);
     }
 
-    public Lotto toWinNumberList(String readWinNumbers) {
-        return new Lotto(
-                Stream.of(readWinNumbers.split(", "))
-                        .map(number -> Integer.parseInt(number))
-                        .collect(Collectors.toList())
-        );
+    public List<Integer> toWinNumberList(String readWinNumbers) {
+        return Stream.of(readWinNumbers.split(", "))
+                .map(number -> Integer.parseInt(number))
+                .collect(Collectors.toList());
     }
 
 

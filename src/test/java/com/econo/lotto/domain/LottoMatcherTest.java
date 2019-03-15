@@ -21,7 +21,7 @@ public class LottoMatcherTest {
         String winNumbers = "1, 2, 3, 4, 5, 6";
         Arrays.asList(1, 2, 3, 4, 5, 6);
 
-        assertThat(lottoMatcher.toWinNumberList(winNumbers).getNumbers(), is(Arrays.asList(1, 2, 3, 4, 5, 6)));
+        assertThat(lottoMatcher.toWinNumberList(winNumbers), is(Arrays.asList(1, 2, 3, 4, 5, 6)));
     }
 
     @Test

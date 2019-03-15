@@ -5,7 +5,6 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.util.List;
-import java.util.stream.Stream;
 
 @Getter
 @Setter
@@ -15,10 +14,6 @@ public class Lotto {
 
     public Lotto(List<Integer> numbers) {
         this.numbers = numbers;
-    }
-
-    public Stream<Integer> stream() {
-        return numbers.stream();
     }
 
     public boolean contains(Integer number) {

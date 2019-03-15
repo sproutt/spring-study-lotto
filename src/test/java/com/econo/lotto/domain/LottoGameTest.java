@@ -12,7 +12,6 @@ import static org.junit.Assert.assertThat;
 public class LottoGameTest {
 
     private LottoGame lottoGame;
-
     public LottoGameTest() {
         lottoGame = new LottoGame();
     }
@@ -21,7 +20,7 @@ public class LottoGameTest {
     public void getLottoCountTest() {
         String testExpenditure = "14000";
 
-        Assertions.assertThat(lottoGame.getLottoCount(testExpenditure)).isEqualTo(14);
+        Assertions.assertThat(lottoGame.toLottoCount(testExpenditure)).isEqualTo(14);
     }
 
     @Test

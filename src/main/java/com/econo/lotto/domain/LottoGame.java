@@ -1,7 +1,6 @@
 package com.econo.lotto.domain;
 
 import com.econo.lotto.utils.LottoGenerator;
-import com.econo.lotto.view.OutputView;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -12,7 +11,6 @@ public class LottoGame {
     public static final int LOTTO_PRICE = 1000;
 
     private LottoMatcher lottoMatcher;
-
     private List<Lotto> lottos;
 
     public LottoGame() {
@@ -21,18 +19,20 @@ public class LottoGame {
     }
 
     public void setLottos(String expenditure) throws IOException {
-        for (int i = 0; i < getLottoCount(expenditure); i++) {
+        for (int i = 0; i < toLottoCount(expenditure); i++) {
             this.save(new Lotto(LottoGenerator.getLotto()));
         }
-        OutputView.printLottoNumber(getLottoCount(expenditure));
-        OutputView.printLottos(getLottosPrintFormat(lottos));
     }
 
     public void setWinNumbers(String winNumbers) {
         lottoMatcher.setWinNumbers(winNumbers);
     }
 
-    public String getLottosPrintFormat(List<Lotto> lottos) {
+    public String getLottosPrintFormat() {
+        return toLottosPrintFormat(getLottos());
+    }
+
+    public String toLottosPrintFormat(List<Lotto> lottos) {
         return lottos.stream()
                 .map(lotto -> toString())
                 .collect(Collectors.joining("\n"));
@@ -46,8 +46,12 @@ public class LottoGame {
         lottos.add(lotto);
     }
 
-    public int getLottoCount(String expenditure) {
+    public int toLottoCount(String expenditure) {
         return Integer.parseInt(expenditure) / LOTTO_PRICE;
+    }
+
+    public int getLottoCount() {
+        return this.lottos.size();
     }
 
     public String[] getResults() {

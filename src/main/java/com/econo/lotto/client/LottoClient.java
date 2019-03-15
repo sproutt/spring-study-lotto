@@ -10,9 +10,13 @@ public class LottoClient {
 
     public static void main(String[] args) throws IOException {
         LottoGame lottoGame = new LottoGame();
-
         lottoGame.setLottos(InputView.readExpenditure());
+
+        OutputView.printLottoNumber(lottoGame.getLottoCount());
+        OutputView.printLottos(lottoGame.getLottosPrintFormat());
+
         lottoGame.setWinNumbers(InputView.readWinNumbers());
+
         OutputView.printResults(lottoGame.getResults());
     }
 }
