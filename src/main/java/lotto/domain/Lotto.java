@@ -1,4 +1,4 @@
-package lotto;
+package lotto.domain;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,10 +8,8 @@ public class Lotto {
     private static List<Integer>[] tickets;
 
     public void makeTickets(int numberOfTicket) {
-        System.out.println(numberOfTicket);
         tickets = (List<Integer>[]) new List[numberOfTicket];
         for (int times = 0; times < numberOfTicket; times++) {
-            System.out.println(times);
             tickets[times] = new ArrayList<Integer>();
         }
     }

@@ -3,6 +3,7 @@ package lotto;
 import static org.junit.Assert.*;
 import static org.hamcrest.core.Is.*;
 
+import lotto.domain.Lotto;
 import org.junit.Before;
 import org.junit.Test;
 
