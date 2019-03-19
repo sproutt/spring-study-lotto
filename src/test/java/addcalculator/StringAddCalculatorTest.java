@@ -1,6 +1,9 @@
+package addcalculator;
+
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.*;
 
+import addcalculator.StringAddCalculator;
 import org.junit.Before;
 import org.junit.Test;
 

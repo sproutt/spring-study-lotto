@@ -1,4 +1,4 @@
-package utils;
+package addcalculator.utils;
 
 public class DefaultSplitter implements Splitter {
     @Override
