@@ -5,13 +5,19 @@ import java.util.List;
 
 public class Lotto {
     private final static int[] PRIZE_MONEY = new int[]{0, 0, 0, 5000, 50000, 1500000, 2000000000};
-    private List<Integer>[] tickets;
+    private static List<Integer>[] tickets;
 
-    public void setTickets(int numberOfTicket) {
-        tickets = (ArrayList<Integer>[]) new ArrayList[numberOfTicket];
+    public void makeTickets(int numberOfTicket) {
+        System.out.println(numberOfTicket);
+        tickets = (List<Integer>[]) new List[numberOfTicket];
         for (int times = 0; times < numberOfTicket; times++) {
-            tickets[times] = new ArrayList<>();
+            System.out.println(times);
+            tickets[times] = new ArrayList<Integer>();
         }
+    }
+
+    public void setTickets(int index, List<Integer> Numbers) {
+        tickets[index] = Numbers;
     }
 
     public List<Integer> count(List<Integer> winnerNumber) {
@@ -41,9 +47,5 @@ public class Lotto {
     public double seekEarningsRate(int income) {
         int outcome = tickets.length * 1000;
         return (double) income / outcome * 100;
-    }
-
-    public int purchase(int totalPrice) {
-        return totalPrice / 1000;
     }
 }

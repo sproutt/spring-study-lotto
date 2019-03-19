@@ -17,7 +17,7 @@ public class LottoTest {
     @Before
     public void setUp() {
         lotto = new Lotto();
-        lotto.setTickets(14);
+        lotto.makeTickets(14);
         list = new ArrayList<>();
         Integer[] integer = new Integer[]{1, 2, 3, 4, 5, 6, 7};
         list = Arrays.asList(integer);
@@ -49,10 +49,4 @@ public class LottoTest {
         int income = 5000;
         assertThat(Math.round(lotto.seekEarningsRate(income)*10.0)/10.0, is(35.7));
     }
-
-    @Test
-    public void 몇장() {
-        assertThat(lotto.purchase(14000), is(14));
-    }
-
 }
