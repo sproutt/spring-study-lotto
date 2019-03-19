@@ -7,10 +7,10 @@ public class Lotto {
     private final static int[] PRIZE_MONEY = new int[]{0, 0, 0, 5000, 50000, 1500000, 2000000000};
     private static List<Integer>[] tickets;
 
-    public void makeTickets(int numberOfTicket) {
-        tickets = (List<Integer>[]) new List[numberOfTicket];
-        for (int times = 0; times < numberOfTicket; times++) {
-            tickets[times] = new ArrayList<Integer>();
+    public void makeTickets(int numberOfTickets) {
+        tickets = (List<Integer>[]) new List[numberOfTickets];
+        for (int times = 0; times < numberOfTickets; times++) {
+            tickets[times] = new ArrayList<>();
         }
     }
 
@@ -26,12 +26,12 @@ public class Lotto {
         return countedTickets;
     }
 
-    public boolean isExist(int number, List<Integer> winnerNumber) {
-        return winnerNumber.contains(number);
+    public boolean isExist(int number, List<Integer> winnerNumbers) {
+        return winnerNumbers.contains(number);
     }
 
-    public int countSelectedTicket(List<Integer> ticket, List<Integer> winnerNumber) {
-        return (int) ticket.stream().filter(n -> isExist(n, winnerNumber)).count();
+    public int countSelectedTicket(List<Integer> ticket, List<Integer> winnerNumbers) {
+        return (int) ticket.stream().filter(number -> isExist(number, winnerNumbers)).count();
     }
 
     public int seekIncome(List<Integer> countedTicket) {

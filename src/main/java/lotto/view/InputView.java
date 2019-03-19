@@ -1,5 +1,7 @@
 package lotto.view;
 
+import lotto.utils.Utils;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -14,11 +16,8 @@ public class InputView {
     }
 
     public static List<Integer> inputWinnerNumber() {
+        scanner.nextLine();
         System.out.println("지난 주 당첨 번호를 입력해 주세요.");
-        List<Integer> winnerNumber = new ArrayList<Integer>();
-        for (int i = 0; i < LOTTO_LENGTH; i++) {
-            winnerNumber.add(scanner.nextInt());
-        }
-        return winnerNumber;
+        return Utils.splitNumber(scanner.nextLine());
     }
 }

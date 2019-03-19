@@ -9,9 +9,9 @@ public class Main {
     private static Lotto lotto = new Lotto();
 
     public static void main(String[] args) {
-        int money = Utils.purchase(InputView.inputMoney());
-        lotto.makeTickets(money);
-        OutputView.printEveryTickets(money);
+        int numberOfTickets = Utils.purchase(InputView.inputMoney());
+        lotto.makeTickets(numberOfTickets);
+        OutputView.printEveryTickets(numberOfTickets);
         OutputView.printResult(InputView.inputWinnerNumber());
     }
 }

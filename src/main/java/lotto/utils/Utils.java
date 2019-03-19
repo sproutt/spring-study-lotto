@@ -17,4 +17,12 @@ public class Utils {
     public static int purchase(int totalPrice) {
         return totalPrice / 1000;
     }
+
+    public static List<Integer> splitNumber(String texts){
+        List<Integer> winnerNumbers = new ArrayList<>();
+        for(String text :texts.split(", ")){
+            winnerNumbers.add(Integer.parseInt(text));
+        }
+        return winnerNumbers;
+    }
 }

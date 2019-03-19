@@ -35,10 +35,10 @@ public class OutputView {
                 lotto.seekIncome(countedNumber));
         System.out.println("당첨 통계");
         System.out.println("---------");
-        System.out.println("3개 일치 (5000원)- " + countedNumber.stream().filter(n -> n == 3).count());
-        System.out.println("4개 일치 (50000원)- " + countedNumber.stream().filter(n -> n == 4).count());
-        System.out.println("5개 일치 (1500000원)- " + countedNumber.stream().filter(n -> n == 5).count());
-        System.out.println("6개 일치 (2000000000원)- " + countedNumber.stream().filter(n -> n == 6).count());
+        System.out.println("3개 일치 (5000원)- " + countedNumber.stream().filter(count -> count == 3).count());
+        System.out.println("4개 일치 (50000원)- " + countedNumber.stream().filter(count -> count == 4).count());
+        System.out.println("5개 일치 (1500000원)- " + countedNumber.stream().filter(count -> count == 5).count());
+        System.out.println("6개 일치 (2000000000원)- " + countedNumber.stream().filter(count -> count == 6).count());
         System.out.printf("촐 수익률은 %.1f%% 입니다.", EarningsRate);
     }
 }
