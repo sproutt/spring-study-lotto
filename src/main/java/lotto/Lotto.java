@@ -5,7 +5,6 @@ import java.util.List;
 
 public class Lotto {
     private final static int[] PRIZE_MONEY = new int[]{0, 0, 0, 5000, 50000, 1500000, 2000000000};
-    private List<Long> countedTickets;
     private List<Integer>[] tickets;
 
     public void setTickets(int numberOfTicket) {
@@ -18,7 +17,7 @@ public class Lotto {
     public List<Integer> count(List<Integer> winnerNumber) {
         List<Integer> countedTickets = new ArrayList<>();
         for (List ticket : tickets) {
-            countedTickets.add((int) countSelectedTicket(ticket,winnerNumber));
+            countedTickets.add(countSelectedTicket(ticket, winnerNumber));
         }
         return countedTickets;
     }
@@ -27,11 +26,11 @@ public class Lotto {
         return winnerNumber.contains(number);
     }
 
-    public long countSelectedTicket(List<Integer> ticket, List<Integer> winnerNumber) {
-        return ticket.stream().filter(n -> isExist(n, winnerNumber)).count();
+    public int countSelectedTicket(List<Integer> ticket, List<Integer> winnerNumber) {
+        return (int) ticket.stream().filter(n -> isExist(n, winnerNumber)).count();
     }
 
-    public Object seekIncome(List<Integer> countedTicket) {
+    public int seekIncome(List<Integer> countedTicket) {
         int total = 0;
         for (int index = 0; index < countedTicket.size(); index++) {
             total += PRIZE_MONEY[countedTicket.get(index)];
@@ -39,12 +38,12 @@ public class Lotto {
         return total;
     }
 
-    public Object seekEarningsRate(int income) {
+    public double seekEarningsRate(int income) {
         int outcome = tickets.length * 1000;
-        return income / outcome * 100;
+        return (double) income / outcome * 100;
     }
 
-    public Object purchase(int totalPrice) {
+    public int purchase(int totalPrice) {
         return totalPrice / 1000;
     }
 }

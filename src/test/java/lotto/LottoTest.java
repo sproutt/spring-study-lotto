@@ -1,7 +1,7 @@
 package lotto;
 
-import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.*;
+import static org.hamcrest.core.Is.*;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -46,8 +46,8 @@ public class LottoTest {
 
     @Test
     public void 수익률() {
-        int income = 8000;
-        assertThat(lotto.seekEarningsRate(income), is(37.5));
+        int income = 5000;
+        assertThat(Math.round(lotto.seekEarningsRate(income)*10.0)/10.0, is(35.7));
     }
 
     @Test
