@@ -15,10 +15,10 @@ public class Lotto {
         }
     }
 
-    public List<Long> count(List<Integer> winnerNumber) {
-        List<Long> countedTickets = new ArrayList<>();
+    public List<Integer> count(List<Integer> winnerNumber) {
+        List<Integer> countedTickets = new ArrayList<>();
         for (List ticket : tickets) {
-            countedTickets.add(countSelectedTicket(ticket,winnerNumber));
+            countedTickets.add((int) countSelectedTicket(ticket,winnerNumber));
         }
         return countedTickets;
     }
@@ -31,16 +31,16 @@ public class Lotto {
         return ticket.stream().filter(n -> isExist(n, winnerNumber)).count();
     }
 
-    public Object seekIncome(List<Long> countedTicket) {
+    public Object seekIncome(List<Integer> countedTicket) {
         int total = 0;
         for (int index = 0; index < countedTicket.size(); index++) {
-            total += PRIZE_MONEY[Math.toIntExact(countedTicket.get(index))];
+            total += PRIZE_MONEY[countedTicket.get(index)];
         }
         return total;
     }
 
     public Object seekEarningsRate(int income) {
-        int outcome = tickets.length * 1000
+        int outcome = tickets.length * 1000;
         return income / outcome * 100;
     }
 
