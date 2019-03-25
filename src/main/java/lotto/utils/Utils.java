@@ -11,7 +11,7 @@ public class Utils {
     }
 
     public static List<Integer> splitNumber(String texts) {
-        List<Integer> winnerNumbers = new ArrayList<>();
+        List<Integer> winnerNumbers = new ArrayList<Integer>();
         for (String text : texts.split(",")) {
             winnerNumbers.add(Integer.parseInt(text));
         }

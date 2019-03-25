@@ -27,7 +27,7 @@ public class LottoGame {
     }
 
     public static List<Integer> generateRandomNumbers() {
-        List<Integer> randomNumbers = new ArrayList<>();
+        List<Integer> randomNumbers = new ArrayList<Integer>();
         for (int number = 1; number <= 45; number++) {
             randomNumbers.add(number);
         }
@@ -71,5 +71,4 @@ public class LottoGame {
         }
         return total;
     }
-
 }

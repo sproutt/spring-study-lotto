@@ -14,16 +14,16 @@ public class OutputView {
         }
     }
 
-    public static void printStatistics(int[] result){
+    public static void printStatistics(int[] result) {
         System.out.println("당첨 통계");
         System.out.println("---------");
-        System.out.printf("3개일치 (5000원)-%d개\n",result[3]);
-        System.out.printf("4개일치 (50000원)-%d개\n",result[4]);
-        System.out.printf("5개일치 (1500000원)-%d개\n",result[5]);
-        System.out.printf("6개일치 (2000000000원)-%d개\n",result[6]);
+        System.out.printf("3개일치 (5000원)-%d개\n", result[3]);
+        System.out.printf("4개일치 (50000원)-%d개\n", result[4]);
+        System.out.printf("5개일치 (1500000원)-%d개\n", result[5]);
+        System.out.printf("6개일치 (2000000000원)-%d개\n", result[6]);
     }
 
-    public static void printBenefitRate(double benefitRate){
-        System.out.printf("총 수익률은 %.1f%%입니다.",benefitRate);
+    public static void printBenefitRate(double benefitRate) {
+        System.out.printf("총 수익률은 %.1f%%입니다.", benefitRate);
     }
 }
