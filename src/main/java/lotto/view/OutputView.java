@@ -5,9 +5,7 @@ import lotto.domain.Lotto;
 import java.util.List;
 
 public class OutputView {
-    private static StringBuilder stringBuilder = new StringBuilder();
-
-    public static void printLottos(List<Lotto> lottos) {
+public static void printLottos(List<Lotto> lottos) {
         System.out.printf("%d개를 입력받았습니다.\n", lottos.size());
         for (Lotto lotto : lottos) {
             System.out.println(lotto.toString());

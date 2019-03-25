@@ -5,7 +5,9 @@ import static org.hamcrest.core.Is.*;
 
 import lotto.domain.Lotto;
 import lotto.domain.LottoGame;
-import lotto.utils.Utils;
+import lotto.utils.Converter;
+import lotto.utils.Sorter;
+import lotto.utils.Splitter;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -31,7 +33,7 @@ public class LottoTest {
 
     @Test
     public void 단위변환() {
-        assertThat(Utils.changeUnit(14000), is(14));
+        assertThat(Converter.changeUnit(14000), is(14));
     }
 
     @Test
@@ -69,7 +71,7 @@ public class LottoTest {
         Integer[] arr = new Integer[]{6, 5, 4, 3, 2, 1};
         List<Integer> lists = Arrays.asList(arr);
 
-        assertThat(Utils.sortNumber(lists), is(list));
+        assertThat(Sorter.sortNumber(lists), is(list));
     }
 
     @Test
@@ -95,6 +97,6 @@ public class LottoTest {
 
     @Test
     public void 문자나누기() {
-        assertThat(Utils.splitNumber("1,2,3,4,5,6"), is(list));
+        assertThat(Splitter.splitNumber("1,2,3,4,5,6"), is(list));
     }
 }

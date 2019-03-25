@@ -4,21 +4,12 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class Utils {
-    public static int changeUnit(int totalPrice) {
-        return totalPrice / 1000;
-    }
-
+public class Splitter {
     public static List<Integer> splitNumber(String texts) {
         List<Integer> winnerNumbers = new ArrayList<Integer>();
         for (String text : texts.split(",")) {
             winnerNumbers.add(Integer.parseInt(text));
         }
         return winnerNumbers;
-    }
-
-    public static List<Integer> sortNumber(List<Integer> list) {
-        Collections.sort(list);
-        return list;
     }
 }

@@ -1,6 +1,8 @@
 package lotto.domain;
 
-import lotto.utils.Utils;
+import lotto.utils.Converter;
+import lotto.utils.Sorter;
+import lotto.utils.Splitter;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -19,8 +21,8 @@ public class LottoGame {
     }
 
     public List<Lotto> purchase(int money) {
-        for (int numbers = 0; numbers < Utils.changeUnit(money); numbers++) {
-            Lotto lotto = new Lotto(Utils.sortNumber(generateRandomNumbers()));
+        for (int numbers = 0; numbers < Converter.changeUnit(money); numbers++) {
+            Lotto lotto = new Lotto(Sorter.sortNumber(generateRandomNumbers()));
             lottos.add(lotto);
         }
         return lottos;
@@ -36,7 +38,7 @@ public class LottoGame {
     }
 
     public int[] saveLottoResult(String text) {
-        List<Integer> winnerNumber = Utils.splitNumber(text);
+        List<Integer> winnerNumber = Splitter.splitNumber(text);
         int[] result = new int[7];
         for (int index = 0; index < lottos.size(); index++) {
             result[countMatch(winnerNumber, index)]++;
