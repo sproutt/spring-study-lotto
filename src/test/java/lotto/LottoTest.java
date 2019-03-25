@@ -97,5 +97,4 @@ public class LottoTest {
     public void 문자나누기() {
         assertThat(Utils.splitNumber("1,2,3,4,5,6"), is(list));
     }
-
 }

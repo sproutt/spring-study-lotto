@@ -5,7 +5,6 @@ import java.util.Collections;
 import java.util.List;
 
 public class Utils {
-
     public static int changeUnit(int totalPrice) {
         return totalPrice / 1000;
     }
