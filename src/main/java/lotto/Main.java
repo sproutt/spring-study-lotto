@@ -1,17 +1,18 @@
 package lotto;
 
-import lotto.domain.Lotto;
+import lotto.domain.LottoGame;
 import lotto.utils.Utils;
 import lotto.view.InputView;
 import lotto.view.OutputView;
 
 public class Main {
-    private static Lotto lotto = new Lotto();
 
     public static void main(String[] args) {
-        int numberOfTickets = Utils.purchase(InputView.inputMoney());
-        lotto.makeTickets(numberOfTickets);
-        OutputView.printEveryTickets(numberOfTickets);
-        OutputView.printResult(InputView.inputWinnerNumber());
+        LottoGame lottoGame = new LottoGame();
+        int money = InputView.inputMoney();
+        OutputView.printLottos(lottoGame.purchase(money));
+        int[] result = lottoGame.saveLottoResult(InputView.inputResult());
+        OutputView.printStatistics(result);
+        OutputView.printBenefitRate(lottoGame.calculateRate(result,money));
     }
 }
