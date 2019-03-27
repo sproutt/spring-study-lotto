@@ -1,7 +1,5 @@
 package lotto.domain;
 
-import lotto.utils.Converter;
-import lotto.utils.Sorter;
 import lotto.utils.Splitter;
 
 import java.util.ArrayList;
@@ -21,8 +19,10 @@ public class LottoGame {
     }
 
     public List<Lotto> purchase(int money) {
-        for (int numbers = 0; numbers < Converter.changeUnit(money); numbers++) {
-            Lotto lotto = new Lotto(Sorter.sortNumber(generateRandomNumbers()));
+        for (int numbers = 0; numbers < changeUnit(money); numbers++) {
+            List<Integer> randomNumber = generateRandomNumbers();
+            Collections.sort(randomNumber);
+            Lotto lotto = new Lotto(randomNumber);
             lottos.add(lotto);
         }
         return lottos;
@@ -72,5 +72,9 @@ public class LottoGame {
             total += result[index] * WINNER_REWARDS[index];
         }
         return total;
+    }
+
+    public int changeUnit(int totalPrice) {
+        return totalPrice / 1000;
     }
 }
