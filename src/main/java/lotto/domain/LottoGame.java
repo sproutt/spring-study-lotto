@@ -7,7 +7,6 @@ import java.util.Collections;
 import java.util.List;
 
 public class LottoGame {
-    private final static int[] WINNER_REWARDS = {0, 0, 0, 5000, 50000, 1500000, 2000000000};
     private List<Lotto> lottos = new ArrayList<Lotto>();
 
     public List<Lotto> getLottos() {
@@ -39,7 +38,7 @@ public class LottoGame {
 
     public int[] saveLottoResult(String text) {
         List<Integer> winnerNumber = Splitter.splitNumber(text);
-        int[] result = new int[7];
+        int[] result = new int[NumberOfHits.values().length];
         for (int index = 0; index < lottos.size(); index++) {
             result[countMatch(winnerNumber, index)]++;
         }
@@ -69,7 +68,7 @@ public class LottoGame {
     public int calculateReward(int[] result) {
         int total = 0;
         for (int index = 0; index < result.length; index++) {
-            total += result[index] * WINNER_REWARDS[index];
+            total += result[index] * NumberOfHits.values()[index].getReward();
         }
         return total;
     }
