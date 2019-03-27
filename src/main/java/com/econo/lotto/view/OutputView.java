@@ -3,7 +3,6 @@ package com.econo.lotto.view;
 import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
-import java.util.Arrays;
 
 public class OutputView {
     private static final BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(System.out));
