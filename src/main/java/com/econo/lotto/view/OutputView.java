@@ -3,6 +3,7 @@ package com.econo.lotto.view;
 import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
+import java.util.Arrays;
 
 public class OutputView {
     private static final BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(System.out));
@@ -24,20 +25,13 @@ public class OutputView {
     }
 
     public static void printResult(String result) throws IOException {
-        String[] results = result.split(",");
         bufferedWriter.write("\n당첨 통계\n---------\n");
-        bufferedWriter.write(new StringBuffer("3개 일치 (5000원)- ")
-                .append(results[0])
-                .append("개\n").toString());
-        bufferedWriter.write(new StringBuffer("4개 일치 (50000원)- ")
-                .append(results[1])
-                .append("개\n").toString());
-        bufferedWriter.write(new StringBuffer("5개 일치 (1500000원)- ")
-                .append(results[2])
-                .append("개\n").toString());
-        bufferedWriter.write(new StringBuffer("6개 일치 (2000000000원)- ")
-                .append(results[3])
-                .append("개\n").toString());
+        String[] results = result.split(",");
+
+        for (String winInformation : results) {
+            String[] winInformations = winInformation.split(" ");
+            bufferedWriter.write(String.format("%s개 일치 (%s원)- %s\n", winInformations));
+        }
         bufferedWriter.flush();
     }
 

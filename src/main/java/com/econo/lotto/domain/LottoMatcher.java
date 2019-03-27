@@ -6,6 +6,7 @@ import com.econo.lotto.domain.lotto.Lotto;
 import com.econo.lotto.domain.lotto.LottoGenerator;
 import com.econo.lotto.domain.lotto.LottoNumber;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
@@ -22,9 +23,8 @@ public class LottoMatcher {
 
     public String[] getResults(List<Lotto> lottos) {
         this.countMatches(lottos);
-        String[] results = {this.getWinCounts(lottos), this.getProfitRate(lottos)};
 
-        return results;
+        return new String[]{getWinCounts(), getProfitRate(lottos)};
     }
 
     public String getProfitRate(List<Lotto> lottos) {
@@ -35,9 +35,10 @@ public class LottoMatcher {
         return IntStream.range(1, winCounts.length).map(matchCount -> WinType.checkWinType(matchCount).getPrize() * winCounts[matchCount]).sum();
     }
 
-    public String getWinCounts(List<Lotto> lottos) {
-        return Stream.of(3, 4, 5, 6)
-                .map(i -> Integer.toString(winCounts[i]))
+    public String getWinCounts() {
+        return Arrays.stream(WinType.values())
+                .filter(winType -> winType.getPrize()!=0)
+                .map(winType -> winType.getMatchCount()+" "+winType.getPrize()+" "+winCounts[winType.getMatchCount()])
                 .collect(Collectors.joining(","));
     }
 
