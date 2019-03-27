@@ -5,7 +5,6 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -16,9 +15,7 @@ public class Lotto {
     private List<LottoNumber> LottoNumbers;
 
     public Lotto(int[] numbers) {
-        this.LottoNumbers = Arrays.stream(numbers)
-                .mapToObj(LottoNumber::new)
-                .collect(Collectors.toList());
+        this.LottoNumbers = Arrays.stream(numbers).mapToObj(LottoNumber::new).collect(Collectors.toList());
     }
 
     public Lotto(List<LottoNumber> numbers) {

@@ -21,7 +21,6 @@ public class LottoGenerator {
         List<LottoNumber> lotto = new ArrayList<>();
         Collections.shuffle(lottoNumbers);
         IntStream.range(0, LOTTO_COUNT).forEach(i -> lotto.add(lottoNumbers.get(i)));
-
         return new Lotto(lotto);
     }
 }

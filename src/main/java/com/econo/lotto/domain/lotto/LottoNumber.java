@@ -10,11 +10,11 @@ public class LottoNumber {
 
     private int lottoNumber;
 
-    public LottoNumber(int lottoNumber){
-        if (lottoNumber > LOTTO_MAX){
+    public LottoNumber(int lottoNumber) {
+        if (lottoNumber > LOTTO_MAX) {
             throw new LottoNumberNotMatchException(lottoNumber);
         }
-        if (lottoNumber < 1){
+        if (lottoNumber < 1) {
             throw new NagativeNumberException(lottoNumber);
         }
         this.lottoNumber = lottoNumber;
@@ -22,8 +22,8 @@ public class LottoNumber {
 
     @Override
     public boolean equals(Object object) {
-        LottoNumber lottoNumber = (LottoNumber)object;
-        if(this.lottoNumber == lottoNumber.lottoNumber){
+        LottoNumber lottoNumber = (LottoNumber) object;
+        if (this.lottoNumber == lottoNumber.lottoNumber) {
             return true;
         }
         return false;

@@ -15,6 +15,7 @@ import static org.junit.Assert.assertThat;
 public class LottoGameTest {
 
     private LottoGame lottoGame;
+
     public LottoGameTest() {
         lottoGame = new LottoGame();
     }

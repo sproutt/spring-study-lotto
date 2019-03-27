@@ -33,9 +33,7 @@ public class LottoGame {
     }
 
     public String toLottosPrintFormat(List<Lotto> lottos) {
-        return lottos.stream()
-                .map(lotto -> toString())
-                .collect(Collectors.joining("\n"));
+        return lottos.stream().map(lotto -> toString()).collect(Collectors.joining("\n"));
     }
 
     public List<Lotto> getLottos() {

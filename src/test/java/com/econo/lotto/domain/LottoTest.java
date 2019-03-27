@@ -8,14 +8,14 @@ import java.util.Arrays;
 import java.util.stream.Collectors;
 
 import static org.hamcrest.CoreMatchers.is;
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertThat;
 
 public class LottoTest {
 
     private Lotto lotto;
 
-    public LottoTest(){
-        lotto = new Lotto(Arrays.asList(1,2,3,4,5,6).stream().map(LottoNumber::new).collect(Collectors.toList()));
+    public LottoTest() {
+        lotto = new Lotto(Arrays.asList(1, 2, 3, 4, 5, 6).stream().map(LottoNumber::new).collect(Collectors.toList()));
     }
 
     @Test
@@ -24,7 +24,7 @@ public class LottoTest {
     }
 
     @Test
-    public void toStringTest(){
+    public void toStringTest() {
         assertThat(lotto.toString(), is("[1, 2, 3, 4, 5, 6]"));
     }
 }
