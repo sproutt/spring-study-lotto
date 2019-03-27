@@ -1,6 +1,8 @@
-import utils.CustomSplitter;
-import utils.DefaultSplitter;
-import utils.Splitter;
+package addcalculator;
+
+import addcalculator.utils.CustomSplitter;
+import addcalculator.utils.DefaultSplitter;
+import addcalculator.utils.Splitter;
 
 import java.util.Arrays;
 

@@ -1,4 +1,4 @@
-package utils;
+package addcalculator.utils;
 
 public interface Splitter {
     public String[] split(String expression);

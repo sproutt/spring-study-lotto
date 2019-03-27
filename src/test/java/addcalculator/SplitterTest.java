@@ -1,7 +1,9 @@
+package addcalculator;
+
 import org.junit.Test;
-import utils.CustomSplitter;
-import utils.DefaultSplitter;
-import utils.Splitter;
+import addcalculator.utils.CustomSplitter;
+import addcalculator.utils.DefaultSplitter;
+import addcalculator.utils.Splitter;
 
 import static org.junit.Assert.assertArrayEquals;
 
