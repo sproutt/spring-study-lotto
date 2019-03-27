@@ -1,8 +1,8 @@
 package com.econo.lotto.domain;
 
-import com.econo.lotto.utils.LottoGenerator;
+import com.econo.lotto.domain.lotto.Lotto;
+import com.econo.lotto.domain.lotto.LottoGenerator;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -18,9 +18,9 @@ public class LottoGame {
         lottoMatcher = new LottoMatcher();
     }
 
-    public void setLottos(String expenditure) throws IOException {
+    public void setLottos(String expenditure) {
         for (int i = 0; i < toLottoCount(expenditure); i++) {
-            this.save(new Lotto(LottoGenerator.getLotto()));
+            this.save(LottoGenerator.getLotto());
         }
     }
 

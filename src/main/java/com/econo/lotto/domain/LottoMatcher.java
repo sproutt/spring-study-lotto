@@ -1,6 +1,10 @@
 package com.econo.lotto.domain;
 
-import com.econo.lotto.utils.LottoGenerator;
+import com.econo.lotto.domain.LottoGame;
+import com.econo.lotto.domain.WinType;
+import com.econo.lotto.domain.lotto.Lotto;
+import com.econo.lotto.domain.lotto.LottoGenerator;
+import com.econo.lotto.domain.lotto.LottoNumber;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -8,9 +12,8 @@ import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 public class LottoMatcher {
-    private static final int[] rewards = {0, 0, 0, 5000, 500000, 1500000, 2000000000};
 
-    private List<Integer> winNumbers;
+    private List<LottoNumber> winNumbers;
     private int[] winCounts;
 
     public LottoMatcher() {
@@ -25,11 +28,11 @@ public class LottoMatcher {
     }
 
     public String getProfitRate(List<Lotto> lottos) {
-        return String.format("%.1f", (this.getProfit() / (lottos.size() * LottoGame.LOTTO_PRICE)) * 100);
+        return String.format("%.1f", (this.getTotalProfit() / (lottos.size() * LottoGame.LOTTO_PRICE)) * 100);
     }
 
-    public double getProfit() {
-        return IntStream.range(0, 7).map(number -> rewards[number] * winCounts[number]).sum();
+    public double getTotalProfit() {
+        return IntStream.range(1, winCounts.length).map(matchCount -> WinType.checkWinType(matchCount).getPrize() * winCounts[matchCount]).sum();
     }
 
     public String getWinCounts(List<Lotto> lottos) {
@@ -39,20 +42,21 @@ public class LottoMatcher {
     }
 
     public void countMatches(List<Lotto> lottos) {
-        lottos.stream().forEach(lotto -> winCounts[this.getWinCount(lotto)]++);
+        lottos.stream().forEach(lotto -> winCounts[getWinCount(lotto)]++);
     }
 
     public int getWinCount(Lotto lotto) {
-        return (int) winNumbers.stream().filter(lotto::contains).count();
+        System.out.println(lotto);
+        return (int) winNumbers.stream().filter(winNumber -> lotto.contains(winNumber)).count();
     }
 
     public void setWinNumbers(String readWinNumbers) {
         this.winNumbers = toWinNumberList(readWinNumbers);
     }
 
-    public List<Integer> toWinNumberList(String readWinNumbers) {
+    public List<LottoNumber> toWinNumberList(String readWinNumbers) {
         return Stream.of(readWinNumbers.split(", "))
-                .map(number -> Integer.parseInt(number))
+                .map(number -> new LottoNumber(Integer.parseInt(number)))
                 .collect(Collectors.toList());
     }
 
