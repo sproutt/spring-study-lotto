@@ -45,7 +45,7 @@ public class LottoGameTest {
         int count = 0;
         lottos.add(lotto);
         lottoGame.setLottos(lottos);
-        assertThat(lottoGame.increseCount(3, 0, count), is(1));
+        assertThat(lottoGame.increaseCount(3, 0, count), is(1));
     }
 
     @Test

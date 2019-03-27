@@ -6,7 +6,7 @@ public enum NumberOfHits {
     private final String text;
     private final int reward;
 
-    private NumberOfHits(String text, int reward) {
+    NumberOfHits(String text, int reward) {
         this.text = text;
         this.reward = reward;
     }

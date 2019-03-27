@@ -48,21 +48,21 @@ public class LottoGame {
     public int countMatch(List<Integer> winnerNumber, int index) {
         int count = 0;
         for (int number : winnerNumber) {
-            count = increseCount(number, index, count);
+            count = increaseCount(number, index, count);
         }
         return count;
     }
 
-    public int increseCount(int number, int index, int count) {
+    public int increaseCount(int number, int index, int count) {
         if (lottos.get(index).isContain(number)) {
-            return ++count;
+            count++;
         }
         return count;
     }
 
     public double calculateRate(int[] result, int outcome) {
         int income = calculateReward(result);
-        return Math.round(income / outcome * 10.0) * 10.0;
+        return Math.round((double)income / outcome * 1000.0) / 10.0 ;
     }
 
     public int calculateReward(int[] result) {

@@ -23,6 +23,7 @@ public class OutputView {
     }
 
     public static void printBenefitRate(double benefitRate) {
+        System.out.println(benefitRate);
         System.out.printf("총 수익률은 %.1f%%입니다.", benefitRate);
     }
 }
