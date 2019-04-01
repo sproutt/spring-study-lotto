@@ -19,17 +19,6 @@ public class StringAddCalculatorTest {
     }
 
     @Test
-    public void splitStringTest() {
-        String[] result = new String[]{"1", "2", "3"};
-        assertArrayEquals(result, stringAddCalculator.splitString("1,2,3"));
-    }
-
-    @Test(expected = RuntimeException.class)
-    public void parseIntTest() {
-        stringAddCalculator.parseInt("-1");
-    }
-
-    @Test
     public void addNumbersTest() {
         String[] testSet = new String[]{"1", "2", "3"};
         assertEquals(6, stringAddCalculator.addNumbers(testSet));
