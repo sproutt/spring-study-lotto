@@ -1,38 +1,56 @@
 package lotto.domain;
 
+import java.util.Arrays;
+
 public enum Rank {
-    ZERO("0개", 0), ONE("1개", 0), TWO("2개", 0), THREE("3개", 5000), FOUR("4개", 50000), FIVE("5개", 1500000), SIX("6개", 2000000000);
+    FIRST(6, 2000000000),
+    SECOND(5, 30000000),
+    THIRD(5, 1500000),
+    FOURTH(4, 50000),
+    FIFTH(3, 5000),
+    MISS(0, 0);
 
-    private final String text;
-    private final int reward;
+    private int countOfMatch;
+    private int winningMoney;
 
-    Rank(String text, int reward) {
-        this.text = text;
-        this.reward = reward;
+    private Rank(int countOfMatch, int winningMoney) {
+        this.countOfMatch = countOfMatch;
+        this.winningMoney = winningMoney;
     }
 
-    public String getText() {
-        return this.text;
+    public int getCountOfMatch() {
+        return countOfMatch;
     }
 
-    public int getReward() {
-        return this.reward;
+    public int getWinningMoney() {
+        return winningMoney;
     }
 
-    public String toString(){
-        StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder.append(this.getText());
-        stringBuilder.append(" 일치 ");
-        stringBuilder.append("(");
-        stringBuilder.append(this.getReward());
-        stringBuilder.append(")- ");
-        return stringBuilder.toString();
-    }
-
-    public boolean hasReward(){
-        if(this.getReward() > 0){
-            return true;
+    public static Rank valueOf(int countOfMatch) {
+        if (countOfMatch < 3) {
+            return MISS;
         }
-        return false;
+        return (Rank) Arrays.stream(values())
+                .filter(rank -> rank.countOfMatch == countOfMatch).toArray()[0];
+    }
+
+    public static Rank setSecond(boolean matchBonusNumber) {
+        if (matchBonusNumber) {
+            return SECOND;
+        }
+        return THIRD;
+    }
+
+    public String toString() {
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append(this.countOfMatch);
+        stringBuilder.append("개 일치");
+        if (this.winningMoney == Rank.SECOND.winningMoney) {
+            stringBuilder.append(", 보너스 볼 일치");
+        }
+        stringBuilder.append("(");
+        stringBuilder.append(this.winningMoney);
+        stringBuilder.append(")-");
+        return stringBuilder.toString();
     }
 }
