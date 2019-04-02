@@ -38,7 +38,7 @@ public class LottoTest {
     }
 
     @Test
-    public void 포함되어있나(){
+    public void 포함되어있나() {
         assertThat(lotto.isContain(new LottoNo(3)), is(true));
         assertThat(lotto.isContain(new LottoNo(7)), is(false));
     }

@@ -50,7 +50,7 @@ public class LottoGameTest {
 
     @Test
     public void 자동구매() {
-        lottoGame.purchaseAuto(14000,0);
+        lottoGame.purchaseAuto(14000, 0);
         List lotto = lottoGame.getLottos();
         assertThat(lotto.size(), is(14));
     }
