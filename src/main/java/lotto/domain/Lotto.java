@@ -1,29 +1,33 @@
 package lotto.domain;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class Lotto {
-    private List<Integer> lotto;
+    private List<LottoNo> lotto;
 
-    public Lotto(List<Integer> list) {
-        lotto = new ArrayList<>();
-        lotto = list;
+    public Lotto(List<LottoNo> lotto) {
+        this.lotto = lotto
     }
 
-    public List<Integer> getLotto() {
+    public List<LottoNo> getLotto() {
         return lotto;
     }
 
-    public void setLotto(List<Integer> lotto) {
+    public void setLotto(List<LottoNo> lotto) {
         this.lotto = lotto;
     }
 
-    public boolean isContain(int number) {
-        return lotto.contains(number);
+    public boolean isContain(LottoNo number) {
+        return lotto.stream()
+                .filter(lottoNo -> lottoNo.equals(number)).count() != 0;
     }
 
     public String toString() {
-        return lotto.toString();
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append("[");
+        lotto.stream().forEach(lottoNo -> stringBuilder.append(lottoNo.getNumber() + ", "));
+        stringBuilder.delete(stringBuilder.length() - 2, stringBuilder.length());
+        stringBuilder.append("]");
+        return stringBuilder.toString();
     }
 }
