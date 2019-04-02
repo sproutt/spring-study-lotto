@@ -1,4 +1,4 @@
-package com.econo.lotto.model;
+package com.econo.lotto.utils;
 
 import com.econo.lotto.exception.NagativeNumberException;
 import lombok.Getter;
@@ -38,4 +38,5 @@ public class Positive {
     public int hashCode() {
         return Objects.hash(number);
     }
+
 }
