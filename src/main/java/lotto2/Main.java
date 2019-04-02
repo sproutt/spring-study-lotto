@@ -2,7 +2,7 @@ package lotto2;
 
 import lotto2.domain.LottoGame;
 import lotto2.view.InputView;
-import lotto2.view.OuputView;
+import lotto2.view.OutputView;
 
 public class Main {
     public static void main(String[] args) {
@@ -10,10 +10,10 @@ public class Main {
         int money = InputView.inputMoney();
         int numberOfManual =InputView.inputNumberOfManual();
         lottoGame.purchaseMenual(InputView.inputManualLottos(numberOfManual));
-        OuputView.printLottos(lottoGame.purchaseAuto(money,numberOfManual),numberOfManual);
+        OutputView.printLottos(lottoGame.purchaseAuto(money,numberOfManual),numberOfManual);
         lottoGame.setWinningLottos(InputView.inputWinningNumbers());
         lottoGame.correctBonus(InputView.inputBonusNumber());
-        OuputView.printWinStats(lottoGame);
-        OuputView.printRate(lottoGame.calculateRate());
+        OutputView.printWinStats(lottoGame);
+        OutputView.printRate(lottoGame.calculateRate());
     }
 }

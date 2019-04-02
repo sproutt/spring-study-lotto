@@ -4,7 +4,7 @@ import lotto2.domain.*;
 
 import java.util.List;
 
-public class OuputView {
+public class OutputView {
     public static void printLottos(List<Lotto> lottos, int numberOfManual) {
         System.out.printf("수동으로 %d장, 자동으로 %d개를 구매했습니다.\n", numberOfManual, lottos.size() - numberOfManual);
         for (Lotto lotto : lottos) {
