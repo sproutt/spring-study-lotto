@@ -1,7 +1,7 @@
 package lotto.view;
 
 import lotto.domain.Lotto;
-import lotto.domain.NumberOfHits;
+import lotto.domain.Rank;
 
 import java.util.Arrays;
 import java.util.List;
@@ -17,8 +17,8 @@ public class OutputView {
     public static void printStatistics(int[] result) {
         System.out.println("당첨 통계");
         System.out.println("---------");
-        Arrays.stream(NumberOfHits.values())
-                .filter(NumberOfHits::hasReward)
+        Arrays.stream(Rank.values())
+                .filter(Rank::hasReward)
                 .forEach(n -> System.out.println(n.toString()+result[n.ordinal()]+"개"));
     }
 

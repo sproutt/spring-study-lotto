@@ -1,13 +1,13 @@
 package lotto;
 
-import lotto.domain.NumberOfHits;
+import lotto.domain.Rank;
 import org.junit.Test;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 
 public class NumberOfHitsTest {
-    NumberOfHits numberOfHits;
+    Rank numberOfHits;
 
     @Test
     public void 상금_존재(){

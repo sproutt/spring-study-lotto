@@ -38,7 +38,7 @@ public class LottoGame {
 
     public int[] saveLottoResult(String text) {
         List<Integer> winnerNumber = Splitter.splitNumber(text);
-        int[] result = new int[NumberOfHits.values().length];
+        int[] result = new int[Rank.values().length];
         for (int index = 0; index < lottos.size(); index++) {
             result[countMatch(winnerNumber, index)]++;
         }
@@ -68,7 +68,7 @@ public class LottoGame {
     public int calculateReward(int[] result) {
         int total = 0;
         for (int index = 0; index < result.length; index++) {
-            total += result[index] * NumberOfHits.values()[index].getReward();
+            total += result[index] * Rank.values()[index].getReward();
         }
         return total;
     }

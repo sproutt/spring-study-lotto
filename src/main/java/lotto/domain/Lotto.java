@@ -6,7 +6,7 @@ public class Lotto {
     private List<LottoNo> lotto;
 
     public Lotto(List<LottoNo> lotto) {
-        this.lotto = lotto
+        this.lotto = lotto;
     }
 
     public List<LottoNo> getLotto() {
