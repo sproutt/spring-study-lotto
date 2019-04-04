@@ -10,28 +10,28 @@ public enum Rank {
     FIFTH(3, 5000),
     MISS(0, 0);
 
-    private int countOfMatch;
+    private int matchCount;
     private int winningPrice;
 
-    private Rank(int countOfMatch, int winningPrice) {
-        this.countOfMatch = countOfMatch;
+    private Rank(int matchCount, int winningPrice) {
+        this.matchCount = matchCount;
         this.winningPrice = winningPrice;
     }
 
-    public int getCountOfMatch() {
-        return countOfMatch;
+    public int getMatchCount() {
+        return matchCount;
     }
 
     public int getWinningPrice() {
         return winningPrice;
     }
 
-    public static Rank matchRank(int countOfMatch) {
-        if (countOfMatch < 3) {
+    public static Rank matchRank(int matchCount) {
+        if (matchCount < 3) {
             return MISS;
         }
         return (Rank) Arrays.stream(values())
-                .filter(rank -> rank.countOfMatch == countOfMatch).toArray()[0];
+                .filter(rank -> rank.matchCount == matchCount).toArray()[0];
     }
 
     public static Rank selectSecond(boolean matchBonusNumber) {
@@ -43,14 +43,14 @@ public enum Rank {
 
     public String toString() {
         StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder.append(this.countOfMatch);
-        stringBuilder.append("개 일치");
+        stringBuilder.append(this.matchCount)
+                .append("개 일치");
         if (this.winningPrice == Rank.SECOND.winningPrice) {
             stringBuilder.append(", 보너스 볼 일치");
         }
-        stringBuilder.append("(");
-        stringBuilder.append(this.winningPrice);
-        stringBuilder.append(")-");
+        stringBuilder.append("(")
+                .append(this.winningPrice)
+                .append(")-");
         return stringBuilder.toString();
     }
 }

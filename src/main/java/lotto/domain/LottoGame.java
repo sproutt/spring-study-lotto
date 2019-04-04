@@ -25,10 +25,9 @@ public class LottoGame {
     }
 
     public void purchaseManual(String[] continuousNumbers) {
-        for (String text : continuousNumbers) {
-            List<LottoNumber> numberSplit = Splitter.splitNumber(text);
-            Lotto lotto = new Lotto(Sorter.sort(numberSplit));
-            lottos.add(lotto);
+        for (String continuousNumber : continuousNumbers) {
+            List<LottoNumber> numberSplit = Splitter.splitNumber(continuousNumber);
+            lottos.add(new Lotto(Sorter.sort(numberSplit)));
         }
     }
 
@@ -60,7 +59,7 @@ public class LottoGame {
 
     public void setWinningLotto(Lotto lotto, int count) {
         if (Rank.matchRank(count) != Rank.MISS) {
-            winningLottos.add(new WinningLotto(lotto, Rank.matchRank(count)));
+            winningLottos.add(new WinningLotto(lotto, Rank.matchRank(count));
         }
     }
 
@@ -82,7 +81,7 @@ public class LottoGame {
     public void correctBonus(int bonusNumber) {
         winningLottos.stream()
                 .filter(winningLotto ->
-                        winningLotto.getReward() == Rank.SECOND.getWinningPrice())
+                        winningLotto.isSameRank(Rank.SECOND))
                 .forEach(winningLotto ->
                         winningLotto.setRank(Rank.selectSecond(winningLotto.hasThisNumber(new LottoNumber(bonusNumber)))));
     }
@@ -98,7 +97,7 @@ public class LottoGame {
     public int calculatIncome() {
         int income = 0;
         for (WinningLotto winningLotto : winningLottos) {
-            income += winningLotto.getReward();
+            income += winningLotto.getRank().getWinningPrice();
         }
         return income;
     }

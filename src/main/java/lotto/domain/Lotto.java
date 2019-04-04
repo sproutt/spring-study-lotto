@@ -10,6 +10,9 @@ public class Lotto {
         this.lotto = lotto;
     }
 
+    public Lotto() {
+    }
+
     public List<LottoNumber> getLotto() {
         return lotto;
     }
