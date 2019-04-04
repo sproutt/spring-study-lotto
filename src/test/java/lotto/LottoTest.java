@@ -1,7 +1,7 @@
 package lotto;
 
 import lotto.domain.Lotto;
-import lotto.domain.LottoNo;
+import lotto.domain.LottoNumber;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -15,20 +15,20 @@ import static org.junit.Assert.assertThat;
 public class LottoTest {
     Lotto lotto;
     int[] array;
-    LottoNo lottoNo;
-    LottoNo[] lottoNos;
-    List<LottoNo> list;
+    LottoNumber lottoNumber;
+    LottoNumber[] lottoNumbers;
+    List<LottoNumber> list;
 
     @Before
     public void setUp() {
-        lottoNo = new LottoNo();
-        list = new ArrayList<LottoNo>();
+        lottoNumber = new LottoNumber();
+        list = new ArrayList<LottoNumber>();
         array = new int[]{1, 2, 3, 4, 5, 6};
-        lottoNos = new LottoNo[6];
+        lottoNumbers = new LottoNumber[6];
         for (int index = 0; index < 6; index++) {
-            lottoNos[index] = new LottoNo(array[index]);
+            lottoNumbers[index] = new LottoNumber(array[index]);
         }
-        list = Arrays.asList(lottoNos);
+        list = Arrays.asList(lottoNumbers);
         lotto = new Lotto(list);
     }
 
@@ -39,7 +39,7 @@ public class LottoTest {
 
     @Test
     public void 포함되어있나() {
-        assertThat(lotto.isContain(new LottoNo(3)), is(true));
-        assertThat(lotto.isContain(new LottoNo(7)), is(false));
+        assertThat(lotto.hasThisNumber(new LottoNumber(3)), is(true));
+        assertThat(lotto.hasThisNumber(new LottoNumber(7)), is(false));
     }
 }

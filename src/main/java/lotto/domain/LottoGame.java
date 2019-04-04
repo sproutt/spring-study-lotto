@@ -24,56 +24,56 @@ public class LottoGame {
         return winningLottos;
     }
 
-    public void purchaseMenual(String[] texts) {
-        for (String text : texts) {
-            List<LottoNo> contrivedNumber = Splitter.splitNumber(text);
-            Lotto lotto = new Lotto(Sorter.sort(contrivedNumber));
+    public void purchaseManual(String[] continuousNumbers) {
+        for (String text : continuousNumbers) {
+            List<LottoNumber> numberSplit = Splitter.splitNumber(text);
+            Lotto lotto = new Lotto(Sorter.sort(numberSplit));
             lottos.add(lotto);
         }
     }
 
     public List<Lotto> purchaseAuto(int money, int numberOfManual) {
         for (int numbers = 0; numbers < numberOfAutoLotto(money, numberOfManual); numbers++) {
-            List<LottoNo> randomNumber = generateRandomNumbers();
+            List<LottoNumber> randomNumber = generateRandomNumbers();
             Lotto lotto = new Lotto(Sorter.sort(randomNumber));
             lottos.add(lotto);
         }
         return lottos;
     }
 
-    public static List<LottoNo> generateRandomNumbers() {
-        List<LottoNo> randomNumbers = new ArrayList<LottoNo>();
+    public static List<LottoNumber> generateRandomNumbers() {
+        List<LottoNumber> randomNumbers = new ArrayList<LottoNumber>();
         for (int number = 1; number <= 45; number++) {
-            randomNumbers.add(new LottoNo(number));
+            randomNumbers.add(new LottoNumber(number));
         }
         Collections.shuffle(randomNumbers);
         return randomNumbers.subList(0, 6);
     }
 
     public void setWinningLottos(String winningNumbertext) {
-        List<LottoNo> lottoNos = Splitter.splitNumber(winningNumbertext);
+        List<LottoNumber> lottoNumbers = Splitter.splitNumber(winningNumbertext);
         winningLottos = new ArrayList<>();
         for (Lotto lotto : lottos) {
-            setWinningLotto(lotto, countMatch(lotto, lottoNos));
+            setWinningLotto(lotto, countMatch(lotto, lottoNumbers));
         }
     }
 
     public void setWinningLotto(Lotto lotto, int count) {
-        if (Rank.valueOf(count) != Rank.MISS) {
-            winningLottos.add(new WinningLotto(lotto, Rank.valueOf(count)));
+        if (Rank.matchRank(count) != Rank.MISS) {
+            winningLottos.add(new WinningLotto(lotto, Rank.matchRank(count)));
         }
     }
 
-    public int countMatch(Lotto lotto, List<LottoNo> winningNumber) {
+    public int countMatch(Lotto lotto, List<LottoNumber> winningNumber) {
         int count = 0;
-        for (LottoNo lottoNo : winningNumber) {
-            count = increaseCount(lotto, lottoNo, count);
+        for (LottoNumber lottoNumber : winningNumber) {
+            count = increaseCount(lotto, lottoNumber, count);
         }
         return count;
     }
 
-    public int increaseCount(Lotto lotto, LottoNo lottoNo, int count) {
-        if (lotto.isContain(lottoNo)) {
+    public int increaseCount(Lotto lotto, LottoNumber lottoNumber, int count) {
+        if (lotto.hasThisNumber(lottoNumber)) {
             count++;
         }
         return count;
@@ -82,9 +82,9 @@ public class LottoGame {
     public void correctBonus(int bonusNumber) {
         winningLottos.stream()
                 .filter(winningLotto ->
-                        winningLotto.getReward() == Rank.SECOND.getWinningMoney())
+                        winningLotto.getReward() == Rank.SECOND.getWinningPrice())
                 .forEach(winningLotto ->
-                        winningLotto.setRank(Rank.setSecond(winningLotto.isContain(new LottoNo(bonusNumber)))));
+                        winningLotto.setRank(Rank.selectSecond(winningLotto.hasThisNumber(new LottoNumber(bonusNumber)))));
     }
 
     public int countSameRank(Rank rank) {

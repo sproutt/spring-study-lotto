@@ -1,7 +1,7 @@
 package lotto;
 
 import lotto.domain.Lotto;
-import lotto.domain.LottoNo;
+import lotto.domain.LottoNumber;
 import lotto.domain.Rank;
 import lotto.domain.WinningLotto;
 import org.junit.Before;
@@ -15,18 +15,18 @@ import static org.junit.Assert.assertThat;
 public class WinningLottoTest {
     WinningLotto winningLotto;
     int[] numbers;
-    LottoNo[] lottoNos;
+    LottoNumber[] lottoNumbers;
     Lotto lotto;
 
     @Before
     public void setUp() {
         numbers = new int[]{1, 2, 3, 4, 5, 6};
         int index = 0;
-        lottoNos = new LottoNo[6];
+        lottoNumbers = new LottoNumber[6];
         for (int number : numbers) {
-            lottoNos[index++] = new LottoNo(number);
+            lottoNumbers[index++] = new LottoNumber(number);
         }
-        lotto = new Lotto(Arrays.asList(lottoNos));
+        lotto = new Lotto(Arrays.asList(lottoNumbers));
         winningLotto = new WinningLotto(lotto, Rank.SECOND);
     }
 

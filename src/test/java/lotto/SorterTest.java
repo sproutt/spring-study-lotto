@@ -1,6 +1,6 @@
 package lotto;
 
-import lotto.domain.LottoNo;
+import lotto.domain.LottoNumber;
 import lotto.utils.Sorter;
 import org.junit.Before;
 import org.junit.Test;
@@ -14,28 +14,28 @@ import static org.junit.Assert.assertThat;
 
 public class SorterTest {
     int[] array;
-    LottoNo[] lottoNos;
-    List<LottoNo> list;
+    LottoNumber[] lottoNumbers;
+    List<LottoNumber> list;
 
     @Before
     public void setUp() {
-        list = new ArrayList<LottoNo>();
+        list = new ArrayList<LottoNumber>();
         array = new int[]{4, 5, 6, 1, 2, 3};
-        lottoNos = new LottoNo[6];
+        lottoNumbers = new LottoNumber[6];
         for (int index = 0; index < 6; index++) {
-            lottoNos[index] = new LottoNo(array[index]);
+            lottoNumbers[index] = new LottoNumber(array[index]);
         }
-        list = Arrays.asList(lottoNos);
+        list = Arrays.asList(lottoNumbers);
     }
 
     @Test
     public void 정렬() {
         int[] array2 = new int[]{1, 2, 3, 4, 5, 6};
-        LottoNo[] lottoNos2 = new LottoNo[6];
+        LottoNumber[] lottoNos2 = new LottoNumber[6];
         for (int index = 0; index < 6; index++) {
-            lottoNos2[index] = new LottoNo(array2[index]);
+            lottoNos2[index] = new LottoNumber(array2[index]);
         }
-        List<LottoNo> list2 = new ArrayList<>();
+        List<LottoNumber> list2 = new ArrayList<>();
         list2 = Arrays.asList(lottoNos2);
         assertThat(Sorter.sort(list).get(0).getNumber(), is(list2.get(0).getNumber()));
         assertThat(Sorter.sort(list).get(1).getNumber(), is(list2.get(1).getNumber()));

@@ -13,7 +13,7 @@ public class WinningLotto extends Lotto {
     }
 
     public int getReward() {
-        return this.rank.getWinningMoney();
+        return this.rank.getWinningPrice();
     }
 
     public boolean isSameRank(Rank rank) {

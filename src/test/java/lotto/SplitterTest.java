@@ -1,6 +1,6 @@
 package lotto;
 
-import lotto.domain.LottoNo;
+import lotto.domain.LottoNumber;
 import lotto.utils.Splitter;
 import org.junit.Test;
 
@@ -14,13 +14,13 @@ public class SplitterTest {
     @Test
     public void 문자나누기() {
         String string = "1,2,3,4,5,6";
-        List<LottoNo> splitedNumber = new ArrayList<>();
-        splitedNumber.add(new LottoNo(1));
-        splitedNumber.add(new LottoNo(2));
-        splitedNumber.add(new LottoNo(3));
-        splitedNumber.add(new LottoNo(4));
-        splitedNumber.add(new LottoNo(5));
-        splitedNumber.add(new LottoNo(6));
+        List<LottoNumber> splitedNumber = new ArrayList<>();
+        splitedNumber.add(new LottoNumber(1));
+        splitedNumber.add(new LottoNumber(2));
+        splitedNumber.add(new LottoNumber(3));
+        splitedNumber.add(new LottoNumber(4));
+        splitedNumber.add(new LottoNumber(5));
+        splitedNumber.add(new LottoNumber(6));
         assertThat(Splitter.splitNumber(string).get(0).getNumber(), is(splitedNumber.get(0).getNumber()));
         assertThat(Splitter.splitNumber(string).get(1).getNumber(), is(splitedNumber.get(1).getNumber()));
         assertThat(Splitter.splitNumber(string).get(2).getNumber(), is(splitedNumber.get(2).getNumber()));

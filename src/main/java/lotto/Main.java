@@ -9,7 +9,7 @@ public class Main {
         LottoGame lottoGame = new LottoGame();
         int money = InputView.inputMoney();
         int numberOfManual = InputView.inputNumberOfManual();
-        lottoGame.purchaseMenual(InputView.inputManualLottos(numberOfManual));
+        lottoGame.purchaseManual(InputView.inputManualLottos(numberOfManual));
         OutputView.printLottos(lottoGame.purchaseAuto(money, numberOfManual), numberOfManual);
         lottoGame.setWinningLottos(InputView.inputResult());
         lottoGame.correctBonus(InputView.inputBonusNumber());

@@ -11,22 +11,22 @@ public enum Rank {
     MISS(0, 0);
 
     private int countOfMatch;
-    private int winningMoney;
+    private int winningPrice;
 
-    private Rank(int countOfMatch, int winningMoney) {
+    private Rank(int countOfMatch, int winningPrice) {
         this.countOfMatch = countOfMatch;
-        this.winningMoney = winningMoney;
+        this.winningPrice = winningPrice;
     }
 
     public int getCountOfMatch() {
         return countOfMatch;
     }
 
-    public int getWinningMoney() {
-        return winningMoney;
+    public int getWinningPrice() {
+        return winningPrice;
     }
 
-    public static Rank valueOf(int countOfMatch) {
+    public static Rank matchRank(int countOfMatch) {
         if (countOfMatch < 3) {
             return MISS;
         }
@@ -34,7 +34,7 @@ public enum Rank {
                 .filter(rank -> rank.countOfMatch == countOfMatch).toArray()[0];
     }
 
-    public static Rank setSecond(boolean matchBonusNumber) {
+    public static Rank selectSecond(boolean matchBonusNumber) {
         if (matchBonusNumber) {
             return SECOND;
         }
@@ -45,11 +45,11 @@ public enum Rank {
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append(this.countOfMatch);
         stringBuilder.append("개 일치");
-        if (this.winningMoney == Rank.SECOND.winningMoney) {
+        if (this.winningPrice == Rank.SECOND.winningPrice) {
             stringBuilder.append(", 보너스 볼 일치");
         }
         stringBuilder.append("(");
-        stringBuilder.append(this.winningMoney);
+        stringBuilder.append(this.winningPrice);
         stringBuilder.append(")-");
         return stringBuilder.toString();
     }

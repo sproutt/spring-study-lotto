@@ -1,12 +1,12 @@
 package lotto.domain;
 
-public class LottoNo {
+public class LottoNumber {
     private int number;
 
-    public LottoNo() {
+    public LottoNumber() {
     }
 
-    public LottoNo(int number) {
+    public LottoNumber(int number) {
         this.number = number;
     }
 
@@ -14,8 +14,7 @@ public class LottoNo {
         return number;
     }
 
-    public boolean equals(LottoNo number) {
+    public boolean equals(LottoNumber number) {
         return this.number == number.getNumber();
     }
-
 }

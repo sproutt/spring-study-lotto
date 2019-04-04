@@ -5,7 +5,7 @@ import static org.hamcrest.core.Is.*;
 
 import lotto.domain.Lotto;
 import lotto.domain.LottoGame;
-import lotto.domain.LottoNo;
+import lotto.domain.LottoNumber;
 import lotto.domain.Rank;
 import org.junit.Before;
 import org.junit.Test;
@@ -17,7 +17,7 @@ import java.util.List;
 public class LottoGameTest {
     LottoGame lottoGame;
     int[] numbers;
-    LottoNo[] lottoNos;
+    LottoNumber[] lottoNumbers;
     Lotto lotto;
     List<Lotto> lottos;
 
@@ -26,11 +26,11 @@ public class LottoGameTest {
         lottos = new ArrayList<>();
         numbers = new int[]{1, 2, 3, 4, 5, 6};
         int index = 0;
-        lottoNos = new LottoNo[6];
+        lottoNumbers = new LottoNumber[6];
         for (int number : numbers) {
-            lottoNos[index++] = new LottoNo(number);
+            lottoNumbers[index++] = new LottoNumber(number);
         }
-        lotto = new Lotto(Arrays.asList(lottoNos));
+        lotto = new Lotto(Arrays.asList(lottoNumbers));
         lottoGame = new LottoGame();
     }
 
@@ -42,7 +42,7 @@ public class LottoGameTest {
     @Test
     public void 수동구매() {
         String[] text = new String[]{"1,2,3,4,5,6"};
-        lottoGame.purchaseMenual(text);
+        lottoGame.purchaseManual(text);
         lottos.add(lotto);
         assertThat(lottoGame.getLottos().size(), is(1));
         assertThat(lottoGame.getLottos().get(0).toString(), is("[1, 2, 3, 4, 5, 6]"));
@@ -62,14 +62,14 @@ public class LottoGameTest {
 
     @Test
     public void 증가() {
-        LottoNo number = new LottoNo(1);
+        LottoNumber number = new LottoNumber(1);
         assertThat(lottoGame.increaseCount(lotto, number, 1), is(2));
     }
 
     @Test
     public void 몇개나_맞았나() {
-        List<LottoNo> winningLotto = new ArrayList<>();
-        winningLotto = Arrays.asList(lottoNos);
+        List<LottoNumber> winningLotto = new ArrayList<>();
+        winningLotto = Arrays.asList(lottoNumbers);
         assertThat(lottoGame.countMatch(lotto, winningLotto), is(6));
     }
 

@@ -16,8 +16,8 @@ public class RankTest {
     }
     @Test
     public void _2등() {
-        assertThat(Rank.setSecond(true), is(Rank.SECOND));
-        assertThat(Rank.setSecond(false), is(Rank.THIRD));
+        assertThat(Rank.selectSecond(true), is(Rank.SECOND));
+        assertThat(Rank.selectSecond(false), is(Rank.THIRD));
     }
 
     @Test
