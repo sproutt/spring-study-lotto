@@ -31,4 +31,19 @@ public class Lotto {
                 .map(LottoNumber::toString)
                 .collect(Collectors.joining(", ","[","]"));
     }
+
+    public int countMatch(List<LottoNumber> winningNumber) {
+        int count = 0;
+        for (LottoNumber lottoNumber : winningNumber) {
+            count = increaseCount(lottoNumber, count);
+        }
+        return count;
+    }
+
+    public int increaseCount(LottoNumber lottoNumber, int count) {
+        if (this.hasThisNumber(lottoNumber)) {
+            count++;
+        }
+        return count;
+    }
 }

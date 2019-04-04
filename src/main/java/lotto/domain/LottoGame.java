@@ -53,7 +53,7 @@ public class LottoGame {
         List<LottoNumber> lottoNumbers = Splitter.splitNumber(winningNumbertext);
         winningLottos = new ArrayList<>();
         for (Lotto lotto : lottos) {
-            setWinningLotto(lotto, countMatch(lotto, lottoNumbers), bonusNumber);
+            setWinningLotto(lotto, lotto.countMatch(lottoNumbers), bonusNumber);
         }
     }
 
@@ -61,21 +61,6 @@ public class LottoGame {
         if (Rank.lookUpRank(count, lotto.hasThisNumber(bonusNumber)) != Rank.MISS) {
             winningLottos.add(new WinningLotto(lotto, count, bonusNumber));
         }
-    }
-
-    public int countMatch(Lotto lotto, List<LottoNumber> winningNumber) {
-        int count = 0;
-        for (LottoNumber lottoNumber : winningNumber) {
-            count = increaseCount(lotto, lottoNumber, count);
-        }
-        return count;
-    }
-
-    public int increaseCount(Lotto lotto, LottoNumber lottoNumber, int count) {
-        if (lotto.hasThisNumber(lottoNumber)) {
-            count++;
-        }
-        return count;
     }
 
     public int countSameRank(Rank rank) {
