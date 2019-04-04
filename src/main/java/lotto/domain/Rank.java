@@ -26,19 +26,24 @@ public enum Rank {
         return winningPrice;
     }
 
-    public static Rank matchRank(int matchCount) {
+    public static Rank lookUpRank(int matchCount, boolean hasBonusNumber) {
         if (matchCount < 3) {
             return MISS;
         }
-        return (Rank) Arrays.stream(values())
-                .filter(rank -> rank.matchCount == matchCount).toArray()[0];
-    }
 
-    public static Rank selectSecond(boolean matchBonusNumber) {
-        if (matchBonusNumber) {
+        if(SECOND.isRightCount(matchCount) && hasBonusNumber){
             return SECOND;
         }
-        return THIRD;
+
+        if(THIRD.isRightCount(matchCount)){
+            return THIRD;
+        }
+
+        return (Rank) Arrays.stream(values()).filter(rank -> rank.isRightCount(matchCount)).toArray()[0];
+    }
+
+    private boolean isRightCount(int matchCount) {
+        return this.matchCount == matchCount;
     }
 
     public String toString() {

@@ -2,22 +2,16 @@ package lotto.domain;
 
 public class WinningLotto extends Lotto {
     private Lotto lotto;
-    private Rank rank;
+    private int matchCount;
+    private boolean hasbonusNumber;
 
-    public WinningLotto(Lotto lotto, Rank rank) {
-        super();
+    public WinningLotto(Lotto lotto, int matchCount, LottoNumber bonusNumber) {
+        this.hasbonusNumber = lotto.hasThisNumber(bonusNumber);
         this.lotto = lotto;
-        this.rank = rank;
-    }
-    public Rank getRank(){
-        return rank;
+        this.matchCount = matchCount;
     }
 
-    public void setRank(Rank rank) {
-        this.rank = rank;
-    }
-
-    public boolean isSameRank(Rank rank) {
-        return this.rank == rank;
+    public Rank findRank(){
+        return Rank.lookUpRank(matchCount,hasbonusNumber);
     }
 }

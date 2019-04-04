@@ -49,17 +49,17 @@ public class LottoGame {
         return randomNumbers.subList(0, 6);
     }
 
-    public void setWinningLottos(String winningNumbertext) {
+    public void setWinningLottos(String winningNumbertext, LottoNumber bonusNumber) {
         List<LottoNumber> lottoNumbers = Splitter.splitNumber(winningNumbertext);
         winningLottos = new ArrayList<>();
         for (Lotto lotto : lottos) {
-            setWinningLotto(lotto, countMatch(lotto, lottoNumbers));
+            setWinningLotto(lotto, countMatch(lotto, lottoNumbers), bonusNumber);
         }
     }
 
-    public void setWinningLotto(Lotto lotto, int count) {
-        if (Rank.matchRank(count) != Rank.MISS) {
-            winningLottos.add(new WinningLotto(lotto, Rank.matchRank(count));
+    public void setWinningLotto(Lotto lotto, int count, LottoNumber bonusNumber) {
+        if (Rank.lookUpRank(count, lotto.hasThisNumber(bonusNumber)) != Rank.MISS) {
+            winningLottos.add(new WinningLotto(lotto, count, bonusNumber));
         }
     }
 
@@ -78,16 +78,8 @@ public class LottoGame {
         return count;
     }
 
-    public void correctBonus(int bonusNumber) {
-        winningLottos.stream()
-                .filter(winningLotto ->
-                        winningLotto.isSameRank(Rank.SECOND))
-                .forEach(winningLotto ->
-                        winningLotto.setRank(Rank.selectSecond(winningLotto.hasThisNumber(new LottoNumber(bonusNumber)))));
-    }
-
     public int countSameRank(Rank rank) {
-        return (int) winningLottos.stream().filter(winningLotto -> winningLotto.isSameRank(rank)).count();
+        return (int) winningLottos.stream().filter(winningLotto -> winningLotto.findRank().equals(rank)).count();
     }
 
     public double calculateRate(int outcome) {
@@ -97,7 +89,7 @@ public class LottoGame {
     public int calculatIncome() {
         int income = 0;
         for (WinningLotto winningLotto : winningLottos) {
-            income += winningLotto.getRank().getWinningPrice();
+            income += winningLotto.findRank().getWinningPrice();
         }
         return income;
     }
