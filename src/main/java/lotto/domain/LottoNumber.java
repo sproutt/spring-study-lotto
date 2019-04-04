@@ -17,4 +17,8 @@ public class LottoNumber {
     public boolean equals(LottoNumber number) {
         return this.number == number.getNumber();
     }
+
+    public String toString(){
+        return Integer.toString(number);
+    }
 }

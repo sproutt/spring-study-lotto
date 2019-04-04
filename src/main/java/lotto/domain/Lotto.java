@@ -1,6 +1,7 @@
 package lotto.domain;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Lotto {
     private List<LottoNumber> lotto;
@@ -23,11 +24,8 @@ public class Lotto {
     }
 
     public String toString() {
-        StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder.append("[");
-        lotto.stream().forEach(lottoNo -> stringBuilder.append(lottoNo.getNumber() + ", "));
-        stringBuilder.delete(stringBuilder.length() - 2, stringBuilder.length());
-        stringBuilder.append("]");
-        return stringBuilder.toString();
+        return lotto.stream()
+                .map(LottoNumber::toString)
+                .collect(Collectors.joining(", ","[","]"));
     }
 }
