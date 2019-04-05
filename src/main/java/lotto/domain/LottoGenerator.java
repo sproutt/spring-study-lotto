@@ -7,7 +7,11 @@ import java.util.Collections;
 import java.util.List;
 
 public class LottoGenerator {
-    List<LottoNumber> randomNumbers = new ArrayList<>();
+    List<LottoNumber> randomNumbers;
+
+    public LottoGenerator() {
+        randomNumbers = new ArrayList<>();
+    }
 
     public Lotto manual(String continuousNumber) {
         randomNumbers = Splitter.splitNumber(continuousNumber);
