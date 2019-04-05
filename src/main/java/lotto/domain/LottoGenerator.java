@@ -1,6 +1,5 @@
 package lotto.domain;
 
-import lotto.utils.Sorter;
 import lotto.utils.Splitter;
 
 import java.util.ArrayList;
@@ -8,15 +7,15 @@ import java.util.Collections;
 import java.util.List;
 
 public class LottoGenerator {
-    private List<LottoNumber> randomNumbers;
+    List<LottoNumber> randomNumbers = new ArrayList<>();
 
-    public List<LottoNumber> manual(String continuousNumber) {
+    public Lotto manual(String continuousNumber) {
         randomNumbers = Splitter.splitNumber(continuousNumber);
-        return Sorter.sort(randomNumbers);
+        return new Lotto(randomNumbers);
     }
 
-    public List<LottoNumber> auto() {
-        return Sorter.sort(generateRandomNumbers());
+    public Lotto auto() {
+        return new Lotto(generateRandomNumbers());
     }
 
     public List<LottoNumber> generateRandomNumbers() {

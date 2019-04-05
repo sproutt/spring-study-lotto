@@ -95,6 +95,6 @@ public class LottoGameTest {
     @Test
     public void 상금계산() {
         lottoGame.setWinningLotto(lotto, 5);
-        assertThat(lottoGame.calculatIncome(), is(30000000));
+        assertThat(lottoGame.calculateIncome(), is(30000000));
     }
 }

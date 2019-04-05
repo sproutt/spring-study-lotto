@@ -10,6 +10,8 @@ public enum Rank {
     FIFTH(3, 5000),
     MISS(0, 0);
 
+    private static final int PRIZE_MIN_NUMBER = 3;
+
     private int matchCount;
     private int winningPrice;
 
@@ -27,7 +29,7 @@ public enum Rank {
     }
 
     public static Rank lookUpRank(int matchCount, boolean hasBonusNumber) {
-        if (matchCount < 3) {
+        if (matchCount < PRIZE_MIN_NUMBER) {
             return MISS;
         }
 

@@ -1,6 +1,6 @@
 package lotto.domain;
 
-public class LottoNumber {
+public class LottoNumber implements Comparable<LottoNumber>{
     private int number;
 
     public LottoNumber() {
@@ -14,11 +14,17 @@ public class LottoNumber {
         return number;
     }
 
-    public boolean equals(LottoNumber number) {
-        return this.number == number.getNumber();
+    public boolean equals(LottoNumber lottoNumber) {
+        return this.number == lottoNumber.number;
     }
 
     public String toString(){
         return Integer.toString(number);
+    }
+
+    @Override
+    public int compareTo(LottoNumber compareLottoNumber) {
+        int compareNumber=((LottoNumber)compareLottoNumber).number;
+        return this.number-compareNumber;
     }
 }

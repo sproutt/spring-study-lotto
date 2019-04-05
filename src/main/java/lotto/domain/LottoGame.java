@@ -6,9 +6,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class LottoGame {
+    private static final int LOTTO_PRICE = 1000;
     private List<Lotto> lottos;
     private List<WinningLotto> winningLottos;
-    private LottoGenerator lottoGenerator = new LottoGenerator();
 
     public LottoGame() {
         lottos = new ArrayList<Lotto>();
@@ -25,13 +25,15 @@ public class LottoGame {
 
     public void purchaseManual(String[] continuousNumbers) {
         for (String continuousNumber : continuousNumbers) {
-            lottos.add(new Lotto(lottoGenerator.manual(continuousNumber)));
+            LottoGenerator lottoGenerator = new LottoGenerator();
+            lottos.add(lottoGenerator.manual(continuousNumber));
         }
     }
 
     public List<Lotto> purchaseAuto(int money, int numberOfManual) {
         for (int numbers = 0; numbers < numberOfAutoLotto(money, numberOfManual); numbers++) {
-            lottos.add(new Lotto(lottoGenerator.auto()));
+            LottoGenerator lottoGenerator = new LottoGenerator();
+            lottos.add(lottoGenerator.auto());
         }
         return lottos;
     }
@@ -57,10 +59,10 @@ public class LottoGame {
     }
 
     public double calculateRate(int outcome) {
-        return (double) calculatIncome() / outcome * 100.0;
+        return (double) calculateIncome() / outcome * 100.0;
     }
 
-    public int calculatIncome() {
+    public int calculateIncome() {
         int income = 0;
         for (WinningLotto winningLotto : winningLottos) {
             income = winningLotto.findRank().plusReward(income);
@@ -69,7 +71,7 @@ public class LottoGame {
     }
 
     public int changeUnit(int totalPrice) {
-        return totalPrice / 1000;
+        return totalPrice / LOTTO_PRICE;
     }
 
     public int numberOfAutoLotto(int money, int numberOfManual) {
