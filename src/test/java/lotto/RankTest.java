@@ -11,13 +11,27 @@ public class RankTest {
     Rank rank;
 
     @Before
-    public void setUp(){
+    public void setUp() {
         rank = Rank.SECOND;
     }
+
     @Test
-    public void _2등() {
-        assertThat(Rank.selectSecond(true), is(Rank.SECOND));
-        assertThat(Rank.selectSecond(false), is(Rank.THIRD));
+    public void 등수를_매겨보자() {
+        assertThat(Rank.lookUpRank(5, true), is(Rank.SECOND));
+        assertThat(Rank.lookUpRank(5, false), is(Rank.THIRD));
+        assertThat(Rank.lookUpRank(4, true), is(Rank.FOURTH));
+        assertThat(Rank.lookUpRank(2, true), is(Rank.MISS));
+    }
+
+    @Test
+    public void 맞은개수가_서로일치하는가() {
+        assertThat(rank.isRightCount(5), is(true));
+        assertThat(rank.isRightCount(4), is(false));
+    }
+
+    @Test
+    public void 상금을_더해주다() {
+        assertThat(rank.plusReward(0), is(30000000));
     }
 
     @Test
