@@ -30,14 +30,6 @@ public class LottoGame {
         }
     }
 
-    public List<Lotto> purchaseAuto(int money, int numberOfManual) {
-        for (int numbers = 0; numbers < numberOfAutoLotto(money, numberOfManual); numbers++) {
-            LottoGenerator lottoGenerator = new LottoGenerator();
-            lottos.add(lottoGenerator.auto());
-        }
-        return lottos;
-    }
-
     public void setWinningLottos(String continuousWinningNumbers, LottoNumber bonusNumber) {
         List<LottoNumber> winningNumbers = Splitter.splitNumber(continuousWinningNumbers);
         winningLottos = new ArrayList<>();
@@ -50,6 +42,14 @@ public class LottoGame {
         if (Rank.lookUpRank(count, lotto.hasThisNumber(bonusNumber)) != Rank.MISS) {
             winningLottos.add(new WinningLotto(lotto, count, bonusNumber));
         }
+    }
+
+    public List<Lotto> purchaseAuto(int money, int numberOfManual) {
+        for (int numbers = 0; numbers < numberOfAutoLotto(money, numberOfManual); numbers++) {
+            LottoGenerator lottoGenerator = new LottoGenerator();
+            lottos.add(lottoGenerator.auto());
+        }
+        return lottos;
     }
 
     public int countSameRank(Rank rank) {

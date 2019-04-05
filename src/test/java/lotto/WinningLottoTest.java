@@ -27,16 +27,11 @@ public class WinningLottoTest {
             lottoNumbers[index++] = new LottoNumber(number);
         }
         lotto = new Lotto(Arrays.asList(lottoNumbers));
-        winningLotto = new WinningLotto(lotto, Rank.SECOND);
+        winningLotto = new WinningLotto(lotto, 5, new LottoNumber(6));
     }
 
     @Test
-    public void 상금얼마() {
-        assertThat(winningLotto.getReward(), is(30000000));
-    }
-
-    @Test
-    public void 이랭크가_맞는지() {
-        assertThat(winningLotto.isSameRank(Rank.SECOND), is(true));
+    public void 이_당첨로또는_몇_등당첨인가() {
+        assertThat(winningLotto.findRank(), is(Rank.SECOND));
     }
 }

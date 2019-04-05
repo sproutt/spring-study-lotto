@@ -1,8 +1,8 @@
 package lotto.view;
 
-        import lotto.domain.LottoNumber;
+import lotto.domain.LottoNumber;
 
-        import java.util.Scanner;
+import java.util.Scanner;
 
 public class InputView {
     private static Scanner scanner = new Scanner(System.in);
