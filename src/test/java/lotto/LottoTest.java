@@ -33,13 +33,22 @@ public class LottoTest {
     }
 
     @Test
-    public void 로또출력형식() {
-        assertThat(lotto.toString(), is("[1, 2, 3, 4, 5, 6]"));
+    public void 이_로또는_몇_개나_맞았나요(){
+        assertThat(lotto.countMatch(list),is(6));
     }
 
     @Test
-    public void 포함되어있나() {
-        assertThat(lotto.hasThisNumber(new LottoNumber(3)), is(true));
-        assertThat(lotto.hasThisNumber(new LottoNumber(7)), is(false));
+    public void 이_번호가_포함되어_있다면_카운트를_1_증가시킵니다(){
+        assertThat(lotto.increaseCount(new LottoNumber(3),1),is(2));
+    }
+
+    @Test
+    public void 이_번호가_포함되어_있나요(){
+        assertThat(lotto.hasThisNumber(new LottoNumber(5)),is(true));
+        assertThat(lotto.hasThisNumber(new LottoNumber(7)),is(false));
+    }
+    @Test
+    public void 로또를_문자열로_바꿔본다() {
+        assertThat(lotto.toString(), is("[1, 2, 3, 4, 5, 6]"));
     }
 }

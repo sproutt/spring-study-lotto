@@ -23,17 +23,6 @@ public class Lotto {
         this.lotto = lotto;
     }
 
-    public boolean hasThisNumber(LottoNumber number) {
-        return lotto.stream()
-                .filter(lottoNo -> lottoNo.equals(number)).count() != 0;
-    }
-
-    public String toString() {
-        return lotto.stream()
-                .map(LottoNumber::toString)
-                .collect(Collectors.joining(", ","[","]"));
-    }
-
     public int countMatch(List<LottoNumber> winningNumber) {
         int count = 0;
         for (LottoNumber lottoNumber : winningNumber) {
@@ -47,5 +36,16 @@ public class Lotto {
             count++;
         }
         return count;
+    }
+
+    public boolean hasThisNumber(LottoNumber number) {
+        return lotto.stream()
+                .filter(lottoNo -> lottoNo.equals(number)).count() != 0;
+    }
+
+    public String toString() {
+        return lotto.stream()
+                .map(LottoNumber::toString)
+                .collect(Collectors.joining(", ","[","]"));
     }
 }

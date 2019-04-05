@@ -11,8 +11,7 @@ public class Main {
         int numberOfManual = InputView.inputNumberOfManual();
         lottoGame.purchaseManual(InputView.inputManualLottos(numberOfManual));
         OutputView.printLottos(lottoGame.purchaseAuto(money, numberOfManual), numberOfManual);
-        lottoGame.setWinningLottos(InputView.inputResult());
-        lottoGame.correctBonus(InputView.inputBonusNumber());
+        lottoGame.setWinningLottos(InputView.inputResult(),InputView.inputBonusNumber());
         OutputView.printStatistics(lottoGame);
         OutputView.printBenefitRate(lottoGame.calculateRate(money));
     }
