@@ -3,77 +3,78 @@ package lotto.domain;
 import lotto.utils.Splitter;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 public class LottoGame {
-    private List<Lotto> lottos = new ArrayList<Lotto>();
+    private static final int LOTTO_PRICE = 1000;
+    private List<Lotto> lottos;
+    private List<WinningLotto> winningLottos;
+
+    public LottoGame() {
+        lottos = new ArrayList<Lotto>();
+        winningLottos = new ArrayList<WinningLotto>();
+    }
 
     public List<Lotto> getLottos() {
         return lottos;
     }
 
-    public void setLottos(List<Lotto> lottos) {
-        this.lottos = lottos;
+    public List<WinningLotto> getWinningLottos() {
+        return winningLottos;
     }
 
-    public List<Lotto> purchase(int money) {
-        for (int numbers = 0; numbers < changeUnit(money); numbers++) {
-            List<Integer> randomNumber = generateRandomNumbers();
-            Collections.sort(randomNumber);
-            Lotto lotto = new Lotto(randomNumber);
-            lottos.add(lotto);
+    public void purchaseManual(String[] continuousNumbers) {
+        for (String continuousNumber : continuousNumbers) {
+            LottoGenerator lottoGenerator = new LottoGenerator();
+            lottos.add(lottoGenerator.manual(continuousNumber));
+        }
+    }
+
+    public void setWinningLottos(String continuousWinningNumbers, LottoNumber bonusNumber) {
+        List<LottoNumber> winningNumbers = Splitter.splitNumber(continuousWinningNumbers);
+        winningLottos = new ArrayList<>();
+        for (Lotto lotto : lottos) {
+            setWinningLotto(lotto, lotto.countMatch(winningNumbers), bonusNumber);
+        }
+    }
+
+    public void setWinningLotto(Lotto lotto, int count, LottoNumber bonusNumber) {
+        if (Rank.lookUpRank(count, lotto.hasThisNumber(bonusNumber)) != Rank.MISS) {
+            winningLottos.add(new WinningLotto(lotto, count, bonusNumber));
+        }
+    }
+
+    public List<Lotto> purchaseAuto(int money, int numberOfManual) {
+        for (int numbers = 0; numbers < numberOfAutoLotto(money, numberOfManual); numbers++) {
+            LottoGenerator lottoGenerator = new LottoGenerator();
+            lottos.add(lottoGenerator.auto());
         }
         return lottos;
     }
 
-    public static List<Integer> generateRandomNumbers() {
-        List<Integer> randomNumbers = new ArrayList<Integer>();
-        for (int number = 1; number <= 45; number++) {
-            randomNumbers.add(number);
-        }
-        Collections.shuffle(randomNumbers);
-        return randomNumbers.subList(0, 6);
+    public int countSameRank(Rank rank) {
+        return (int) winningLottos.stream()
+                .filter(winningLotto -> winningLotto.findRank().equals(rank))
+                .count();
     }
 
-    public int[] saveLottoResult(String text) {
-        List<Integer> winnerNumber = Splitter.splitNumber(text);
-        int[] result = new int[NumberOfHits.values().length];
-        for (int index = 0; index < lottos.size(); index++) {
-            result[countMatch(winnerNumber, index)]++;
-        }
-        return result;
+    public double calculateRate(int outcome) {
+        return (double) calculateIncome() / outcome * 100.0;
     }
 
-    public int countMatch(List<Integer> winnerNumber, int index) {
-        int count = 0;
-        for (int number : winnerNumber) {
-            count = increaseCount(number, index, count);
+    public int calculateIncome() {
+        int income = 0;
+        for (WinningLotto winningLotto : winningLottos) {
+            income = winningLotto.findRank().plusReward(income);
         }
-        return count;
-    }
-
-    public int increaseCount(int number, int index, int count) {
-        if (lottos.get(index).isContain(number)) {
-            count++;
-        }
-        return count;
-    }
-
-    public double calculateRate(int[] result, int outcome) {
-        int income = calculateReward(result);
-        return Math.round((double)income / outcome * 1000.0) / 10.0 ;
-    }
-
-    public int calculateReward(int[] result) {
-        int total = 0;
-        for (int index = 0; index < result.length; index++) {
-            total += result[index] * NumberOfHits.values()[index].getReward();
-        }
-        return total;
+        return income;
     }
 
     public int changeUnit(int totalPrice) {
-        return totalPrice / 1000;
+        return totalPrice / LOTTO_PRICE;
+    }
+
+    public int numberOfAutoLotto(int money, int numberOfManual) {
+        return changeUnit(money) - numberOfManual;
     }
 }

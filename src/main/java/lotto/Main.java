@@ -8,9 +8,11 @@ public class Main {
     public static void main(String[] args) {
         LottoGame lottoGame = new LottoGame();
         int money = InputView.inputMoney();
-        OutputView.printLottos(lottoGame.purchase(money));
-        int[] result = lottoGame.saveLottoResult(InputView.inputResult());
-        OutputView.printStatistics(result);
-        OutputView.printBenefitRate(lottoGame.calculateRate(result, money));
+        int numberOfManual = InputView.inputNumberOfManual();
+        lottoGame.purchaseManual(InputView.inputManualLottos(numberOfManual));
+        OutputView.printLottos(lottoGame.purchaseAuto(money, numberOfManual), numberOfManual);
+        lottoGame.setWinningLottos(InputView.inputResult(), InputView.inputBonusNumber());
+        OutputView.printStatistics(lottoGame);
+        OutputView.printBenefitRate(lottoGame.calculateRate(money));
     }
 }
