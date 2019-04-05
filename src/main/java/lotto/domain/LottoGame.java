@@ -1,15 +1,14 @@
 package lotto.domain;
 
-import lotto.utils.Sorter;
 import lotto.utils.Splitter;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 public class LottoGame {
     private List<Lotto> lottos;
     private List<WinningLotto> winningLottos;
+    private LottoGenerator lottoGenerator = new LottoGenerator();
 
     public LottoGame() {
         lottos = new ArrayList<Lotto>();
@@ -26,34 +25,22 @@ public class LottoGame {
 
     public void purchaseManual(String[] continuousNumbers) {
         for (String continuousNumber : continuousNumbers) {
-            List<LottoNumber> numberSplit = Splitter.splitNumber(continuousNumber);
-            lottos.add(new Lotto(Sorter.sort(numberSplit)));
+            lottos.add(new Lotto(lottoGenerator.manual(continuousNumber)));
         }
     }
 
     public List<Lotto> purchaseAuto(int money, int numberOfManual) {
         for (int numbers = 0; numbers < numberOfAutoLotto(money, numberOfManual); numbers++) {
-            List<LottoNumber> randomNumber = generateRandomNumbers();
-            Lotto lotto = new Lotto(Sorter.sort(randomNumber));
-            lottos.add(lotto);
+            lottos.add(new Lotto(lottoGenerator.auto()));
         }
         return lottos;
     }
 
-    public static List<LottoNumber> generateRandomNumbers() {
-        List<LottoNumber> randomNumbers = new ArrayList<LottoNumber>();
-        for (int number = 1; number <= 45; number++) {
-            randomNumbers.add(new LottoNumber(number));
-        }
-        Collections.shuffle(randomNumbers);
-        return randomNumbers.subList(0, 6);
-    }
-
-    public void setWinningLottos(String winningNumbertext, LottoNumber bonusNumber) {
-        List<LottoNumber> lottoNumbers = Splitter.splitNumber(winningNumbertext);
+    public void setWinningLottos(String continuousWinningNumbers, LottoNumber bonusNumber) {
+        List<LottoNumber> winningNumbers = Splitter.splitNumber(continuousWinningNumbers);
         winningLottos = new ArrayList<>();
         for (Lotto lotto : lottos) {
-            setWinningLotto(lotto, lotto.countMatch(lottoNumbers), bonusNumber);
+            setWinningLotto(lotto, lotto.countMatch(winningNumbers), bonusNumber);
         }
     }
 
@@ -64,7 +51,9 @@ public class LottoGame {
     }
 
     public int countSameRank(Rank rank) {
-        return (int) winningLottos.stream().filter(winningLotto -> winningLotto.findRank().equals(rank)).count();
+        return (int) winningLottos.stream()
+                .filter(winningLotto -> winningLotto.findRank().equals(rank))
+                .count();
     }
 
     public double calculateRate(int outcome) {
@@ -74,7 +63,7 @@ public class LottoGame {
     public int calculatIncome() {
         int income = 0;
         for (WinningLotto winningLotto : winningLottos) {
-            income += winningLotto.findRank().getWinningPrice();
+            income = winningLotto.findRank().plusReward(income);
         }
         return income;
     }

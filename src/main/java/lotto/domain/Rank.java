@@ -31,19 +31,23 @@ public enum Rank {
             return MISS;
         }
 
-        if(SECOND.isRightCount(matchCount) && hasBonusNumber){
+        if (SECOND.isRightCount(matchCount) && hasBonusNumber) {
             return SECOND;
         }
 
-        if(THIRD.isRightCount(matchCount)){
+        if (THIRD.isRightCount(matchCount)) {
             return THIRD;
         }
 
         return (Rank) Arrays.stream(values()).filter(rank -> rank.isRightCount(matchCount)).toArray()[0];
     }
 
-    private boolean isRightCount(int matchCount) {
+    public boolean isRightCount(int matchCount) {
         return this.matchCount == matchCount;
+    }
+
+    public int plusReward(int income) {
+        return income + winningPrice;
     }
 
     public String toString() {

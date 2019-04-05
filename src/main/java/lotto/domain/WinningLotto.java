@@ -11,7 +11,7 @@ public class WinningLotto extends Lotto {
         this.matchCount = matchCount;
     }
 
-    public Rank findRank(){
-        return Rank.lookUpRank(matchCount,hasbonusNumber);
+    public Rank findRank() {
+        return Rank.lookUpRank(matchCount, hasbonusNumber);
     }
 }
