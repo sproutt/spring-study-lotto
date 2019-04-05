@@ -40,7 +40,7 @@ public class LottoGameTest {
     }
 
     @Test
-    public void 수동구매() {
+    public void 로또_수동구매() {
         String[] text = new String[]{"1,2,3,4,5,6"};
         lottoGame.purchaseManual(text);
         lottos.add(lotto);
@@ -49,52 +49,27 @@ public class LottoGameTest {
     }
 
     @Test
-    public void 자동구매() {
+    public void 로또_자동구매() {
         lottoGame.purchaseAuto(14000, 0);
         List lotto = lottoGame.getLottos();
         assertThat(lotto.size(), is(14));
     }
 
     @Test
-    public void 번호_생성기() {
-        assertThat(lottoGame.generateRandomNumbers().size(), is(6));
-    }
-
-    @Test
-    public void 증가() {
-        LottoNumber number = new LottoNumber(1);
-        assertThat(lottoGame.increaseCount(lotto, number, 1), is(2));
-    }
-
-    @Test
-    public void 몇개나_맞았나() {
-        List<LottoNumber> winningLotto = new ArrayList<>();
-        winningLotto = Arrays.asList(lottoNumbers);
-        assertThat(lottoGame.countMatch(lotto, winningLotto), is(6));
-    }
-
-    @Test
-    public void 보너스설정() {
-        lottoGame.setWinningLotto(lotto, 5);
-        lottoGame.correctBonus(1);
-        assertThat(lottoGame.getWinningLottos().get(0).getReward(), is(30000000));
-    }
-
-    @Test
-    public void 몇등이몇개() {
-        lottoGame.setWinningLotto(lotto, 5);
+    public void 몇등이몇개인가요() {
+        lottoGame.setWinningLotto(lotto, 5, new LottoNumber(6));
         assertThat(lottoGame.countSameRank(Rank.SECOND), is(1));
     }
 
     @Test
-    public void 비율계산() {
-        lottoGame.setWinningLotto(lotto, 5);
+    public void 수익률을_계산() {
+        lottoGame.setWinningLotto(lotto, 5, new LottoNumber(6));
         assertThat(lottoGame.calculateRate(14000), is((double) 30000000 / 14000 * 100.0));
     }
 
     @Test
-    public void 상금계산() {
-        lottoGame.setWinningLotto(lotto, 5);
+    public void 총상금을_계산() {
+        lottoGame.setWinningLotto(lotto, 5, new LottoNumber(6));
         assertThat(lottoGame.calculateIncome(), is(30000000));
     }
 }
