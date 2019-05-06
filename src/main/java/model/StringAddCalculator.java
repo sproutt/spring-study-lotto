@@ -15,9 +15,9 @@ public class StringAddCalculator {
         return add(splitString(string));
     }
 
-    private String[] splitString(String string){
+    private String[] splitString(String string) {
         Matcher matcher = Pattern.compile("//(.)\n(.*)").matcher(string);
-        if(matcher.find())
+        if (matcher.find())
             return SplitGenerator.customSplitString(matcher.group(2), matcher.group(1));
 
         return SplitGenerator.customSplitString(string, ",|:");
