@@ -24,18 +24,18 @@ public class StringAddCalculator {
     }
 
     private int add(String[] strings) {
-        if (!isAllPlus(strings))
+        if (!isAllPositive(strings))
             throw new RuntimeException();
 
         return StreamGenerator.stringToIntStream(strings).sum();
     }
 
-    private boolean isAllPlus(String[] strings) {
+    private boolean isAllPositive(String[] strings) {
         return StreamGenerator.stringToIntStream(strings).allMatch(num -> num > 0);
     }
 
-    private boolean isBlank(String input) {
-        if (input == null || input.isEmpty())
+    private boolean isBlank(String string) {
+        if (string == null || string.isEmpty())
             return true;
         return false;
     }
