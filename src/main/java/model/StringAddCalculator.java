@@ -35,7 +35,7 @@ public class StringAddCalculator {
     }
 
     private boolean isBlank(String input) {
-        if (input == null || input == "")
+        if (input == null || input.isEmpty())
             return true;
         return false;
     }
