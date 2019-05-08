@@ -23,19 +23,19 @@ public class StringAddCalculator {
         return SplitGenerator.customSplitString(string, ",|:");
     }
 
-    private int add(String[] strings) {
-        if (!isAllPositive(strings))
+    private int add(String[] numbers) {
+        if (!isAllPositive(numbers))
             throw new RuntimeException();
 
-        return StreamGenerator.stringToIntStream(strings).sum();
+        return StreamGenerator.toIntStream(numbers).sum();
     }
 
-    private boolean isAllPositive(String[] strings) {
-        return StreamGenerator.stringToIntStream(strings).allMatch(num -> num > 0);
+    private boolean isAllPositive(String[] numbers) {
+        return StreamGenerator.toIntStream(numbers).allMatch(num -> num > 0);
     }
 
     private boolean isBlank(String string) {
-        if (string == null || string.isEmpty())
+        if (string == null || string.isEmpty() || string == " ")
             return true;
         return false;
     }
