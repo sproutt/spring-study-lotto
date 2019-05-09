@@ -1,46 +1,50 @@
 package model;
 
 import static org.junit.Assert.*;
+import static org.assertj.core.api.Assertions.*;
 
 import org.junit.Before;
 import org.junit.Test;
 
 public class StringAddCalculatorTest {
-    private StringAddCalculator cal;
+    private StringAddCalculator stringAddCalculator;
 
     @Before
     public void setup() {
-        cal = new StringAddCalculator();
+        stringAddCalculator = new StringAddCalculator();
     }
 
     @Test
     public void add_null_또는_빈문자() {
-        assertEquals(0, cal.calculate(null));
-        assertEquals(0, cal.calculate(""));
+        assertThat(stringAddCalculator.calculate(null)).isEqualTo(0);
+        assertThat(stringAddCalculator.calculate("")).isEqualTo(0);
+        assertThat(stringAddCalculator.calculate(" ")).isEqualTo(0);
+
     }
 
     @Test
     public void add_숫자하나() throws Exception {
-        assertEquals(1, cal.calculate("1"));
+        assertThat(stringAddCalculator.calculate("1")).isEqualTo(1);
+        assertEquals(1, stringAddCalculator.calculate("1"));
     }
 
     @Test
     public void add_쉼표구분자() throws Exception {
-        assertEquals(3, cal.calculate("1,2"));
+        assertThat(stringAddCalculator.calculate("1,2")).isEqualTo(3);
     }
 
     @Test
     public void add_쉼표_또는_콜론_구분자() throws Exception {
-        assertEquals(6, cal.calculate("1,2:3"));
+        assertThat(stringAddCalculator.calculate("1,1:2")).isEqualTo(4);
     }
 
     @Test
     public void add_custom_구분자() throws Exception {
-        assertEquals(6, cal.calculate("//;\n1;2;3"));
+        assertThat(stringAddCalculator.calculate("//;\n1;2;3")).isEqualTo(6);
     }
 
     @Test(expected = RuntimeException.class)
     public void add_negative() throws Exception {
-        cal.calculate("-1,2,3");
+        stringAddCalculator.calculate("-1,2,3");
     }
 }

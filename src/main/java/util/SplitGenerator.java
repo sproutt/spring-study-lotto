@@ -1,7 +1,7 @@
 package util;
 
 public class SplitGenerator {
-    public static String[] customSplitString(String string, String custom) {
-        return string.split(custom);
+    public static String[] splitWithSign(String expression, String sign) {
+        return expression.split(sign);
     }
 }

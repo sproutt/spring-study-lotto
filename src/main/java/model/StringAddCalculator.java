@@ -8,19 +8,19 @@ import java.util.regex.Pattern;
 
 public class StringAddCalculator {
 
-    public int calculate(String string) {
-        if (isBlank(string))
+    public int calculate(String expression) {
+        if (isBlank(expression))
             return 0;
 
-        return add(splitString(string));
+        return add(splitExpression(expression));
     }
 
-    private String[] splitString(String string) {
-        Matcher matcher = Pattern.compile("//(.)\n(.*)").matcher(string);
+    private String[] splitExpression(String expression) {
+        Matcher matcher = Pattern.compile("//(.)\n(.*)").matcher(expression);
         if (matcher.find())
-            return SplitGenerator.customSplitString(matcher.group(2), matcher.group(1));
+            return SplitGenerator.splitWithSign(matcher.group(2), matcher.group(1));
 
-        return SplitGenerator.customSplitString(string, ",|:");
+        return SplitGenerator.splitWithSign(expression, ",|:");
     }
 
     private int add(String[] numbers) {
@@ -34,8 +34,8 @@ public class StringAddCalculator {
         return StreamGenerator.toIntStream(numbers).allMatch(num -> num > 0);
     }
 
-    private boolean isBlank(String string) {
-        if (string == null || string.isEmpty() || string == " ")
+    private boolean isBlank(String expression) {
+        if (expression == null || expression.isEmpty() || expression == " ")
             return true;
         return false;
     }
