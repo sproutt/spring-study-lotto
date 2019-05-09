@@ -25,7 +25,6 @@ public class StringAddCalculatorTest {
     @Test
     public void add_숫자하나() throws Exception {
         assertThat(stringAddCalculator.calculate("1")).isEqualTo(1);
-        assertEquals(1, stringAddCalculator.calculate("1"));
     }
 
     @Test
