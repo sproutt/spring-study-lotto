@@ -8,6 +8,8 @@ import java.util.List;
 
 public class LottoMachine {
 
+    private static int LOTTO_RANGE = 45;
+    private static int LOTTO_NUMBER_COUNT = 6;
     List<Integer> answers;
     List<Lotto> lottos = new ArrayList<>();
 
@@ -29,7 +31,7 @@ public class LottoMachine {
     }
 
     private void getLotto(){
-        lottos.add(new Lotto(getRandomNumbers(45).subList(0,6)));
+        lottos.add(new Lotto(getRandomNumbers(LOTTO_RANGE).subList(0,LOTTO_NUMBER_COUNT)));
     }
 
     public int[] getStatisics() {
