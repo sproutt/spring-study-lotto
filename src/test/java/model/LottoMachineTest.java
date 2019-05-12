@@ -10,7 +10,7 @@ import static org.junit.Assert.*;
 public class LottoMachineTest {
 
     LottoMachine lottoMachine;
-    private int lottoCount = 7;
+    private int totalLottoPrice = 14000;
 
     @Before
     public void setUp(){
@@ -18,13 +18,13 @@ public class LottoMachineTest {
     }
     @Test
     public void 로또_개수(){
-        lottoMachine.buyLottos(lottoCount);
-        assertEquals(lottoCount, lottoMachine.showLottoHistory().size());
+        lottoMachine.buyLottos(totalLottoPrice);
+        assertEquals(totalLottoPrice, lottoMachine.showLottoHistory().size());
     }
 
     @Test
     public void 로또_통계총합(){
-        lottoMachine.buyLottos(lottoCount);
+        lottoMachine.buyLottos(totalLottoPrice);
         int[] st = lottoMachine.getStatistic(Arrays.asList(new Integer[]{1,2,3}));
         assertEquals(7, Arrays.stream(st).sum());
     }
@@ -32,7 +32,7 @@ public class LottoMachineTest {
     @Test
     public void 로또_당첨자없는_통계(){
         lottoMachine = new LottoMachine();
-        lottoMachine.buyLottos(lottoCount);
+        lottoMachine.buyLottos(totalLottoPrice);
         int[] st = lottoMachine.getStatistic(Arrays.asList(new Integer[]{-1}));
         assertEquals(7, st[0]);
     }
@@ -40,7 +40,13 @@ public class LottoMachineTest {
     @Test
     public void 로또_구매(){
         int beforeLottoCount = lottoMachine.showLottoHistory().size();
-        lottoMachine.buyLottos(lottoCount);
-        assertEquals(beforeLottoCount+lottoCount, lottoMachine.showLottoHistory().size());
+        lottoMachine.buyLottos(totalLottoPrice);
+        assertEquals(beforeLottoCount+ totalLottoPrice, lottoMachine.showLottoHistory().size());
+    }
+
+    @Test
+    public void 로또_구매개수(){
+        lottoMachine.buyLottos(totalLottoPrice);
+        assertEquals(14, lottoMachine.showLottoHistory().size());
     }
 }

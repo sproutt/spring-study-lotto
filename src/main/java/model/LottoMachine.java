@@ -31,7 +31,7 @@ public class LottoMachine {
     public int[] getStatistic(List<Integer> winningNumber) {
         int[] statistic = new int[7];
         for (Lotto lotto : lottos){
-            statistic[lotto.getCountOk(winningNumber)]++;
+            statistic[lotto.getCorrectNumberCount(winningNumber)]++;
         }
         return statistic;
     }

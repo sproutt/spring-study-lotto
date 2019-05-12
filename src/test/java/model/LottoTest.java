@@ -21,7 +21,7 @@ public class LottoTest {
     @Test
     public void 로또_정답수(){
         List<Integer> answers = Arrays.asList(new Integer[]{1,2,3});
-        assertEquals(3, lotto.getCountOk(answers));
+        assertEquals(3, lotto.getCorrectNumberCount(answers));
     }
 
     @Test
