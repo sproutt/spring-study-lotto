@@ -10,11 +10,11 @@ public class LottoMachine {
 
     private static int LOTTO_RANGE = 45;
     private static int LOTTO_NUMBER_COUNT = 6;
-    List<Integer> answers;
+    List<Integer> winningNumber;
     List<Lotto> lottos = new ArrayList<>();
 
-    LottoMachine(List<Integer> answers, int lottoCount){
-        this.answers = answers;
+    LottoMachine(List<Integer> winningNumber, int lottoCount){
+        this.winningNumber = winningNumber;
         buyLottos(lottoCount);
     }
 
@@ -37,7 +37,7 @@ public class LottoMachine {
     public int[] getStatisics() {
         int[] statisic = new int[7];
         for (Lotto lotto : lottos){
-            statisic[lotto.getCountOk(answers)]++;
+            statisic[lotto.getCountOk(winningNumber)]++;
         }
         return statisic;
     }

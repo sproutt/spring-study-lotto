@@ -15,24 +15,23 @@ public class LottoMachineTest {
 
     @Before
     public void setUp(){
-        List<Integer> answers = Arrays.asList(new Integer[]{1,2,3,4,5,6});
-        lottoMachine = new LottoMachine(answers, lottoCount);
+        lottoMachine = new LottoMachine();
     }
     @Test
     public void 로또_개수(){
+        lottoMachine.buyLottos(lottoCount);
         assertEquals(lottoCount, lottoMachine.showLottos().size());
     }
 
     @Test
     public void 로또_통계총합(){
-        int[] st = lottoMachine.getStatisics();
+        int[] st = lottoMachine.getStatisics(Arrays.asList(new Integer[]{1,2,3}));
         assertEquals(7, Arrays.stream(st).sum());
     }
 
     @Test
     public void 로또_당첨자없는_통계(){
-        LottoMachine tmpLottoMachine =  new LottoMachine(Arrays.asList(new Integer[]{-1}), lottoCount);
-        int[] st = tmpLottoMachine.getStatisics();
+        int[] st = lottoMachine.getStatisics(Arrays.asList(new Integer[]{-1}));
         assertEquals(7, st[0]);
     }
 
