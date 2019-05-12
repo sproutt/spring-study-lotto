@@ -4,7 +4,6 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.util.Arrays;
-import java.util.List;
 
 import static org.junit.Assert.*;
 
@@ -20,25 +19,28 @@ public class LottoMachineTest {
     @Test
     public void 로또_개수(){
         lottoMachine.buyLottos(lottoCount);
-        assertEquals(lottoCount, lottoMachine.showLottos().size());
+        assertEquals(lottoCount, lottoMachine.showLottoHistory().size());
     }
 
     @Test
     public void 로또_통계총합(){
-        int[] st = lottoMachine.getStatisics(Arrays.asList(new Integer[]{1,2,3}));
+        lottoMachine.buyLottos(lottoCount);
+        int[] st = lottoMachine.getStatistic(Arrays.asList(new Integer[]{1,2,3}));
         assertEquals(7, Arrays.stream(st).sum());
     }
 
     @Test
     public void 로또_당첨자없는_통계(){
-        int[] st = lottoMachine.getStatisics(Arrays.asList(new Integer[]{-1}));
+        lottoMachine = new LottoMachine();
+        lottoMachine.buyLottos(lottoCount);
+        int[] st = lottoMachine.getStatistic(Arrays.asList(new Integer[]{-1}));
         assertEquals(7, st[0]);
     }
 
     @Test
     public void 로또_구매(){
-        int beforeLottoCount = lottoMachine.showLottos().size();
+        int beforeLottoCount = lottoMachine.showLottoHistory().size();
         lottoMachine.buyLottos(lottoCount);
-        assertEquals(beforeLottoCount+lottoCount, lottoMachine.showLottos().size());
+        assertEquals(beforeLottoCount+lottoCount, lottoMachine.showLottoHistory().size());
     }
 }

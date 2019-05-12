@@ -10,13 +10,7 @@ public class LottoMachine {
 
     private static int LOTTO_RANGE = 45;
     private static int LOTTO_NUMBER_COUNT = 6;
-    List<Integer> winningNumber;
     List<Lotto> lottos = new ArrayList<>();
-
-    LottoMachine(List<Integer> winningNumber, int lottoCount){
-        this.winningNumber = winningNumber;
-        buyLottos(lottoCount);
-    }
 
     public void buyLottos(int lottoCount){
         for (int i=0; i<lottoCount; i++){
@@ -24,25 +18,25 @@ public class LottoMachine {
         }
     }
 
-    private List<Integer> getRandomNumbers(int n){
-        List array = ListGenerator.getNumberList(n);
-        Collections.shuffle(array);
-        return array;
+    private List<Integer> getRandomNumbers(int range){
+        List numbersInRange = ListGenerator.getNumbersInRange(range);
+        Collections.shuffle(numbersInRange);
+        return numbersInRange;
     }
 
     private void getLotto(){
         lottos.add(new Lotto(getRandomNumbers(LOTTO_RANGE).subList(0,LOTTO_NUMBER_COUNT)));
     }
 
-    public int[] getStatisics() {
-        int[] statisic = new int[7];
+    public int[] getStatistic(List<Integer> winningNumber) {
+        int[] statistic = new int[7];
         for (Lotto lotto : lottos){
-            statisic[lotto.getCountOk(winningNumber)]++;
+            statistic[lotto.getCountOk(winningNumber)]++;
         }
-        return statisic;
+        return statistic;
     }
 
-    public List<String> showLottos(){
+    public List<String> showLottoHistory(){
         List<String> lottoHistory = new ArrayList<>();
         for (Lotto lotto : lottos){
             lottoHistory.add(lotto.showLotto());
