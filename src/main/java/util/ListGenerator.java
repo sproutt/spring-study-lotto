@@ -1,15 +1,14 @@
 package util;
 
-
 import java.util.ArrayList;
 import java.util.List;
 
 public class ListGenerator {
-    public static List<Integer> getNumbersInRange(int n){
-        List<Integer> list = new ArrayList<>();
-        for (int i=1; i<=n; i++){
-            list.add(i);
+    public static List<Integer> getNumbersInRange(int range){
+        List<Integer> numbers = new ArrayList<>();
+        for (int i=1; i<=range; i++){
+            numbers.add(i);
         }
-        return list;
+        return numbers;
     }
 }

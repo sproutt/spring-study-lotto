@@ -5,7 +5,7 @@ import org.junit.Test;
 
 import java.util.Arrays;
 
-import static org.junit.Assert.*;
+import static org.assertj.core.api.Assertions.*;
 
 public class LottoMachineTest {
 
@@ -15,38 +15,36 @@ public class LottoMachineTest {
     @Before
     public void setUp(){
         lottoMachine = new LottoMachine();
+        lottoMachine.buyLotto(totalLottoPrice);
     }
     @Test
     public void 로또_개수(){
-        lottoMachine.buyLottos(totalLottoPrice);
-        assertEquals(totalLottoPrice, lottoMachine.showLottoHistory().size());
+        assertThat(lottoMachine.showLottoHistory().size()).isEqualTo(14);
     }
 
     @Test
     public void 로또_통계총합(){
-        lottoMachine.buyLottos(totalLottoPrice);
-        int[] st = lottoMachine.getStatistic(Arrays.asList(new Integer[]{1,2,3}));
-        assertEquals(7, Arrays.stream(st).sum());
+        int[] statistic = lottoMachine.getStatistic("1, 2, 3");
+        assertThat(Arrays.stream(statistic).sum()).isEqualTo(14);
     }
 
     @Test
     public void 로또_당첨자없는_통계(){
-        lottoMachine = new LottoMachine();
-        lottoMachine.buyLottos(totalLottoPrice);
-        int[] st = lottoMachine.getStatistic(Arrays.asList(new Integer[]{-1}));
-        assertEquals(7, st[0]);
+        int[] statistic = lottoMachine.getStatistic("-1");
+        assertThat(statistic[0]).isEqualTo(14);
     }
 
     @Test
     public void 로또_구매(){
         int beforeLottoCount = lottoMachine.showLottoHistory().size();
-        lottoMachine.buyLottos(totalLottoPrice);
-        assertEquals(beforeLottoCount+ totalLottoPrice, lottoMachine.showLottoHistory().size());
+        lottoMachine.buyLotto(totalLottoPrice);
+        assertThat(lottoMachine.showLottoHistory().size()).isNotEqualTo(beforeLottoCount);
     }
 
     @Test
     public void 로또_구매개수(){
-        lottoMachine.buyLottos(totalLottoPrice);
-        assertEquals(14, lottoMachine.showLottoHistory().size());
+        int beforeLottoCount = lottoMachine.showLottoHistory().size();
+        lottoMachine.buyLotto(totalLottoPrice);
+        assertThat(beforeLottoCount-lottoMachine.showLottoHistory().size()).isNotEqualTo(14);
     }
 }

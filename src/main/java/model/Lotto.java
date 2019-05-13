@@ -10,13 +10,8 @@ public class Lotto {
         this.lottoNumbers = lottoNumbers;
     }
 
-    public int getCorrectNumberCount(List<Integer> answer){
-        int count = 0;
-        for (int i : answer){
-            if(lottoNumbers.contains(i))
-                count++;
-        }
-        return count;
+    public int getCorrectNumberCount(List<Integer> winningNumber){
+        return (int)winningNumber.stream().filter((x)->lottoNumbers.contains(x)).count();
     }
 
     public String showLotto(){

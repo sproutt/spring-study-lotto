@@ -6,7 +6,7 @@ import org.junit.Test;
 import java.util.Arrays;
 import java.util.List;
 
-import static org.junit.Assert.*;
+import static org.assertj.core.api.Assertions.*;
 
 public class LottoTest {
 
@@ -14,19 +14,17 @@ public class LottoTest {
 
     @Before
     public void setUp(){
-        List<Integer> lottoNumbers = Arrays.asList(new Integer[]{1,2,3,4,5,6});
-        lotto = new Lotto(lottoNumbers);
+        lotto = new Lotto(Arrays.asList(new Integer[]{1,2,3,4,5,6}));
     }
 
     @Test
     public void 로또_정답수(){
         List<Integer> answers = Arrays.asList(new Integer[]{1,2,3});
-        assertEquals(3, lotto.getCorrectNumberCount(answers));
+        assertThat(lotto.getCorrectNumberCount(answers)).isEqualTo(3);
     }
 
     @Test
     public void 로또번호_문자열(){
-        assertEquals("[1, 2, 3, 4, 5, 6]", lotto.showLotto());
+        assertThat(lotto.showLotto()).isEqualTo("[1, 2, 3, 4, 5, 6]");
     }
-
 }
