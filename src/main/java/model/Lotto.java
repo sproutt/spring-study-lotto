@@ -4,13 +4,13 @@ import java.util.List;
 
 public class Lotto {
 
-    private List<Integer> lottoNumbers;
+    private List<String> lottoNumbers;
 
-    Lotto(List<Integer> lottoNumbers){
+    public Lotto(List<String> lottoNumbers){
         this.lottoNumbers = lottoNumbers;
     }
 
-    public int getCorrectNumberCount(List<Integer> winningNumber){
+    public int getCorrectNumberCount(List<String> winningNumber){
         return (int)winningNumber.stream().filter((x)->lottoNumbers.contains(x)).count();
     }
 

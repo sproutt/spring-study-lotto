@@ -19,7 +19,7 @@ public class LottoMachineTest {
     }
     @Test
     public void 로또_개수(){
-        assertThat(lottoMachine.showLottoHistory().size()).isEqualTo(14);
+        assertThat(lottoMachine.buyLotto(totalLottoPrice).size()).isEqualTo(14);
     }
 
     @Test
@@ -35,16 +35,15 @@ public class LottoMachineTest {
     }
 
     @Test
-    public void 로또_구매(){
-        int beforeLottoCount = lottoMachine.showLottoHistory().size();
-        lottoMachine.buyLotto(totalLottoPrice);
-        assertThat(lottoMachine.showLottoHistory().size()).isNotEqualTo(beforeLottoCount);
+    public void 로또_구매후개수(){
+        int firstBuyCount = lottoMachine.buyLotto(totalLottoPrice).size();
+        assertThat(lottoMachine.buyLotto(totalLottoPrice).size()).isNotEqualTo(firstBuyCount);
     }
-
-    @Test
-    public void 로또_구매개수(){
-        int beforeLottoCount = lottoMachine.showLottoHistory().size();
-        lottoMachine.buyLotto(totalLottoPrice);
-        assertThat(beforeLottoCount-lottoMachine.showLottoHistory().size()).isNotEqualTo(14);
-    }
+//
+//    @Test
+//    public void 로또_구매개수(){
+//        int beforeLottoCount = lottoMachine.showLottoHistory().size();
+//        lottoMachine.buyLotto(totalLottoPrice);
+//        assertThat(beforeLottoCount-lottoMachine.showLottoHistory().size()).isNotEqualTo(14);
+//    }
 }

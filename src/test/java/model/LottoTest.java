@@ -14,12 +14,12 @@ public class LottoTest {
 
     @Before
     public void setUp(){
-        lotto = new Lotto(Arrays.asList(new Integer[]{1,2,3,4,5,6}));
+        lotto = new Lotto(Arrays.asList(new String[]{"1","2","3","4","5","6"}));
     }
 
     @Test
     public void 로또_정답수(){
-        List<Integer> answers = Arrays.asList(new Integer[]{1,2,3});
+        List<String> answers = Arrays.asList(new String[]{"1","2","3"});
         assertThat(lotto.getCorrectNumberCount(answers)).isEqualTo(3);
     }
 
