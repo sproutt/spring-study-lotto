@@ -13,25 +13,25 @@ public class StringAddCalculator {
         if (string.isEmpty()) {
             return sum;
         }
+        if(string.charAt(0)=='/'){
+            calculateCustomDividerString(string);
+        }
         if (string.length() == 1) {
             sum = checkOneNum(string);
         }
-        if (string.length() > 1) {
-            String[] numbers = splitString(string);
+        if (string.length() > 1 && string.charAt(0) !='/') {
+            numbers = splitString(string);
             calculateString(numbers);
-        }
-        if(string.charAt(0)=='/'){
-            calculateCustomDividerString(string);
         }
         return sum;
     }
 
     private void calculateCustomDividerString(String string) {
-        Matcher m = Pattern.compile("//(.)\\n(.*)").matcher(string);
+        Matcher m = Pattern.compile("//(.)\n(.*)").matcher(string);
         if (m.find()) {
             String customDelimiter = m.group(1);
-            String[] tokens= m.group(2).split(customDelimiter);
-            calculateString(tokens);
+            numbers= m.group(2).split(customDelimiter);
+            calculateString(numbers);
         }
     }
 
