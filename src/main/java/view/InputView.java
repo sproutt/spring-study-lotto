@@ -8,12 +8,12 @@ public class InputView {
         return scanner.next();
     }
 
-    public static int inputTotalPrice(Scanner scanner){
+    public static int inputTotalPrice(Scanner scanner) {
         System.out.println("구입금액을 입력해 주세요.");
         return Integer.parseInt(scanner.nextLine());
     }
 
-    public static String inputNumber(Scanner scanner){
+    public static String inputNumber(Scanner scanner) {
         System.out.println("지난 주 당첨 번호를 입력해 주세요.");
         return scanner.nextLine();
     }

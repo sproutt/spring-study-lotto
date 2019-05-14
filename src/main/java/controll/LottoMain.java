@@ -11,6 +11,6 @@ public class LottoMain {
         Scanner scanner = new Scanner(System.in);
         LottoMachine lottoMachine = new LottoMachine();
         ResultView.lottoHistoryView(lottoMachine.buyLotto(InputView.inputTotalPrice(scanner)));
-        ResultView.lottoStatisticView(lottoMachine.getStatistic(InputView.inputNumber(scanner)));
+        ResultView.lottoResultView(lottoMachine.getStatistic(InputView.inputNumber(scanner)));
     }
 }

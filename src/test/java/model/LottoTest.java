@@ -13,18 +13,18 @@ public class LottoTest {
     Lotto lotto;
 
     @Before
-    public void setUp(){
-        lotto = new Lotto(Arrays.asList(new String[]{"1","2","3","4","5","6"}));
+    public void setUp() {
+        lotto = new Lotto(Arrays.asList(new String[]{"1", "2", "3", "4", "5", "6"}));
     }
 
     @Test
-    public void 로또_정답수(){
-        List<String> answers = Arrays.asList(new String[]{"1","2","3"});
+    public void 로또_정답수() {
+        List<String> answers = Arrays.asList(new String[]{"1", "2", "3"});
         assertThat(lotto.getCorrectNumberCount(answers)).isEqualTo(3);
     }
 
     @Test
-    public void 로또번호_문자열(){
+    public void 로또번호_문자열() {
         assertThat(lotto.showLotto()).isEqualTo("[1, 2, 3, 4, 5, 6]");
     }
 }
