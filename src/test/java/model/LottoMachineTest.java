@@ -19,11 +19,6 @@ public class LottoMachineTest {
     }
 
     @Test
-    public void 로또_개수() {
-        assertThat(lottoMachine.buyLotto(totalLottoPrice).size()).isEqualTo(14);
-    }
-
-    @Test
     public void 로또_통계총합() {
         int[] statistic = lottoMachine.getStatistic("1, 2, 3");
         assertThat(Arrays.stream(statistic).sum()).isEqualTo(14);

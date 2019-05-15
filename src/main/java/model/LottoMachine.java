@@ -32,10 +32,10 @@ public class LottoMachine {
     }
 
     public int[] getStatistic(String winningNumber) {
-        return createStatistic(convertList(winningNumber));
+        return createStatistic(toStringList(winningNumber));
     }
 
-    private List<String> convertList(String winningNumber) {
+    private List<String> toStringList(String winningNumber) {
         return Arrays.asList(SplitGenerator.splitWithSign(winningNumber, ", "));
     }
 
