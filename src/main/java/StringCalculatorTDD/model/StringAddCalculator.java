@@ -34,7 +34,7 @@ public class StringAddCalculator {
         }
     }
 
-    private void checkNegativeNum(char letter) throws RuntimeException {
+    private void checkNegativeNum(char letter) {
         if (letter == '-') {
             throw new RuntimeException();
         }
