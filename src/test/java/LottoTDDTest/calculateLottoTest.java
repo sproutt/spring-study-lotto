@@ -7,7 +7,6 @@ import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
 
 public class calculateLottoTest {
     private CalculateLotto calculateLotto;
@@ -30,5 +29,9 @@ public class calculateLottoTest {
         assertEquals(6, lotto.lottoGenerator().size());
     }
 
+    @Test
+    public void 로또여러장생성확인(){
+        assertEquals(14, settingLotto.settingLotto(14).size());
+    }
 
 }
