@@ -39,7 +39,8 @@ public class calculateLottoTest {
 
     @Test
     public void 당청번호생성확인(){
-        assertEquals(6, matchLotto.generateWinnerNum().size());
+        int[] winnerNum = { 1, 2, 3,4,5,6};
+        assertEquals(6, matchLotto.generateWinnerNum(winnerNum).size());
     }
 
 }
