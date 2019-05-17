@@ -1,4 +1,4 @@
-package Lotto.model;
+package LottoTDD.model;
 
 public class Lotto {
 }

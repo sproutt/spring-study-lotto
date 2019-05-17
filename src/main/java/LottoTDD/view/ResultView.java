@@ -1,4 +1,4 @@
-package Lotto.view;
+package LottoTDD.view;
 
 public class ResultView {
 }
