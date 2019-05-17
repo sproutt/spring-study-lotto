@@ -23,6 +23,7 @@ public class Lotto {
         for (int i = 0; i < numberOfLottoNum; i++) {
             lotto.add(numberTable.get(i));
         }
+        Collections.sort(lotto);
         return lotto;
     }
     private void generateNumberTable(){
