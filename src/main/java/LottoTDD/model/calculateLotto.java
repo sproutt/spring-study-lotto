@@ -1,6 +1,6 @@
 package LottoTDD.model;
 
-public class Lotto {
+public class calculateLotto {
     private int numberOfLotto;
 
     public int calculateLotto(int money){
