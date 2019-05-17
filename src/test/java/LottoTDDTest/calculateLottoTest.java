@@ -1,21 +1,23 @@
 package LottoTDDTest;
 
 import LottoTDD.model.CalculateLotto;
+import LottoTDD.model.Lotto;
 import LottoTDD.model.SettingLotto;
 import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 
 public class calculateLottoTest {
     private CalculateLotto calculateLotto;
     private SettingLotto settingLotto;
-
-
+    private Lotto lotto;
     @Before
     public void setup() {
         calculateLotto = new CalculateLotto();
         settingLotto = new SettingLotto();
+        lotto = new Lotto();
     }
 
     @Test
@@ -23,7 +25,10 @@ public class calculateLottoTest {
         assertEquals(14, calculateLotto.calculateLotto(14000));
     }
 
+    @Test
     public void 랜덤게임생성(){
-        assertEquals(64 , settingLotto.settingLotto(14));
+        assertEquals(6, lotto.lottoGenerator().size());
     }
+
+
 }
