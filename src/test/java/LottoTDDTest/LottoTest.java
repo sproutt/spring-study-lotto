@@ -16,6 +16,6 @@ public class LottoTest {
 
     @Test
     public void 구입금액확인 () {
-        assertEquals(14, lotto.playLotto(14000));
+        assertEquals(14, lotto.calculateLotto(14000));
     }
 }
