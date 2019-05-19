@@ -14,6 +14,7 @@ public class calculateLottoTest {
     private SettingLotto settingLotto;
     private Lotto lotto;
     private MatchLotto matchLotto;
+
     @Before
     public void setup() {
         calculateLotto = new CalculateLotto();
@@ -23,23 +24,23 @@ public class calculateLottoTest {
     }
 
     @Test
-    public void 구입금액확인 () {
+    public void 구입금액확인() {
         assertEquals(14, calculateLotto.calculateLotto(14000));
     }
 
     @Test
-    public void 랜덤게임생성(){
+    public void 랜덤게임생성() {
         assertEquals(6, lotto.lottoGenerator().size());
     }
 
     @Test
-    public void 로또여러장생성확인(){
+    public void 로또여러장생성확인() {
         assertEquals(14, settingLotto.settingLotto(14).size());
     }
 
     @Test
-    public void 당청번호생성확인(){
-        int[] winnerNum = { 1, 2, 3,4,5,6};
+    public void 당청번호생성확인() {
+        int[] winnerNum = {1, 2, 3, 4, 5, 6};
         assertEquals(6, matchLotto.generateWinnerNum(winnerNum).size());
     }
 

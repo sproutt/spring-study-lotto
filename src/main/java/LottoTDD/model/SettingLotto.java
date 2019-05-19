@@ -4,11 +4,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class SettingLotto {
-    public List<Lotto> lottoss;
+    private List<Lotto> lottoss;
+    private Lotto lotto;
     public List<Lotto> settingLotto(int numberOfLotto) {
         lottoss = new ArrayList<Lotto>();
         for (int i = 0; i <  numberOfLotto; i++) {
-            Lotto lotto = new Lotto();
+            lotto = new Lotto();
             lottoss.add(lotto);
         }
         return lottoss;
