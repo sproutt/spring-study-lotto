@@ -8,6 +8,11 @@ public class MatchLotto {
     private List<Integer> winnerNumsList = new ArrayList<>();
     private int[] rankArray = new int[4];
     private int numberOfMatch = 0;
+
+    public int getPrizeMoney() {
+        return prizeMoney;
+    }
+
     private int prizeMoney = 0;
 
     public List<Integer> generateWinnerNum(int[] winnerNums) {
