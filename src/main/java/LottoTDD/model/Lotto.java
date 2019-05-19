@@ -9,7 +9,7 @@ public class Lotto {
     private final int numberOfTable = 45;
     private final int numberOfLottoNum = 6;
     private ArrayList<Integer> numberTable = new ArrayList<Integer>();
-    private ArrayList<Integer> lotto = new ArrayList<Integer>();
+    public List<Integer> lotto = new ArrayList<Integer>();
 
     public List<Integer> lottoGenerator() {
         long seed = System.nanoTime();

@@ -1,5 +1,7 @@
 package LottoTDD.view;
 
+import LottoTDD.model.Lotto;
+
 import java.util.List;
 
 public class ResultView {
@@ -7,18 +9,18 @@ public class ResultView {
         System.out.println(numberOfLotto + "개를 구매했습니다.");
     }
 
-    public void showLottossList(List<List> lottoss) {
-        for (List lotto : lottoss) {
+    public void showLottossList(List<Lotto> lottoss) {
+        for (Lotto lotto : lottoss) {
             showLottoNumberList(lotto);
         }
     }
 
-    private void showLottoNumberList(List lotto) {
+    private void showLottoNumberList(Lotto lotto) {
         System.out.print("[");
-        for (Object number : lotto) {
-            System.out.print(" " + number);
+        for (int i = 0; i < lotto.lotto.size(); i++) {
+            System.out.print("  "+lotto.lotto.get(i));
         }
-        System.out.println(" ]");
+        System.out.println("  ]");
     }
 
     public void showLottoStatistics(int[] rankArray, int prizeMoney, int inputMoney) {

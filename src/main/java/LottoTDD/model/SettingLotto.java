@@ -10,7 +10,7 @@ public class SettingLotto {
         lottoss = new ArrayList<Lotto>();
         for (int i = 0; i <  numberOfLotto; i++) {
             lotto = new Lotto();
-            lottoss.add(lotto);
+            lottoss.add((Lotto) lotto.lottoGenerator());
         }
         return lottoss;
     }

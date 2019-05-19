@@ -22,7 +22,7 @@ public class MatchLotto {
         return winnerNumsList;
     }
 
-    private int[] calculateResult(List<Lotto> lottoss) {
+    public int[] calculateResult(List<Lotto> lottoss) {
         for (Lotto lotto : lottoss) {
             calculateStatistic(calculateRank((List) lotto));
         }
