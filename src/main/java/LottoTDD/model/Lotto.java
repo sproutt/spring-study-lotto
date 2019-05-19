@@ -11,7 +11,7 @@ public class Lotto {
     private ArrayList<Integer> numberTable = new ArrayList<Integer>();
     public List<Integer> lotto = new ArrayList<Integer>();
 
-    public List<Integer> lottoGenerator() {
+    public List<Integer> playLotto() {
         long seed = System.nanoTime();
         generateNumberTable();
         Collections.shuffle(numberTable, new Random(seed));

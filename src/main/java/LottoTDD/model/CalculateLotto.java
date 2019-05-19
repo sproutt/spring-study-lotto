@@ -8,9 +8,9 @@ public class CalculateLotto {
         return inputMoney;
     }
 
-    public int calculateLotto(int money){
+    public int calculateLotto(int money) {
         this.inputMoney = money;
-        numberOfLotto = money/1000;
+        numberOfLotto = money / 1000;
         return numberOfLotto;
     }
 }

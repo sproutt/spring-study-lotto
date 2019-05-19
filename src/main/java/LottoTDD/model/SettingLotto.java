@@ -4,13 +4,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class SettingLotto {
-    private List<Lotto> lottoss;
+    private List<List<Integer>> lottoss;
     private Lotto lotto;
-    public List<Lotto> settingLotto(int numberOfLotto) {
-        lottoss = new ArrayList<Lotto>();
-        for (int i = 0; i <  numberOfLotto; i++) {
+
+    public List<List<Integer>> lottoGenerator(int numberOfLotto) {
+        lottoss = new ArrayList<List<Integer>>();
+        for (int i = 0; i < numberOfLotto; i++) {
             lotto = new Lotto();
-            lottoss.add((Lotto) lotto.lottoGenerator());
+            lottoss.add(lotto.playLotto());
         }
         return lottoss;
     }

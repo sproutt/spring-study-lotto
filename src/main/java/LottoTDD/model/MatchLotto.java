@@ -1,13 +1,12 @@
 package LottoTDD.model;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class MatchLotto {
     private List<Integer> winnerNumsList = new ArrayList<>();
     private int[] rankArray = new int[4];
-    private int numberOfMatch = 0;
+    private int numberOfWinNum = 0;
 
     public int getPrizeMoney() {
         return prizeMoney;
@@ -22,9 +21,10 @@ public class MatchLotto {
         return winnerNumsList;
     }
 
-    public int[] calculateResult(List<Lotto> lottoss) {
-        for (Lotto lotto : lottoss) {
-            calculateStatistic(calculateRank((List) lotto));
+    public int[] calculateResult(List<List<Integer>> lottoss) {
+        for (List<Integer> lotto : lottoss) {
+            calculateStatistic(calculateRank(lotto));
+            numberOfWinNum = 0;
         }
         return rankArray;
     }
@@ -49,14 +49,14 @@ public class MatchLotto {
 
     }
 
-    private int calculateRank(List lotto) {
+    private int calculateRank(List<Integer> lotto) {
         for (int winnerNum : winnerNumsList) {
             checkMatchNum(winnerNum, lotto);
         }
-        return numberOfMatch;
+        return numberOfWinNum;
     }
 
-    private void checkMatchNum(int winnerNum, List lotto) {
-        if (lotto.contains(winnerNum)) numberOfMatch++;
+    private void checkMatchNum(int winnerNum, List<Integer> lotto) {
+        if (lotto.contains(winnerNum)) numberOfWinNum++;
     }
 }

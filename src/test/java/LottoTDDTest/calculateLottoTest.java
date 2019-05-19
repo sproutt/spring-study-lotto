@@ -30,12 +30,12 @@ public class calculateLottoTest {
 
     @Test
     public void 랜덤게임생성() {
-        assertEquals(6, lotto.lottoGenerator().size());
+        assertEquals(6, lotto.playLotto().size());
     }
 
     @Test
     public void 로또여러장생성확인() {
-        assertEquals(14, settingLotto.settingLotto(14).size());
+        assertEquals(14, settingLotto.lottoGenerator(14).size());
     }
 
     @Test

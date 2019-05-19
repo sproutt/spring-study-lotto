@@ -1,7 +1,5 @@
 package LottoTDD.view;
 
-import LottoTDD.model.Lotto;
-
 import java.util.List;
 
 public class ResultView {
@@ -9,16 +7,16 @@ public class ResultView {
         System.out.println(numberOfLotto + "개를 구매했습니다.");
     }
 
-    public void showLottossList(List<Lotto> lottoss) {
-        for (Lotto lotto : lottoss) {
+    public void showLottossList(List<List<Integer>> lottoss) {
+        for (List<Integer> lotto : lottoss) {
             showLottoNumberList(lotto);
         }
     }
 
-    private void showLottoNumberList(Lotto lotto) {
+    private void showLottoNumberList(List<Integer> lotto) {
         System.out.print("[");
-        for (int i = 0; i < lotto.lotto.size(); i++) {
-            System.out.print("  "+lotto.lotto.get(i));
+        for (int i = 0; i < lotto.size(); i++) {
+            System.out.print("  " + lotto.get(i));
         }
         System.out.println("  ]");
     }
@@ -31,7 +29,8 @@ public class ResultView {
             checkRank(i);
             System.out.println(rankArray[i - 3] + "개");
         }
-        System.out.println("총 수익률은 " + prizeMoney / inputMoney + "& 입니다.");
+        double incomeRate = prizeMoney / (double) inputMoney;
+        System.out.println("총 수익률은 " + incomeRate + "% 입니다.");
     }
 
     private void checkRank(int rank) {
