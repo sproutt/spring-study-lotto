@@ -15,24 +15,23 @@ public class RankTest {
     }
 
     @Test
-    public void enumTest(){
+    public void enum_CountTest(){
         assertEquals(6, Rank.FIRST.getCountOfMatch());
         assertEquals(5, Rank.SECOND.getCountOfMatch());
         assertEquals(5, Rank.THIRD.getCountOfMatch());
         assertEquals(4, Rank.FOURTH.getCountOfMatch());
         assertEquals(3, Rank.FIFTH.getCountOfMatch());
-        assertEquals(0, Rank.MISS.getCountOFMatch());
-
+        assertEquals(0, Rank.MISS.getCountOfMatch());
     }
 
     @Test
-    public void getCountOfMatchTest(){
-        assertEquals(5, rank.getCountOfMatch());
-    }
-
-    @Test
-    public void getWinningMoneyTest(){
-        assertEquals(1500000, rank.getWinningMoney);
+    public void enum_MoneyTest(){
+        assertEquals(2000000000, Rank.FIRST.getWinningMoney());
+        assertEquals(30000000, Rank.SECOND.getWinningMoney());
+        assertEquals(1500000, Rank.THIRD.getWinningMoney());
+        assertEquals(50000, Rank.FOURTH.getWinningMoney());
+        assertEquals(5000, Rank.FIFTH.getWinningMoney());
+        assertEquals(0, Rank.MISS.getWinningMoney());
     }
 
     @Test
