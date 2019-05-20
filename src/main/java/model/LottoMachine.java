@@ -16,8 +16,9 @@ public class LottoMachine {
     List<Lotto> lottos = new ArrayList<>();
 
     public List<String> buyLotto(int totalLottoPrice) {
+        List<String> numbersInRange = ListGenerator.getNumbersInRange(LOTTO_NUMBER_RANGE);
         for (int i = 0; i < getLottoCount(totalLottoPrice); i++)
-            lottos.add(new Lotto(getRandomNumbers(LOTTO_NUMBER_RANGE)));
+            lottos.add(new Lotto(getRandomNumbers(numbersInRange)));
         return showLottoHistory();
     }
 
@@ -25,8 +26,8 @@ public class LottoMachine {
         return totalPrice / LOTTO_PRICE;
     }
 
-    private List<String> getRandomNumbers(int range) {
-        List<String> numbersInRange = ListGenerator.getNumbersInRange(range);
+    private List<String> getRandomNumbers(List<String> numbersInRange) {
+
         Collections.shuffle(numbersInRange);
         return numbersInRange.subList(0, LOTTO_NUMBER_COUNT);
     }

@@ -32,7 +32,7 @@ public class LottoMachineTest {
 
     @Test
     public void 로또_구매후개수() {
-        int firstBuyCount = lottoMachine.buyLotto(totalLottoPrice).size();
+        int firstBuyCount = lottoMachine.buyLotto(totalLottoPrice, 3).size();//가격, 수동구매 개수
         assertThat(lottoMachine.buyLotto(totalLottoPrice).size()).isNotEqualTo(firstBuyCount);
     }
 
@@ -40,5 +40,10 @@ public class LottoMachineTest {
     public void 로또_구매개수(){
         int firstBuyCount = lottoMachine.buyLotto(totalLottoPrice).size();
         assertThat(lottoMachine.buyLotto(totalLottoPrice).size()-firstBuyCount).isEqualTo(14);
+    }
+
+    @Test
+    public void 로또_보너스(){
+
     }
 }
