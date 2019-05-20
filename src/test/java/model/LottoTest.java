@@ -2,11 +2,11 @@ package model;
 
 import org.junit.Before;
 import org.junit.Test;
+import static org.assertj.core.api.Assertions.*;
 
 import java.util.Arrays;
 import java.util.List;
 
-import static org.assertj.core.api.Assertions.*;
 
 public class LottoTest {
 
