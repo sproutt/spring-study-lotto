@@ -15,11 +15,19 @@ public class LottoMachine {
     private static int LOTTO_PRICE = 1000;
     List<Lotto> lottos = new ArrayList<>();
 
-    public List<String> buyLotto(int totalLottoPrice) {
-        List<String> numbersInRange = ListGenerator.getNumbersInRange(LOTTO_NUMBER_RANGE);
-        for (int i = 0; i < getLottoCount(totalLottoPrice); i++)
-            lottos.add(new Lotto(getRandomNumbers(numbersInRange)));
+    public List<String> buyLotto(int totalLottoPrice, int directBuyCount) {
+        int totalCount = getLottoCount(totalLottoPrice);
+
+
         return showLottoHistory();
+    }
+
+    private List<LottoNo> getNumbersInRange(){
+        List<LottoNo> numbersInRange = new ArrayList<>();
+        for (int i=0; i<LOTTO_NUMBER_RANGE; i++){
+            numbersInRange.add(new LottoNo(i));
+        }
+        return numbersInRange;
     }
 
     private int getLottoCount(int totalPrice) {
@@ -27,7 +35,6 @@ public class LottoMachine {
     }
 
     private List<String> getRandomNumbers(List<String> numbersInRange) {
-
         Collections.shuffle(numbersInRange);
         return numbersInRange.subList(0, LOTTO_NUMBER_COUNT);
     }
