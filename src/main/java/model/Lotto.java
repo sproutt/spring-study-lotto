@@ -1,5 +1,6 @@
 package model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Lotto {
@@ -8,6 +9,13 @@ public class Lotto {
 
     public Lotto(List<LottoNo> lottoNumbers) {
         this.lottoNumbers = lottoNumbers;
+    }
+
+    public Lotto(String[] lottoNumbers){
+        this.lottoNumbers = new ArrayList<>();
+        for (int i=0; i<lottoNumbers.length; i++){
+            this.lottoNumbers.add(new LottoNo(Integer.parseInt(lottoNumbers[i])));
+        }
     }
 
     public int getCorrectNumberCount(List<String> winningNumber) {

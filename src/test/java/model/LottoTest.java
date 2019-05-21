@@ -11,19 +11,19 @@ import java.util.List;
 
 public class LottoTest {
 
-    Lotto lotto;
-
-    @Before
-    public void setUp() {
+    @Test
+    public void 로또번호_문자열_list생성자() {
         List<LottoNo> numbers = new ArrayList<>();
         for (int i=1; i<=6; i++){
             numbers.add(new LottoNo(i));
         }
-        lotto = new Lotto(numbers));
+        Lotto lotto = new Lotto(numbers);
+        assertThat(lotto.showLotto()).isEqualTo("[1, 2, 3, 4, 5, 6]");
     }
 
     @Test
-    public void 로또번호_문자열() {
+    public void 로또번호_문자열_String생성자(){
+        Lotto lotto = new Lotto(new String[]{"1, 2, 3, 4, 5, 6"});
         assertThat(lotto.showLotto()).isEqualTo("[1, 2, 3, 4, 5, 6]");
     }
 }
