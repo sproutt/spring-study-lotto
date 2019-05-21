@@ -15,37 +15,28 @@ public class LottoMachine {
     private static int LOTTO_PRICE = 1000;
     List<Lotto> lottos = new ArrayList<>();
 
-    public List<String> buyLotto(int totalLottoPrice, int directBuyCount) {
-        int totalCount = getLottoCount(totalLottoPrice);
-
-
-        return showLottoHistory();
+    public Lotto buyAutoLotto(){
+        return new Lotto(getRandomNumbers(getNumbersInRange(LOTTO_NUMBER_RANGE)));
     }
 
-    private List<LottoNo> getNumbersInRange(){
+    private List<LottoNo> getNumbersInRange(int range){
         List<LottoNo> numbersInRange = new ArrayList<>();
-        for (int i=0; i<LOTTO_NUMBER_RANGE; i++){
+        for (int i=0; i<range; i++){
             numbersInRange.add(new LottoNo(i));
         }
         return numbersInRange;
     }
 
-    private int getLottoCount(int totalPrice) {
-        return totalPrice / LOTTO_PRICE;
-    }
-
-    private List<String> getRandomNumbers(List<String> numbersInRange) {
+    private List<LottoNo> getRandomNumbers(List<LottoNo> numbersInRange) {
         Collections.shuffle(numbersInRange);
         return numbersInRange.subList(0, LOTTO_NUMBER_COUNT);
     }
 
-    public int[] getStatistic(String winningNumber) {
-        return createStatistic(toStringList(winningNumber));
+    public Lotto buyDirectLotto(String numbers){
+        SplitGenerator.splitWithSign(numbers, ", ");
+        return new Lotto()
     }
 
-    private List<String> toStringList(String winningNumber) {
-        return Arrays.asList(SplitGenerator.splitWithSign(winningNumber, ", "));
-    }
 
     private int[] createStatistic(List<String> winningNumber) {
         int[] statistic = new int[LOTTO_NUMBER_COUNT + 1];

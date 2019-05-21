@@ -15,23 +15,15 @@ public class LottoMachineTest {
     @Before
     public void setUp() {
         lottoMachine = new LottoMachine();
-        lottoMachine.buyLotto(totalLottoPrice, 3); //buyDirectly
     }
 
     @Test
-    public void 로또_구매후개수() {
-        int firstBuyCount = lottoMachine.getRankHistory().size;//가격, 수동구매 개수
-        assertThat(lottoMachine.getRankHistory().size).isNotEqualTo(firstBuyCount);
+    public void 로또_자동주문(){
+
     }
 
     @Test
-    public void 로또_구매개수(){
-        int firstBuyCount = lottoMachine.getRankHistory().size;
-        assertThat(lottoMachine.getRankHistory().size-firstBuyCount).isEqualTo(14);
-    }
-
-    @Test
-    public void 로또_랭크개수(){
-        assertEquals(14, lottoMachine.getRankHistory().size);
+    public void 로또_직접주문(){
+        assertEquals("[1, 2, 3, 4, 5, 6}", lottoMachine.buyDirectLotto("1, 2, 3, 4, 5, 6").showLotto());
     }
 }
