@@ -15,7 +15,7 @@ public class LottoMachineTest {
     @Before
     public void setUp() {
         lottoMachine = new LottoMachine();
-        lottoMachine.buyLotto(totalLottoPrice);
+        lottoMachine.buyLotto(totalLottoPrice, 3); //buyDirectly
     }
 
     @Test
