@@ -18,11 +18,19 @@ public class Lotto {
         }
     }
 
-    public int getCorrectNumberCount(List<String> winningNumber) {
-        return (int) winningNumber.stream().filter((x) -> lottoNumbers.contains(x)).count();
+    public String showLotto() {
+        List<String> lotto = new ArrayList<>();
+        for (LottoNo lottoNo : lottoNumbers){
+            lotto.add(lottoNo.getStringNumber());
+        }
+        return lotto.toString();
     }
 
-    public String showLotto() {
-        return lottoNumbers.toString();
+    public int getCorrectCount(List<String> winningNumbers){
+        return (int)lottoNumbers.stream().filter((x)->winningNumbers.contains(x.getStringNumber())).count();
+    }
+
+    public boolean isContain(String stringNumber){
+        return lottoNumbers.contains(new LottoNo(Integer.parseInt(stringNumber)));
     }
 }

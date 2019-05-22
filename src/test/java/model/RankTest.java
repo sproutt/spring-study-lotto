@@ -36,7 +36,8 @@ public class RankTest {
 
     @Test
     public void valueOfTest_보너스통과(){
-        assertEquals(Rank.SECOND, Rank.valueOf(4, true)); //countOfMatch, matchBonus
+        assertEquals(Rank.SECOND, Rank.valueOf(5, true));
+        assertEquals(Rank.THIRD, Rank.valueOf(4, true)); //countOfMatch, matchBonus
         assertEquals(Rank.FOURTH, Rank.valueOf(3, true));
         assertEquals(Rank.FIFTH, Rank.valueOf(2, true));
      }
@@ -52,7 +53,6 @@ public class RankTest {
     public void valueOFTest_상금없음(){
         assertEquals(Rank.MISS, Rank.valueOf(1, true));
         assertEquals(Rank.MISS, Rank.valueOf(1, false));
-        assertEquals(Rank.MISS, Rank.valueOf(2, true));
         assertEquals(Rank.MISS, Rank.valueOf(2, false));
         assertEquals(Rank.MISS, Rank.valueOf(0, true));
         assertEquals(Rank.MISS, Rank.valueOf(0, false));
