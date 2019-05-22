@@ -1,9 +1,10 @@
 package view;
 
+import model.Rank;
+import model.Statistic;
 import model.StringAddCalculator;
 
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 public class ResultView {
     public static void resultView(StringAddCalculator stringAddCalculator, String expression) {
@@ -12,30 +13,28 @@ public class ResultView {
 
     public static void lottoHistoryView(List<String> lottoHistory) {
         System.out.println(lottoHistory.size() + "개 구매하였습니다.");
-        for (String lotto : lottoHistory) {
+        for (String lotto : lottoHistory)
             System.out.println(lotto);
-        }
         System.out.println();
     }
 
-    public static void lottoResultView(int[] statistic) {
+    public static void lottoResultView(Statistic statistic) {
         System.out.println("당첨 통계\n---------------------------");
         lottoStatisticView(statistic);
         lottoPercentView(statistic);
     }
 
-    public static void lottoStatisticView(int[] statistic) {
-        int[] winnerMoney = {0, 0, 0, 5000, 50000, 1500000, 2000000000};
-        for (int i = 0; i < winnerMoney.length; i++) {
-            System.out.printf("%d개 일치 (%d원) - %d개\n", i, winnerMoney[i], statistic[i]);
-        }
+    public static void lottoStatisticView(Statistic statistic) {
+        for (SortedMap.Entry<Rank, Integer> elem : statistic.getStatistic().entrySet())
+            System.out.printf("%d개 일치 (%d원) - %d개\n", elem.getKey().getCountOfMatch(), elem.getKey().getWinningMoney(), elem.getValue());
     }
 
-    public static void lottoPercentView(int[] statistic) {
-        int count = 0;
-        for (int i = 3; i < statistic.length; i++) {
-            count += statistic[i];
-        }
-        System.out.println("총 수익률은 " + (float) count / Arrays.stream(statistic).sum() + "% 입니다.");
+    public static void lottoPercentView(Statistic statistic) {
+        int totalCount = 0;
+        for (SortedMap.Entry<Rank, Integer> elem : statistic.getStatistic().entrySet())
+            totalCount += elem.getValue();
+        System.out.print("총 수익률은");
+        System.out.print((float) (totalCount - statistic.getStatistic().get(Rank.MISS)) / totalCount);
+        System.out.println("%입니다");
     }
 }

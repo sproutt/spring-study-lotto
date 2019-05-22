@@ -1,20 +1,36 @@
 package model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Lotto {
 
-    private List<String> lottoNumbers;
+    private List<LottoNo> lottoNumbers;
 
-    public Lotto(List<String> lottoNumbers) {
+    public Lotto(List<LottoNo> lottoNumbers) {
         this.lottoNumbers = lottoNumbers;
     }
 
-    public int getCorrectNumberCount(List<String> winningNumber) {
-        return (int) winningNumber.stream().filter((x) -> lottoNumbers.contains(x)).count();
+    public Lotto(String[] lottoNumbers) {
+        this.lottoNumbers = new ArrayList<>();
+        for (int i = 0; i < lottoNumbers.length; i++)
+            this.lottoNumbers.add(new LottoNo(Integer.parseInt(lottoNumbers[i])));
     }
 
     public String showLotto() {
-        return lottoNumbers.toString();
+        List<String> lotto = new ArrayList<>();
+
+        for (LottoNo lottoNo : lottoNumbers)
+            lotto.add(lottoNo.getStringNumber());
+
+        return lotto.toString();
+    }
+
+    public int getCorrectCount(List<String> winningNumbers) {
+        return (int) lottoNumbers.stream().filter((x) -> winningNumbers.contains(x.getStringNumber())).count();
+    }
+
+    public boolean isContain(String stringNumber) {
+        return (int)lottoNumbers.stream().filter(x -> x.getStringNumber().equals(stringNumber)).count() != 0;
     }
 }
