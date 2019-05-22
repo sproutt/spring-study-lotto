@@ -4,6 +4,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
+import static org.assertj.core.api.Assertions.*;
 
 public class RankTest {
 
@@ -16,45 +17,45 @@ public class RankTest {
 
     @Test
     public void enum_CountTest(){
-        assertEquals(6, Rank.FIRST.getCountOfMatch());
-        assertEquals(5, Rank.SECOND.getCountOfMatch());
-        assertEquals(5, Rank.THIRD.getCountOfMatch());
-        assertEquals(4, Rank.FOURTH.getCountOfMatch());
-        assertEquals(3, Rank.FIFTH.getCountOfMatch());
-        assertEquals(0, Rank.MISS.getCountOfMatch());
+        assertThat(Rank.FIRST.getCountOfMatch()).isEqualTo(6);
+        assertThat(Rank.SECOND.getCountOfMatch()).isEqualTo(5);
+        assertThat(Rank.THIRD.getCountOfMatch()).isEqualTo(5);
+        assertThat(Rank.FOURTH.getCountOfMatch()).isEqualTo(4);
+        assertThat(Rank.FIFTH.getCountOfMatch()).isEqualTo(3);
+        assertThat(Rank.MISS.getCountOfMatch()).isEqualTo(0);
     }
 
     @Test
     public void enum_MoneyTest(){
-        assertEquals(2000000000, Rank.FIRST.getWinningMoney());
-        assertEquals(30000000, Rank.SECOND.getWinningMoney());
-        assertEquals(1500000, Rank.THIRD.getWinningMoney());
-        assertEquals(50000, Rank.FOURTH.getWinningMoney());
-        assertEquals(5000, Rank.FIFTH.getWinningMoney());
-        assertEquals(0, Rank.MISS.getWinningMoney());
+        assertThat(Rank.FIRST.getWinningMoney()).isEqualTo(2000000000);
+        assertThat(Rank.SECOND.getWinningMoney()).isEqualTo(30000000);
+        assertThat(Rank.THIRD.getWinningMoney()).isEqualTo(1500000);
+        assertThat(Rank.FOURTH.getWinningMoney()).isEqualTo(50000);
+        assertThat(Rank.FIFTH.getWinningMoney()).isEqualTo(5000);
+        assertThat(Rank.MISS.getWinningMoney()).isEqualTo(0);
     }
 
     @Test
     public void valueOfTest_보너스통과(){
-        assertEquals(Rank.SECOND, Rank.valueOf(5, true));
-        assertEquals(Rank.THIRD, Rank.valueOf(4, true)); //countOfMatch, matchBonus
-        assertEquals(Rank.FOURTH, Rank.valueOf(3, true));
-        assertEquals(Rank.FIFTH, Rank.valueOf(2, true));
+        assertThat(Rank.valueOf(5, true)).isEqualTo(Rank.SECOND);
+        assertThat(Rank.valueOf(4, true)).isEqualTo(Rank.THIRD);
+        assertThat(Rank.valueOf(3, true)).isEqualTo(Rank.FOURTH);
+        assertThat(Rank.valueOf(2, true)).isEqualTo(Rank.FIFTH);
      }
 
     @Test
     public void valueOfTest_보너스통과못함(){
-        assertEquals(Rank.THIRD, Rank.valueOf(5, false)); //countOfMatch, matchBonus
-        assertEquals(Rank.FOURTH, Rank.valueOf(4, false));
-        assertEquals(Rank.FIFTH, Rank.valueOf(3, false));
+        assertThat(Rank.valueOf(5, false)).isEqualTo(Rank.THIRD);
+        assertThat(Rank.valueOf(4, false)).isEqualTo(Rank.FOURTH);
+        assertThat(Rank.valueOf(3, false)).isEqualTo(Rank.FIFTH);
     }
 
     @Test
     public void valueOFTest_상금없음(){
-        assertEquals(Rank.MISS, Rank.valueOf(1, true));
-        assertEquals(Rank.MISS, Rank.valueOf(1, false));
-        assertEquals(Rank.MISS, Rank.valueOf(2, false));
-        assertEquals(Rank.MISS, Rank.valueOf(0, true));
-        assertEquals(Rank.MISS, Rank.valueOf(0, false));
+        assertThat(Rank.valueOf(1, true)).isEqualTo(Rank.MISS);
+        assertThat(Rank.valueOf(1, false)).isEqualTo(Rank.MISS);
+        assertThat(Rank.valueOf(2, false)).isEqualTo(Rank.MISS);
+        assertThat(Rank.valueOf(0, true)).isEqualTo(Rank.MISS);
+        assertThat(Rank.valueOf(0, false)).isEqualTo(Rank.MISS);
     }
 }

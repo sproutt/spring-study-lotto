@@ -18,16 +18,17 @@ public class Person {
         statistic = new Statistic();
     }
 
-    public void buyLotto(int money, List<String> lottoNumbers){
+    public List<String> buyLotto(int money, List<String> lottoNumbers) {
         lottoMachine.inputMoney(money);
 
-        lottoNumbers.stream().forEach((x)->buyDirectLotto(x));
-        while (lottoMachine.canLotto()){
+        lottoNumbers.stream().forEach((x) -> buyDirectLotto(x));
+        while (lottoMachine.canLotto()) {
             buyAutoLotto();
         }
+        return getHistory();
     }
 
-    private void buyAutoLotto(){
+    private void buyAutoLotto() {
         myLotto.add(lottoMachine.getAutoLotto());
     }
 
@@ -35,17 +36,17 @@ public class Person {
         myLotto.add(lottoMachine.getDirectLotto(numbers));
     }
 
-    public List<String> getHistory(){
+    private List<String> getHistory() {
         List<String> history = new ArrayList<>();
-        for (Lotto lotto : myLotto){
+        for (Lotto lotto : myLotto) {
             history.add(lotto.showLotto());
         }
         return history;
     }
 
-    public Statistic checkLotto(String winningNumbers, String bonusNumber){
+    public Statistic checkLotto(String winningNumbers, String bonusNumber) {
         List<String> winningNumber = Arrays.asList(SplitGenerator.splitWithSign(winningNumbers, ", "));
-        for (Lotto lotto : myLotto){
+        for (Lotto lotto : myLotto) {
             statistic.pushStatistic(Rank.valueOf(lotto.getCorrectCount(winningNumber), lotto.isContain(bonusNumber)));
         }
         return statistic;

@@ -4,8 +4,7 @@ import model.Rank;
 import model.Statistic;
 import model.StringAddCalculator;
 
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 public class ResultView {
     public static void resultView(StringAddCalculator stringAddCalculator, String expression) {
@@ -27,17 +26,20 @@ public class ResultView {
     }
 
     public static void lottoStatisticView(Statistic statistic) {
-        statistic.getStatistic().forEach((key, value) -> {
-            System.out.printf("%d개 일치 (%d원) - %d개\n", key.getCountOfMatch(), key.getWinningMoney(), value);
-        });
+        Iterator<Rank> keys = statistic.getStatistic().keySet().iterator();
+        while( keys.hasNext() ){
+            Rank key = keys.next();
+            System.out.printf("%d개 일치 (%d원) - %d개\n", key.getCountOfMatch(), key.getWinningMoney(), statistic.getStatistic().get(key));
+        }
+
     }
 
-    public static float lottoPercentView(Statistic statistic) {
-
+    public static void lottoPercentView(Statistic statistic) {
         int totalCount = 0;
         for (HashMap.Entry<Rank, Integer> elem : statistic.getStatistic().entrySet())
             totalCount += elem.getValue();
-
-        return (float) (totalCount - statistic.getStatistic().get(Rank.MISS)) / totalCount;
+        System.out.print("총 수익률은");
+        System.out.print((float) (totalCount - statistic.getStatistic().get(Rank.MISS)) / totalCount);
+        System.out.println("%입니다");
     }
 }

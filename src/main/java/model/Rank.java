@@ -1,6 +1,8 @@
 package model;
 
-public enum Rank {
+import java.util.Comparator;
+
+public enum Rank implements Comparator<Rank> {
     FIRST(6, 2000000000),
     SECOND(5, 30000000),
     THIRD(5, 1500000),
@@ -36,5 +38,10 @@ public enum Rank {
         if (countOfMatch == 3 || (countOfMatch == 2 && matchBonus == true))
             return FIFTH;
         return MISS;
+    }
+
+    @Override
+    public int compare(Rank rank1, Rank rank2) {
+        return rank1.getCountOfMatch() - rank2.getCountOfMatch();
     }
 }
