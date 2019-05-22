@@ -6,7 +6,7 @@ import org.junit.Test;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.Assert.*;
+import static org.assertj.core.api.Assertions.*;
 
 public class PersonTest {
 
@@ -19,7 +19,7 @@ public class PersonTest {
 
     @Test
     public void buyLotto_AutoLottoTest(){
-        assertEquals(10, person.buyLotto(10000, new ArrayList<>()).size());
+        assertThat( person.buyLotto(10000, new ArrayList<>()).size()).isEqualTo(10);
     }
 
     @Test
@@ -28,7 +28,7 @@ public class PersonTest {
         lottoNumbers.add("1, 2, 3, 4, 5, 6");
         List<String> history = person.buyLotto(10000, lottoNumbers);
 
-        assertEquals(10, history.size());
-        assertTrue(history.contains("[1, 2, 3, 4, 5, 6]"));
+        assertThat(history.size()).isEqualTo(10);
+        assertThat(history.contains("[1, 2, 3, 4, 5, 6]")).isTrue();
     }
 }
