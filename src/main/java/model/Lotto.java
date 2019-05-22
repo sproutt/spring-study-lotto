@@ -13,16 +13,16 @@ public class Lotto {
 
     public Lotto(String[] lottoNumbers) {
         this.lottoNumbers = new ArrayList<>();
-        for (int i = 0; i < lottoNumbers.length; i++) {
+        for (int i = 0; i < lottoNumbers.length; i++)
             this.lottoNumbers.add(new LottoNo(Integer.parseInt(lottoNumbers[i])));
-        }
     }
 
     public String showLotto() {
         List<String> lotto = new ArrayList<>();
-        for (LottoNo lottoNo : lottoNumbers) {
+
+        for (LottoNo lottoNo : lottoNumbers)
             lotto.add(lottoNo.getStringNumber());
-        }
+
         return lotto.toString();
     }
 

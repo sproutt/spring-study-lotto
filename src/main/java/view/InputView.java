@@ -20,7 +20,7 @@ public class InputView {
         return scanner.nextLine();
     }
 
-    public static String inputBonusNumber(Scanner scanner){
+    public static String inputBonusNumber(Scanner scanner) {
         System.out.println("보너스 볼을 입력해 주세요.");
         return scanner.nextLine();
     }
@@ -28,10 +28,11 @@ public class InputView {
     public static List<String> inputTotalLottoNumber(Scanner scanner) {
         List<String> totalLottoNumber = new ArrayList<>();
         int count = inputDirectLotto(scanner);
+
         System.out.println("수동으로 구매할 번호를 입력해 주세요.");
-        for (int i = 0; i < count; i++) {
+        for (int i = 0; i < count; i++)
             totalLottoNumber.add(scanner.nextLine());
-        }
+
         return totalLottoNumber;
     }
 

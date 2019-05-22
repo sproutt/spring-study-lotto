@@ -42,6 +42,6 @@ public enum Rank implements Comparator<Rank> {
 
     @Override
     public int compare(Rank rank1, Rank rank2) {
-        return rank1.getCountOfMatch() - rank2.getCountOfMatch();
+        return rank1.getWinningMoney() - rank2.getWinningMoney();
     }
 }

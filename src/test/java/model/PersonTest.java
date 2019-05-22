@@ -27,6 +27,7 @@ public class PersonTest {
         List<String> lottoNumbers = new ArrayList<>();
         lottoNumbers.add("1, 2, 3, 4, 5, 6");
         List<String> history = person.buyLotto(10000, lottoNumbers);
+
         assertEquals(10, history.size());
         assertTrue(history.contains("[1, 2, 3, 4, 5, 6]"));
     }

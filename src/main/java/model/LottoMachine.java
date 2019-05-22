@@ -29,15 +29,16 @@ public class LottoMachine {
 
     private void decreaseCount() {
         if (canLotto() == false)
-            throw new RuntimeException();
+            throw new RuntimeException("돈 넣어!!");
         tryCount--;
     }
 
     private List<LottoNo> getNumbersInRange(int range) {
         List<LottoNo> numbersInRange = new ArrayList<>();
-        for (int i = 0; i < range; i++) {
+
+        for (int i = 1; i <= range; i++)
             numbersInRange.add(new LottoNo(i));
-        }
+
         return numbersInRange;
     }
 

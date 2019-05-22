@@ -10,21 +10,20 @@ public class Person {
 
     private List<Lotto> myLotto;
     private LottoMachine lottoMachine;
-    private Statistic statistic;
 
     public Person() {
         myLotto = new ArrayList<>();
         lottoMachine = new LottoMachine();
-        statistic = new Statistic();
     }
 
     public List<String> buyLotto(int money, List<String> lottoNumbers) {
         lottoMachine.inputMoney(money);
 
-        lottoNumbers.stream().forEach((x) -> buyDirectLotto(x));
+        lottoNumbers.forEach(this::buyDirectLotto);
         while (lottoMachine.canLotto()) {
             buyAutoLotto();
         }
+
         return getHistory();
     }
 
@@ -38,17 +37,20 @@ public class Person {
 
     private List<String> getHistory() {
         List<String> history = new ArrayList<>();
-        for (Lotto lotto : myLotto) {
+
+        for (Lotto lotto : myLotto)
             history.add(lotto.showLotto());
-        }
+
         return history;
     }
 
     public Statistic checkLotto(String winningNumbers, String bonusNumber) {
+        Statistic statistic = new Statistic();
         List<String> winningNumber = Arrays.asList(SplitGenerator.splitWithSign(winningNumbers, ", "));
-        for (Lotto lotto : myLotto) {
+
+        for (Lotto lotto : myLotto)
             statistic.pushStatistic(Rank.valueOf(lotto.getCorrectCount(winningNumber), lotto.isContain(bonusNumber)));
-        }
+
         return statistic;
     }
 }

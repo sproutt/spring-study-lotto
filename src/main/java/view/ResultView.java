@@ -13,9 +13,8 @@ public class ResultView {
 
     public static void lottoHistoryView(List<String> lottoHistory) {
         System.out.println(lottoHistory.size() + "개 구매하였습니다.");
-        for (String lotto : lottoHistory) {
+        for (String lotto : lottoHistory)
             System.out.println(lotto);
-        }
         System.out.println();
     }
 
@@ -26,17 +25,13 @@ public class ResultView {
     }
 
     public static void lottoStatisticView(Statistic statistic) {
-        Iterator<Rank> keys = statistic.getStatistic().keySet().iterator();
-        while( keys.hasNext() ){
-            Rank key = keys.next();
-            System.out.printf("%d개 일치 (%d원) - %d개\n", key.getCountOfMatch(), key.getWinningMoney(), statistic.getStatistic().get(key));
-        }
-
+        for (SortedMap.Entry<Rank, Integer> elem : statistic.getStatistic().entrySet())
+            System.out.printf("%d개 일치 (%d원) - %d개\n", elem.getKey().getCountOfMatch(), elem.getKey().getWinningMoney(), elem.getValue());
     }
 
     public static void lottoPercentView(Statistic statistic) {
         int totalCount = 0;
-        for (HashMap.Entry<Rank, Integer> elem : statistic.getStatistic().entrySet())
+        for (SortedMap.Entry<Rank, Integer> elem : statistic.getStatistic().entrySet())
             totalCount += elem.getValue();
         System.out.print("총 수익률은");
         System.out.print((float) (totalCount - statistic.getStatistic().get(Rank.MISS)) / totalCount);
