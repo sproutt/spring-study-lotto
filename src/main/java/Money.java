@@ -4,11 +4,18 @@ public class Money {
 
     public Money(int money){
         validate_over_1000(money);
+        validate_money_divide_by_1000(money);
         this.money = money;
     }
 
     private void validate_over_1000(int money){
         if (money < MIN_MONEY){
+            throw new IllegalArgumentException();
+        }
+    }
+
+    private void validate_money_divide_by_1000(int money){
+        if (!(money % 1000 == 0)){
             throw new IllegalArgumentException();
         }
     }
