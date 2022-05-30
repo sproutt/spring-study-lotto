@@ -11,7 +11,6 @@ public class MoneyTest {
 
         assertThatThrownBy(()->new Money(test_money))
                 .isInstanceOf(IllegalArgumentException.class);
-
     }
 
     @Test

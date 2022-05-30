@@ -1,6 +1,6 @@
 public class Money {
     private static final int MIN_MONEY = 1000;
-    private int money;
+    int money;
 
     public Money(int money){
         validate_over_1000(money);
