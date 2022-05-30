@@ -31,6 +31,7 @@
 
 ### Lotto
 - [ ] 6개의 로또 당첨 번호를 가짐
+  - 로또 리스트 크기가 6인가
 - [ ] WinningLotto와 Lotto 비교하는 작업을 통해 일치하는 개수를 알아내는 것
 
 ### WinningLotto
