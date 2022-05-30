@@ -1,12 +1,14 @@
 import jdk.jfr.Description;
 import org.junit.Test;
+
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class LottoNumberTest {
 
     @Test
-    @Description("로또 번호가 1부터 45사이인가")
-    public void test_lotto_number_range_from_1_to_45(){
+    @Description("로또 번호가 범위를 넘어서면 예외를 발생시킨다.")
+    public void should_throw_exception_when_number_is_out_of_range() {
         int testNumber = 52;
 
         assertThatThrownBy(()->new LottoNumber(testNumber))

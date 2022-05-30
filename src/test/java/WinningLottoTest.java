@@ -9,11 +9,11 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class WinningLottoTest {
     @Test
-    @Description("당첨 로또 번호가 6개인지 확인")
-    public void test_winning_lotto_size_is_6(){
+    @Description("당첨 로또 번호가 6개가 아니라면 예외를 발생시킨다")
+    public void should_throw_exception_when_winning_lotto_size_is_not_6() {
         List<LottoNumber> testWinningLotto = new ArrayList<>();
 
-        for (int i = 2; i < 7; i++){
+        for (int i = 2; i < 7; i++) {
             testWinningLotto.add(new LottoNumber(i));
         }
 

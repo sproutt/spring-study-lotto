@@ -6,15 +6,15 @@ public class Lotto {
     public static final int LOTTO_SIZE = 6;
     private List<LottoNumber> lotto;
 
-    public Lotto(List<LottoNumber> lotto){
+    public Lotto(List<LottoNumber> lotto) {
         validateLottoSize(lotto);
         validateLottoIsUnique(lotto);
         this.lotto = lotto;
     }
 
-    private void validateLottoSize(List<LottoNumber> lotto){
-        if (!(lotto.size() == LOTTO_SIZE)){
-            throw new IllegalArgumentException();
+    private void validateLottoSize(List<LottoNumber> lotto) {
+        if (lotto.size() != LOTTO_SIZE) {
+            throw new IllegalArgumentException("로또 숫자 개수가 6이 아닙니다.");
         }
     }
     

@@ -10,16 +10,16 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 public class LottoTest {
 
     @Test
-    @Description("로또 개수가 6개인지 확인")
-    public void test_lotto_size_is_6(){
-        ArrayList<LottoNumber> test_lotto = new ArrayList<>();
+    @Description("로또 개수가 6개가 아니라면 예외를 발생한다.")
+    public void should_throw_exception_when_lotto_size_is_not_6() {
+        List<LottoNumber> testLotto = new ArrayList<>();
 
         for (int i = 2; i < 7; i++){
             testLotto.add(new LottoNumber(i));
         }
 
-        assertThatThrownBy(() -> new Lotto(testLotto)).
-                isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> new Lotto(testLotto))
+                .isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test

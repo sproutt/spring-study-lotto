@@ -7,8 +7,8 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 public class MoneyTest {
 
     @Test
-    @Description("입력값이 1000원 이상인지 확인")
-    public void exception_money_over_1000(){
+    @Description("지불한 금액이 1000원이하이면 예외를 발생시킨다.")
+    public void should_throw_exception_when_money_is_under_1000() {
         int testMoney = 500;
 
         assertThatThrownBy(()->new Money(testMoney))

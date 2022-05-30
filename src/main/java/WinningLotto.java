@@ -7,11 +7,12 @@ public class WinningLotto {
 
     public WinningLotto(List<LottoNumber> winningLotto) {
         validateWinningLottoSize(winningLotto);
+        validateWinningLottoIsUnique(winningLotto);
         this.winningLotto = winningLotto;
     }
 
     private void validateWinningLottoSize(List<LottoNumber> winningLotto) {
-        if (!(winningLotto.size() == Lotto.LOTTO_SIZE)){
+        if (!(winningLotto.size() == Lotto.LOTTO_SIZE)) {
             throw new IllegalArgumentException();
         }
     }
