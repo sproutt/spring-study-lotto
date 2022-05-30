@@ -1,5 +1,3 @@
-import java.util.Objects;
-
 public class LottoNumber {
 
     public static final int MIN_NUMBER = 1;

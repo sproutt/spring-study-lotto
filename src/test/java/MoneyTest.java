@@ -7,18 +7,18 @@ public class MoneyTest {
     @Test
     @Description("입력값이 1000원 이상인지 확인")
     public void exception_money_over_1000(){
-        int test_money = 500;
+        int testMoney = 500;
 
-        assertThatThrownBy(()->new Money(test_money))
+        assertThatThrownBy(()->new Money(testMoney))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
     @Description("입력값이 1000원 단위로 나누어 떨어지는지 확인")
     public void exception_money_divide_by_1000(){
-        int test_money = 12500;
+        int testMoney = 12500;
 
-        assertThatThrownBy(()->new Money(test_money))
+        assertThatThrownBy(()->new Money(testMoney))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 }

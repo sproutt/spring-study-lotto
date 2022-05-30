@@ -14,10 +14,10 @@ public class LottoTest {
         ArrayList<LottoNumber> test_lotto = new ArrayList<>();
 
         for (int i = 2; i < 7; i++){
-            test_lotto.add(new LottoNumber(i));
+            testLotto.add(new LottoNumber(i));
         }
 
-        assertThatThrownBy(() -> new Lotto(test_lotto)).
+        assertThatThrownBy(() -> new Lotto(testLotto)).
                 isInstanceOf(IllegalArgumentException.class);
     }
 }
