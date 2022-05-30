@@ -1,3 +1,5 @@
+import java.util.Objects;
+
 public class LottoNumber {
 
     public static final int MIN_NUMBER = 1;
@@ -5,7 +7,7 @@ public class LottoNumber {
 
     int number;
 
-    public LottoNumber(int number){
+    public LottoNumber(int number) {
         validateLottoNumberRange(number);
         this.number = number;
     }
