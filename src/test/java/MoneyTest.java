@@ -1,5 +1,7 @@
 import jdk.jfr.Description;
 import org.junit.Test;
+
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class MoneyTest {
@@ -14,11 +16,11 @@ public class MoneyTest {
     }
 
     @Test
-    @Description("입력값이 1000원 단위로 나누어 떨어지는지 확인")
-    public void exception_money_divide_by_1000(){
-        int testMoney = 12500;
+    @Description("지불한 금액이 1000원 이상이면 성공이다.")
+    public void should_success_when_money_is_over_1000() {
+        int testMoney = 2000;
 
-        assertThatThrownBy(()->new Money(testMoney))
-                .isInstanceOf(IllegalArgumentException.class);
+        Money testMoneyObject = new Money(testMoney);
+        assertThat(testMoneyObject).isNotNull();
     }
 }
