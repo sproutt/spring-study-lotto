@@ -1,7 +1,10 @@
 import jdk.jfr.Description;
 import org.junit.Test;
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
+
 import java.util.ArrayList;
+import java.util.List;
+
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class LottoTest {
 

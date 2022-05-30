@@ -1,15 +1,15 @@
-import java.util.ArrayList;
+import java.util.List;
 
 public class WinningLotto {
-    ArrayList<LottoNumber> winningLotto;
+    private List<LottoNumber> winningLotto;
 
-    public WinningLotto(ArrayList<LottoNumber> winningLotto){
-        validate_winning_lotto_size_is_6(winningLotto);
+    public WinningLotto(List<LottoNumber> winningLotto) {
+        validateWinningLottoSize(winningLotto);
         this.winningLotto = winningLotto;
     }
 
-    private void validate_winning_lotto_size_is_6(ArrayList<LottoNumber> winningLotto){
-        if (!(winningLotto.size() == 6)){
+    private void validateWinningLottoSize(List<LottoNumber> winningLotto) {
+        if (!(winningLotto.size() == Lotto.LOTTO_SIZE)){
             throw new IllegalArgumentException();
         }
     }
