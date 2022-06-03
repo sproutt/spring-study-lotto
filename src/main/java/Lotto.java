@@ -11,7 +11,6 @@ public class Lotto {
     public static final String LOTTO_IS_NOT_UNIQUE = "중복되는 로또 번호가 있습니다";
     private List<LottoNumber> lotto;
 
-
     public Lotto(List<LottoNumber> lotto) {
         validateLottoSize(lotto);
         validateLottoIsUnique(lotto);
