@@ -1,3 +1,5 @@
+import exception.LottoIsNotUniqueException;
+import exception.LottoSizeMismatchException;
 import org.junit.Test;
 import org.junit.jupiter.api.DisplayName;
 
@@ -18,7 +20,7 @@ public class WinningLottoTest {
         }
 
         assertThatThrownBy(() -> new WinningLotto(testWinningLotto))
-                .isInstanceOf(WinningLotto.WinningLottoSizeException.class);
+                .isInstanceOf(LottoSizeMismatchException.class);
     }
 
     @Test
@@ -47,7 +49,7 @@ public class WinningLottoTest {
         testLotto.add(new LottoNumber(5));
 
         assertThatThrownBy(() -> new WinningLotto(testLotto))
-                .isInstanceOf(WinningLotto.WinningLottoIsUniqueException.class);
+                .isInstanceOf(LottoIsNotUniqueException.class);
     }
 
     @Test

@@ -1,3 +1,6 @@
+import exception.LottoIsNotUniqueException;
+import exception.LottoSizeMismatchException;
+
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -15,7 +18,7 @@ public class WinningLotto {
 
     private void validateWinningLottoSize(List<LottoNumber> winningLotto) {
         if (!(winningLotto.size() == Lotto.LOTTO_SIZE)) {
-            throw new WinningLottoSizeException(WINNING_LOTTO_SIZE);
+            throw new LottoSizeMismatchException(WINNING_LOTTO_SIZE);
         }
     }
 
@@ -23,7 +26,7 @@ public class WinningLotto {
         Set<LottoNumber> WinningLottoNumberSet = new HashSet<>(lotto);
 
         if (WinningLottoNumberSet.size() != Lotto.LOTTO_SIZE) {
-            throw new WinningLottoIsUniqueException(LOTTO_IS_UNIQUE);
+            throw new LottoIsNotUniqueException(LOTTO_IS_UNIQUE);
         }
     }
 

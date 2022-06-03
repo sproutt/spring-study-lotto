@@ -86,6 +86,4 @@ public class LottoTest {
             list.add(new LottoNumber(i));
         }
     }
-
-
 }

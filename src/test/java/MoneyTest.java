@@ -1,3 +1,4 @@
+import exception.MoneyUnderMinMoneyException;
 import org.junit.Test;
 import org.junit.jupiter.api.DisplayName;
 
@@ -12,7 +13,7 @@ public class MoneyTest {
         int testMoney = 500;
 
         assertThatThrownBy(()->new Money(testMoney))
-                .isInstanceOf(Money.ValidateOver_MIN_MONEY_Exception.class);
+                .isInstanceOf(MoneyUnderMinMoneyException.class);
     }
 
     @Test
