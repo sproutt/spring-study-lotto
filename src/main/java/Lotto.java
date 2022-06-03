@@ -18,9 +18,9 @@ public class Lotto {
     }
 
     private void validateLottoSize(List<LottoNumber> lotto) {
-
-        if (lotto.size() != LOTTO_SIZE)
+        if (lotto.size() != LOTTO_SIZE) {
             throw new LottoSizeMismatchException(LOTTO_SIZE_IS_NOT_6);
+        }
     }
     
     private void validateLottoIsUnique(List<LottoNumber> lotto) {
@@ -33,6 +33,14 @@ public class Lotto {
 
     public int getLottoSize() {
         return lotto.size();
+    }
+
+    public int match(WinningLotto winningLotto) {
+        int matchCount = 0;
+        for (LottoNumber lottoNumber : lotto) {
+            matchCount += winningLotto.contains(lottoNumber) ? 1 : 0;
+        }
+        return matchCount;
     }
 
     public List<LottoNumber> getLotto() {
