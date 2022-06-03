@@ -3,7 +3,10 @@ import java.util.List;
 import java.util.Set;
 
 public class WinningLotto {
+    public static final String WINNING_LOTTO_SIZE = "당첨 로또 크기가 6이 아닙니다.";
+    public static final String LOTTO_IS_UNIQUE = "중복된 당첨 번호가 있습니다";
     private List<LottoNumber> winningLotto;
+
 
     public WinningLotto(List<LottoNumber> winningLotto) {
         validateWinningLottoSize(winningLotto);
@@ -13,7 +16,7 @@ public class WinningLotto {
 
     private void validateWinningLottoSize(List<LottoNumber> winningLotto) {
         if (!(winningLotto.size() == Lotto.LOTTO_SIZE)) {
-            throw new IllegalArgumentException();
+            throw new WinningLottoSizeException(WINNING_LOTTO_SIZE);
         }
     }
 
@@ -21,11 +24,23 @@ public class WinningLotto {
         Set<LottoNumber> WinningLottoNumberSet = new HashSet<>(lotto);
 
         if (WinningLottoNumberSet.size() != Lotto.LOTTO_SIZE) {
-            throw new IllegalArgumentException("중복되는 값이 있습니다.");
+            throw new WinningLottoIsUniqueException(LOTTO_IS_UNIQUE);
         }
     }
 
     public int getWinningLottoSize() {
         return winningLotto.size();
+    }
+
+    public class WinningLottoSizeException extends RuntimeException{
+        public WinningLottoSizeException(String message){
+            System.out.println(message);
+        }
+    }
+
+    public class WinningLottoIsUniqueException extends RuntimeException{
+        public WinningLottoIsUniqueException(String message){
+            System.out.println(message);
+        }
     }
 }
