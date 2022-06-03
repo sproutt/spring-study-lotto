@@ -1,4 +1,4 @@
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.DisplayName;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -9,7 +9,7 @@ public class ManualLottoGeneratorTest {
     @DisplayName("수동 로또 제너레이터가 로또를 생성한다.")
     public void should_success_when_manual_lotto_generator_generate_lotto() {
         // given
-        ManualLottoGenerator manualLottoGenerator = new ManualLottoGenerator();
+        AutoLottoGenerator manualLottoGenerator = new AutoLottoGenerator();
 
         // when
         Lotto lotto = manualLottoGenerator.generate();

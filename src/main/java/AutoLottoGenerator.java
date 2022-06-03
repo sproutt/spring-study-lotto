@@ -2,13 +2,11 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class ManualLottoGenerator {
-
-    private List<LottoNumber> lotto;
+public class AutoLottoGenerator {
 
     public Lotto generate() {
 
-        lotto = new ArrayList<>();
+        List<LottoNumber> lotto = new ArrayList<>();
         for(int i = LottoNumber.MIN_NUMBER; i <= LottoNumber.MAX_NUMBER; i++) {
             lotto.add(new LottoNumber(i));
         }
