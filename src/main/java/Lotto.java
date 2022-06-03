@@ -1,3 +1,6 @@
+import exception.LottoIsNotUniqueException;
+import exception.LottoSizeMismatchException;
+
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -15,17 +18,17 @@ public class Lotto {
         this.lotto = lotto;
     }
 
-    private void validateLottoSize(List<LottoNumber> lotto) throws ValidateLottoSizeException{
+    private void validateLottoSize(List<LottoNumber> lotto) {
 
         if (lotto.size() != LOTTO_SIZE)
-            throw new ValidateLottoSizeException(LOTTO_SIZE_IS_NOT_6);
+            throw new LottoSizeMismatchException(LOTTO_SIZE_IS_NOT_6);
     }
     
-    private void validateLottoIsUnique(List<LottoNumber> lotto) throws ValidateLottoSizeException{
+    private void validateLottoIsUnique(List<LottoNumber> lotto) {
         Set<LottoNumber> lottoNumberSet = new HashSet<>(lotto);
 
         if (lottoNumberSet.size() != LOTTO_SIZE) {
-            throw new ValidateLottoIsUniqueException(LOTTO_IS_NOT_UNIQUE);
+            throw new LottoIsNotUniqueException(LOTTO_IS_NOT_UNIQUE);
         }
     }
 
@@ -35,17 +38,5 @@ public class Lotto {
 
     public List<LottoNumber> getLotto() {
         return lotto;
-    }
-
-    public class ValidateLottoSizeException extends RuntimeException{
-        public ValidateLottoSizeException(String message){
-            System.out.println(message);
-        }
-    }
-
-    public class ValidateLottoIsUniqueException extends RuntimeException{
-        public ValidateLottoIsUniqueException(String message){
-            System.out.println(message);
-        }
     }
 }

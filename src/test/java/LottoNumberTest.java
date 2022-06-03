@@ -1,3 +1,4 @@
+import exception.LottoNumberOutOfRangeException;
 import org.junit.Test;
 import org.junit.jupiter.api.DisplayName;
 
@@ -12,7 +13,7 @@ public class LottoNumberTest {
         int testNumber = 52;
 
         assertThatThrownBy(()->new LottoNumber(testNumber))
-                .isInstanceOf(LottoNumber.ValidateLottoNumberRangeException.class);
+                .isInstanceOf(LottoNumberOutOfRangeException.class);
     }
 
     @Test

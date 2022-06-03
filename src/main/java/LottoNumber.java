@@ -1,3 +1,5 @@
+import exception.LottoNumberOutOfRangeException;
+
 import java.util.Objects;
 
 public class LottoNumber {
@@ -15,18 +17,12 @@ public class LottoNumber {
 
     private void validateLottoNumberRange(int number) {
         if (number < MIN_NUMBER || number > MAX_NUMBER) {
-            throw new ValidateLottoNumberRangeException(LOTTO_NUMBER_OUT_OF_RANGE);
+            throw new LottoNumberOutOfRangeException(LOTTO_NUMBER_OUT_OF_RANGE);
         }
     }
 
     public int getNumber() {
         return number;
-    }
-
-    public class ValidateLottoNumberRangeException extends RuntimeException{
-        public ValidateLottoNumberRangeException(String message){
-            System.out.println(message);
-        }
     }
 
     @Override

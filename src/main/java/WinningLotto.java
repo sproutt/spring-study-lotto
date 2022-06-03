@@ -34,19 +34,7 @@ public class WinningLotto {
         return winningLotto.size();
     }
 
-    public List<LottoNumber> getWinningLotto(){
+    public List<LottoNumber> getWinningLotto() {
         return winningLotto;
-    }
-
-    public class WinningLottoSizeException extends RuntimeException{
-        public WinningLottoSizeException(String message){
-            System.out.println(message);
-        }
-    }
-
-    public class WinningLottoIsUniqueException extends RuntimeException{
-        public WinningLottoIsUniqueException(String message){
-            System.out.println(message);
-        }
     }
 }
