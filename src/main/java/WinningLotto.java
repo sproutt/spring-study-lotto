@@ -7,7 +7,6 @@ public class WinningLotto {
     public static final String LOTTO_IS_UNIQUE = "중복된 당첨 번호가 있습니다";
     private List<LottoNumber> winningLotto;
 
-
     public WinningLotto(List<LottoNumber> winningLotto) {
         validateWinningLottoSize(winningLotto);
         validateWinningLottoIsUnique(winningLotto);
@@ -30,6 +29,10 @@ public class WinningLotto {
 
     public int getWinningLottoSize() {
         return winningLotto.size();
+    }
+
+    public List<LottoNumber> getWinningLotto(){
+        return winningLotto;
     }
 
     public class WinningLottoSizeException extends RuntimeException{
