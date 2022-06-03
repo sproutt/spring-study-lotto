@@ -67,9 +67,22 @@ public class LottoTest {
         assertThat(lotto.getLottoSize()).isEqualTo(Lotto.LOTTO_SIZE);
     }
 
-    public void setLottoList(List<LottoNumber> list){
-        for (int i = 1; i < 7; i++){
-            list.add(new LottoNumber(i));
+    @Test
+    @DisplayName("당첨 번호와 자동 로또 번호의 일치하는 개수를 반환하는지 확인한다.")
+    public void should_check_whether_winning_lotto_match_lotto() {
+        List<LottoNumber> testLotto = new ArrayList<>();
+        List<LottoNumber> testWinningLotto = new ArrayList<>();
+
+        for (int i = 1; i < 7; i++) {
+            testLotto.add(new LottoNumber(i));
+            testWinningLotto.add(new LottoNumber(i));
         }
+
+        Lotto lotto = new Lotto(testLotto);
+        WinningLotto winningLotto = new WinningLotto(testWinningLotto);
+
+        int matchCount = lotto.match(winningLotto);
+
+        assertThat(matchCount).isEqualTo(6);
     }
 }
