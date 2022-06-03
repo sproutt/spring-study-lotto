@@ -37,4 +37,8 @@ public class WinningLotto {
     public List<LottoNumber> getWinningLotto() {
         return winningLotto;
     }
+
+    public boolean contains(LottoNumber lottoNumber) {
+        return winningLotto.contains(lottoNumber);
+    }
 }
