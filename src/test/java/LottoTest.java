@@ -1,7 +1,6 @@
 import exception.LottoIsNotUniqueException;
 import exception.LottoSizeMismatchException;
-import jdk.jfr.Description;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.DisplayName;
 
 import java.util.ArrayList;
@@ -66,21 +65,6 @@ public class LottoTest {
         Lotto lotto = new Lotto(testLotto);
 
         assertThat(lotto.getLottoSize()).isEqualTo(Lotto.LOTTO_SIZE);
-    }
-
-    @Test
-    @DisplayName("로또와 당첨 로또 번호가 일치하지 않으면 예외를 발생시킨다.")
-    public void should_throw_exception_when_lotto_is_not_same_with_winning_lotto(){
-        List<LottoNumber> testLotto = new ArrayList<>();
-        List<LottoNumber> testWinningLotto = new ArrayList<>();
-
-        setLottoList(testLotto);
-        setLottoList(testWinningLotto);
-
-        Lotto lotto = new Lotto(testLotto);
-        WinningLotto winningLotto = new WinningLotto(testWinningLotto);
-
-        assertThat(lotto.getLotto()).isEqualTo(winningLotto.getWinningLotto());
     }
 
     public void setLottoList(List<LottoNumber> list){
