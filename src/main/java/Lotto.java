@@ -7,6 +7,7 @@ import java.util.Set;
 
 public class Lotto {
     public static final int LOTTO_SIZE = 6;
+    public static final int LOTTO_PRICE = 1000;
     public static final String LOTTO_SIZE_IS_NOT_6 = "로또 크기가 6이 아닙니다.";
     public static final String LOTTO_IS_NOT_UNIQUE = "중복되는 로또 번호가 있습니다";
     private List<LottoNumber> lotto;

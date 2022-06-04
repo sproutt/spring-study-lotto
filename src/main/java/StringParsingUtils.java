@@ -1,24 +1,24 @@
 import java.util.Arrays;
 import java.util.List;
-
-import static java.lang.Integer.parseInt;
+import java.util.stream.Collectors;
 
 public class StringParsingUtils {
     public static final String COMMA = ",";
     public static final String BLANK = " ";
     public static final String EMPTY = "";
 
-    public List<Integer> stringParsing(String string) {
-        String[] winningLottoNumberArray = removeBlank(string).split(SPLIT_SIGN);
-        List<Integer> winningLottoNumberList = new ArrayList<>();
-        for (String s : winningLottoNumberArray) {
-            winningLottoNumberList.add(parseInt(s));
-        }
-        return winningLottoNumberList;
+    public static List<Integer> parseToNumber(String input) {
+        String[] stringParsedInput = splitWithComma(removeBlank(input));
+        return Arrays.stream(stringParsedInput)
+                .map(Integer::parseInt)
+                .collect(Collectors.toList());
     }
 
-    private String removeBlank(String string){
+    public static String[] splitWithComma(String input) {
+        return input.split(COMMA);
+    }
 
-        return string.replaceAll(" ", "");
+    public static String removeBlank(String input) {
+        return input.replaceAll(BLANK, EMPTY);
     }
 }

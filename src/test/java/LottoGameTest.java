@@ -13,11 +13,12 @@ public class LottoGameTest {
         // given
         LottoGame lottoGame = new LottoGame();
         Map<Rank, Integer> statistics = new HashMap<>();
-        for (Rank value : Rank.values()){
-            statistics.put(value, 0);
-        }
         statistics.put(Rank.FOURTH, 1);
+        String expectedEarningRatio = "35.7";
+        int money = 14000;
+
         // when
+        String earningRatio = lottoGame.calculateEarningRatio(statistics, money);
 
         // then
         assertThat(earningRatio).isEqualTo(expectedEarningRatio);
