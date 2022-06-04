@@ -1,4 +1,4 @@
-import java.util.Map;
+import java.util.*;
 
 public class LottoGame {
 
