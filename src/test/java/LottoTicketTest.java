@@ -4,6 +4,7 @@ import org.junit.jupiter.api.DisplayName;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.TreeMap;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -42,7 +43,7 @@ public class LottoTicketTest {
         WinningLotto winningLotto = new WinningLotto(lottoNumbers);
 
         // when
-        Map<Rank, Integer> statistics = lottoTicket.calculateRankStatistics(winningLotto);
+        Map<Rank, Integer> statistics = lottoTicket.compareWithWinningLotto(new TreeMap<>(),winningLotto);
 
         // then
         assertThat(statistics.get(Rank.FIRST)).isEqualTo(1);
