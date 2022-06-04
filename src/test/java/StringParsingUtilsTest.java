@@ -1,5 +1,8 @@
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+
+import java.util.List;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class StringParsingUtilsTest {
@@ -8,11 +11,13 @@ public class StringParsingUtilsTest {
     public void should_success_when_winning_lotto_list_size_matches_lotto_size(){
         // given
         String winningLotto = "2, 4, 6, 8, 10, 12";
+        List<Integer> testWinningLottoList;
 
         // when
-
+        StringParsingUtils stringParsingUtils = new StringParsingUtils();
+        testWinningLottoList = stringParsingUtils.stringParsing(winningLotto);
 
         // then
-        assertThat(winningLotto.getSize()).isEqualTo(Lotto.LOTTO_SIZE);
+        assertThat(testWinningLottoList.size()).isEqualTo(Lotto.LOTTO_SIZE);
     }
 }
