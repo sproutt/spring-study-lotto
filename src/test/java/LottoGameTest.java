@@ -18,7 +18,7 @@ public class LottoGameTest {
         int money = 14000;
 
         // when
-        String earningRatio = lottoGame.calculateEarningRatio(statistics, money);
+        String earningRatio = lottoGame.calculateEarningRatio();
 
         // then
         assertThat(earningRatio).isEqualTo(expectedEarningRatio);
