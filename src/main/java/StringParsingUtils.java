@@ -5,7 +5,9 @@ import java.util.List;
 import static java.lang.Integer.parseInt;
 
 public class StringParsingUtils {
-    private static final String SPLIT_SIGN = ",";
+    public static final String COMMA = ",";
+    public static final String BLANK = " ";
+    public static final String EMPTY = "";
 
     public List<Integer> stringParsing(String string) {
         String[] winningLottoNumberArray = removeBlank(string).split(SPLIT_SIGN);
