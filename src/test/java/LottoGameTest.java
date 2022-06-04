@@ -22,4 +22,19 @@ public class LottoGameTest {
         // then
         assertThat(earningRatio).isEqualTo(expectedEarningRatio);
     }
+
+    @Test
+    @DisplayName("입력한 금액만큼 로또 장수를 반환하면 성공이다.")
+    public void should_success_when_input_money_return_lotto_as_much_as_input_money() {
+        // given
+        int expectedLottoCount = 14;
+        int money = 14000;
+        LottoGame lottoGame = new LottoGame();
+
+        // when
+        int lottoCount = lottoGame.inputMoney(money);
+
+        // then
+        assertThat(lottoCount).isEqualTo(expectedLottoCount);
+    }
 }
