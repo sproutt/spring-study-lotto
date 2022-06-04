@@ -25,4 +25,9 @@ public enum Rank {
                 .findFirst()
                 .orElse(NO_RANK);
     }
+
+    @Override
+    public String toString() {
+        return matchCount + "개 일치 " + "("+reward+"원"+")";
+    }
 }
