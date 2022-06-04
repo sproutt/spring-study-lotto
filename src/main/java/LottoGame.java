@@ -2,6 +2,10 @@ import java.util.Map;
 
 public class LottoGame {
 
+    public int inputMoney(int price) {
+        return price / Lotto.LOTTO_PRICE;
+    }
+
     public String calculateEarningRatio(Map<Rank, Integer> lottoGameResult, int money) {
         double earning = 0;
 
