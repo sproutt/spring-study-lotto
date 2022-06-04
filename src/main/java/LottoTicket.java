@@ -1,4 +1,3 @@
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -17,8 +16,7 @@ public class LottoTicket {
         return lottos.size();
     }
 
-    public Map<Rank, Integer> calculateRankStatistics(WinningLotto winningLotto) {
-        Map<Rank, Integer> statistics = new HashMap<>();
+    public Map<Rank, Integer> compareWithWinningLotto(Map<Rank, Integer> statistics, WinningLotto winningLotto) {
         for (Lotto lotto : lottos) {
             int matchCount = lotto.match(winningLotto);
             Rank rank = Rank.of(matchCount);
