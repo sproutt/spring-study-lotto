@@ -15,8 +15,4 @@ public class Money {
             throw new MoneyUnderMinMoneyException(OVER_MIN_MONEY_MESSAGE);
         }
     }
-
-    public int getMoney() {
-        return money;
-    }
 }

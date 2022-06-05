@@ -22,7 +22,7 @@ public class WinningLotto {
         }
     }
 
-    private void validateWinningLottoIsUnique(List<LottoNumber> lotto){
+    private void validateWinningLottoIsUnique(List<LottoNumber> lotto) {
         Set<LottoNumber> WinningLottoNumberSet = new HashSet<>(lotto);
 
         if (WinningLottoNumberSet.size() != Lotto.LOTTO_SIZE) {
@@ -32,10 +32,6 @@ public class WinningLotto {
 
     public int getWinningLottoSize() {
         return winningLotto.size();
-    }
-
-    public List<LottoNumber> getWinningLotto() {
-        return winningLotto;
     }
 
     public boolean contains(LottoNumber lottoNumber) {
