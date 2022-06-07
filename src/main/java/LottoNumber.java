@@ -9,7 +9,7 @@ public class LottoNumber {
 
     public static final int MIN_NUMBER = 1;
     public static final int MAX_NUMBER = 45;
-    public static final String LOTTO_NUMBER_OUT_OF_RANGE = "로또 번호가 범위(1~45) 밖에 있습니다";
+    private static final String LOTTO_NUMBER_OUT_OF_RANGE = "로또 번호가 범위(1~45) 밖에 있습니다";
     private static Map<Integer, LottoNumber> lottoNumberCache = new HashMap<>();
 
     private final int number;
