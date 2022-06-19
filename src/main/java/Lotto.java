@@ -1,9 +1,7 @@
 import exception.LottoIsNotUniqueException;
 import exception.LottoSizeMismatchException;
 
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class Lotto {
@@ -16,7 +14,7 @@ public class Lotto {
     public Lotto(List<LottoNumber> lotto) {
         validateLottoSize(lotto);
         validateLottoIsUnique(lotto);
-        this.lotto = lotto;
+        this.lotto = new ArrayList<>(lotto);
     }
 
     private void validateLottoSize(List<LottoNumber> lotto) {
@@ -43,10 +41,6 @@ public class Lotto {
             matchCount += winningLotto.contains(lottoNumber) ? 1 : 0;
         }
         return matchCount;
-    }
-
-    public List<LottoNumber> getLotto() {
-        return lotto;
     }
 
     @Override
