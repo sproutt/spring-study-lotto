@@ -5,8 +5,12 @@ public class LottoGame {
     private LottoTicket lottoTicket;
     private Map<Rank, Integer> statistics;
 
-    public int inputMoney(int price) {
-        return lottoCount = price / Lotto.LOTTO_PRICE;
+    public LottoGame() {
+        statistics = new TreeMap<>();
+    }
+
+    public int inputMoney(int money) {
+        return lottoCount = money / Lotto.LOTTO_PRICE;
     }
 
     public LottoTicket generateLottoTicket() {
