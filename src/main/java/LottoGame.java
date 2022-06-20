@@ -18,7 +18,6 @@ public class LottoGame {
     }
 
     public Map<Rank, Integer> calculateRankStatistics(WinningLotto winningLotto){
-        statistics = new TreeMap<>();
         initRankStatistics();
         statistics = lottoTicket.compareWithWinningLotto(statistics, winningLotto);
         return statistics;
