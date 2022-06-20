@@ -22,7 +22,7 @@ public class OutputView {
         System.out.println(BOUNDARY_LINE);
 
         for (Rank rank : statistics.keySet()) {
-            System.out.print(rank);
+            System.out.print(String.format("%d 개 일치 (%d원)", rank.getMatchCount(), rank.getReward()));
             System.out.println(" - " + statistics.get(rank) + "개");
         }
     }

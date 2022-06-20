@@ -15,6 +15,10 @@ public enum Rank {
         this.reward = reward;
     }
 
+    public int getMatchCount() {
+        return matchCount;
+    }
+
     public int getReward() {
         return reward;
     }
@@ -24,10 +28,5 @@ public enum Rank {
                 .filter(rank -> rank.matchCount == matchCount)
                 .findFirst()
                 .orElse(NO_RANK);
-    }
-
-    @Override
-    public String toString() {
-        return matchCount + "개 일치 " + "("+reward+"원"+")";
     }
 }
