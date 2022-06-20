@@ -33,17 +33,4 @@ public class StringParsingUtilsTest {
         // then
         assertThat(!Arrays.asList(commaRemovedTestInput).contains(StringParsingUtils.COMMA)).isTrue();
     }
-
-    @Test
-    @DisplayName("문자열이 숫자 리스트로 변환되면 성공이다.")
-    public void should_success_when_string_is_transferred_to_integer_list() {
-        // given
-        String testInput = "1, 2, 3";
-
-        // when
-        List<Integer> input = StringParsingUtils.parseToNumber(testInput);
-
-        // then
-        assertThat(input.get(0)).isInstanceOf(Integer.class);
-    }
 }

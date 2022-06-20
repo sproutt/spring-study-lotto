@@ -7,13 +7,6 @@ public class StringParsingUtils {
     public static final String BLANK = " ";
     public static final String EMPTY = "";
 
-    public static List<Integer> parseToNumber(String input) {
-        String[] stringParsedInput = splitWithComma(removeBlank(input));
-        return Arrays.stream(stringParsedInput)
-                .map(Integer::parseInt)
-                .collect(Collectors.toList());
-    }
-
     public static List<LottoNumber> parseToLottoNumber(String input) {
         String[] stringParsedInput = splitWithComma(removeBlank(input));
         return Arrays.stream(stringParsedInput)
