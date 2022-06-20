@@ -16,7 +16,6 @@ public class LottoGameTest {
         Map<Rank, Integer> statistics = new HashMap<>();
         statistics.put(Rank.FOURTH, 1);
         String expectedEarningRatio = "35.7";
-        int money = 14000;
 
         // when
         String earningRatio = lottoGame.calculateEarningRatio();
