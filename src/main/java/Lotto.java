@@ -43,6 +43,10 @@ public class Lotto {
         return matchCount;
     }
 
+    public boolean contains(LottoNumber lottoNumber) {
+        return lotto.contains(lottoNumber);
+    }
+
     @Override
     public String toString() {
         return lotto.stream()
