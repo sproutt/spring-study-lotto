@@ -14,7 +14,7 @@ public class LottoGameTest {
 
     @Test
     @DisplayName("실제 로또 수익률과 예상한 로또 수익률이 같다면 성공이다.")
-    public void should_success_when_real_lotto_earning_ratio_matches_expected_lotto_yield() {
+    public void should_success_when_real_lotto_earning_ratio_matches_expected_lotto_yield() throws NoSuchMethodException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {
         // given
         LottoGame lottoGame = new LottoGame();
         lottoGame.inputMoney(1000);

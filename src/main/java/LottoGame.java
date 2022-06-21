@@ -18,6 +18,10 @@ public class LottoGame {
         for(int i = 0; i < lottoCount; i++) {
             lottos.add(AutoLottoGenerator.generate());
         }
+        return generateLottoTicket(lottos);
+    }
+
+    private LottoTicket generateLottoTicket(List<Lotto> lottos) {
         return lottoTicket = new LottoTicket(lottos);
     }
 
