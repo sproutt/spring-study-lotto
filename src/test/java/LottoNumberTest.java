@@ -12,7 +12,7 @@ public class LottoNumberTest {
     public void should_throw_exception_when_number_is_out_of_range() {
         int testNumber = 52;
 
-        assertThatThrownBy(()->new LottoNumber(testNumber))
+        assertThatThrownBy(() -> new LottoNumber(testNumber))
                 .isInstanceOf(LottoNumberOutOfRangeException.class);
     }
 
