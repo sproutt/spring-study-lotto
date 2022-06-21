@@ -1,9 +1,4 @@
-import exception.LottoIsNotUniqueException;
-import exception.LottoSizeMismatchException;
-
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 public class WinningLotto {
     private Lotto lotto;
