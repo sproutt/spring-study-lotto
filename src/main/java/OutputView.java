@@ -22,12 +22,20 @@ public class OutputView {
         System.out.println(BOUNDARY_LINE);
 
         for (Rank rank : statistics.keySet()) {
-            System.out.print(String.format("%d 개 일치 (%d원)", rank.getMatchCount(), rank.getReward()));
-            System.out.println(" - " + statistics.get(rank) + "개");
+            printResult(rank, statistics);
         }
     }
 
     public static void printEarningRate(String earningRate) {
         System.out.printf((TOTAL_EARNING_RATIO_MESSAGE) + "%n", earningRate);
+    }
+
+    private static void printResult(Rank rank, Map<Rank, Integer> statistics) {
+        if(rank.getMatchCount() == 5 && rank.getBonusMatchCount() == 1) {
+            System.out.print(String.format("%d 개 일치, 보너스 볼 일치 (%d원)", rank.getMatchCount(), rank.getReward()));
+        } else {
+            System.out.print(String.format("%d 개 일치 (%d원)", rank.getMatchCount(), rank.getReward()));
+        }
+        System.out.println(" - " + statistics.get(rank) + "개");
     }
 }
