@@ -58,4 +58,30 @@ public class LottoGameTest {
         // then
         assertThat(lottoCount).isEqualTo(expectedLottoCount);
     }
+
+    @Test
+    @DisplayName("구입 장수만큼 로또 티켓에 로또가 추가된다면 성공이다.")
+    public void should_success_when_lotto_ticket_can_add_lottos_as_much_as_money() {
+        // given
+        int manualLottoCount = 1;
+
+        LottoGame lottoGame = new LottoGame();
+        int lottoCount = lottoGame.inputMoney(3000);
+
+        List<LottoNumber> lottoNumbers = new ArrayList<>();
+        for (int i = 1; i < 7; i++) {
+            lottoNumbers.add(new LottoNumber(i));
+        }
+
+        List<Lotto> manualLotto = new ArrayList<>();
+        for (int i = 0; i < manualLottoCount; i++) {
+            manualLotto.add(new Lotto(lottoNumbers));
+        }
+
+        // when
+        LottoTicket lottoTicket = lottoGame.generateLottoTicket(manualLotto);
+
+        // then
+        assertThat(lottoTicket.getLottoTicket().size()).isEqualTo(lottoCount);
+    }
 }
