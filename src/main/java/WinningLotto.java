@@ -27,4 +27,8 @@ public class WinningLotto {
             throw new BonusNumberDuplicatedException(BONUS_NUMBER_DUPLICATED_MESSAGE);
         }
     }
+
+    public LottoNumber getBonusNumber() {
+        return bonusNumber.getBonusNumber();
+    }
 }
