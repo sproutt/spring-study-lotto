@@ -85,4 +85,29 @@ public class LottoTest {
 
         assertThat(matchCount).isEqualTo(6);
     }
+
+    @Test
+    @DisplayName("보너스 번호와 일치하는 번호가 있으면 1을 반환한다.")
+    public void should_return_1_when_lotto_number_contains_bonus_number() {
+        // given
+        List<LottoNumber> testLotto = new ArrayList<>();
+        List<LottoNumber> testWinningLotto = new ArrayList<>();
+
+        for (int i = 1; i < 7; i++) {
+            testWinningLotto.add(new LottoNumber(i));
+        }
+
+        for (int i = 2; i < 8; i++) {
+            testLotto.add(new LottoNumber(i));
+        }
+
+        Lotto lotto = new Lotto(testLotto);
+        WinningLotto winningLotto = new WinningLotto(testWinningLotto, new BonusNumber(new LottoNumber(7)));
+
+        // when
+        int bonusMatchCount = lotto.bonusMatchCount(winningLotto);
+
+        // then
+        assertThat(bonusMatchCount).isEqualTo(1);
+    }
 }
