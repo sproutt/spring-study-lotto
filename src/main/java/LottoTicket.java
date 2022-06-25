@@ -16,14 +16,11 @@ public class LottoTicket {
         return lottos;
     }
 
-    public int getLottoCount() {
-        return lottos.size();
-    }
-
     public Map<Rank, Integer> compareWithWinningLotto(Map<Rank, Integer> statistics, WinningLotto winningLotto) {
         for (Lotto lotto : lottos) {
             int matchCount = lotto.match(winningLotto);
-            Rank rank = Rank.of(matchCount);
+            int bonusMatchCount = lotto.bonusMatchCount(winningLotto);
+            Rank rank = Rank.of(matchCount, bonusMatchCount);
             statistics.put(rank, statistics.getOrDefault(rank, 0) + 1);
         }
         return statistics;
