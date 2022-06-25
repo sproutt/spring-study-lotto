@@ -23,15 +23,15 @@ public class InputView {
         return Integer.parseInt(scanner.nextLine());
     }
 
-    public static List<List<LottoNumber>> manualLotto(int manualLottoCount) {
-        List<List<LottoNumber>> manualLotto = new ArrayList<>();
+    public static List<Lotto> manualLotto(int manualLottoCount) {
+        List<Lotto> manualLotto = new ArrayList<>();
 
         System.out.println(MANUAL_LOTTO_NUMBER_MESSAGE);
 
         for (int i = 0; i < manualLottoCount; i++) {
             String inputs = scanner.nextLine();
             List<LottoNumber> lottoNumbers = StringParsingUtils.parseToLottoNumber(inputs);
-            manualLotto.add(lottoNumbers);
+            manualLotto.add(new Lotto(lottoNumbers));
         }
         return manualLotto;
     }
