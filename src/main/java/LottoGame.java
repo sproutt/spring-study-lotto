@@ -13,7 +13,7 @@ public class LottoGame {
         return lottoCount = money / Lotto.LOTTO_PRICE;
     }
 
-    public LottoTicket generateAutoLottoTicket() {
+    public LottoTicket generateLottoTicket() {
         List<Lotto> lottos = new ArrayList<>();
         for(int i = 0; i < lottoCount; i++) {
             lottos.add(AutoLottoGenerator.generate());
