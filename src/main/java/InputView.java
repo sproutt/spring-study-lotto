@@ -30,15 +30,17 @@ public class InputView {
 
         for (int i = 0; i < manualLottoCount; i++) {
             String inputs = scanner.nextLine();
+            if(i<manualLottoCount-1) scanner.nextLine();
             List<LottoNumber> lottoNumbers = StringParsingUtils.parseToLottoNumber(inputs);
             manualLotto.add(new Lotto(lottoNumbers));
         }
         return manualLotto;
     }
 
-    public static int inputBonusNumber() {
+    public static BonusNumber inputBonusNumber() {
         System.out.println(INPUT_BONUS_NUMBER_MESSAGE);
-        return Integer.parseInt(scanner.nextLine());
+        int bonusNumber = Integer.parseInt(scanner.nextLine());
+        return new BonusNumber(new LottoNumber(bonusNumber));
     }
 
     public static String inputWinningLottoNumber() {
