@@ -79,7 +79,7 @@ public class LottoTest {
         }
 
         Lotto lotto = new Lotto(testLotto);
-        WinningLotto winningLotto = new WinningLotto(testWinningLotto);
+        WinningLotto winningLotto = new WinningLotto(testWinningLotto, new BonusNumber(new LottoNumber(7)));
 
         int matchCount = lotto.match(winningLotto);
 

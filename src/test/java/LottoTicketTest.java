@@ -40,7 +40,7 @@ public class LottoTicketTest {
         List<Lotto> lottos = new ArrayList<>();
         lottos.add(lotto);
         LottoTicket lottoTicket = new LottoTicket(lottos);
-        WinningLotto winningLotto = new WinningLotto(lottoNumbers);
+        WinningLotto winningLotto = new WinningLotto(lottoNumbers, new BonusNumber(new LottoNumber(7)));
 
         // when
         Map<Rank, Integer> statistics = lottoTicket.compareWithWinningLotto(new TreeMap<>(),winningLotto);
