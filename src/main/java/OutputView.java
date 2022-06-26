@@ -31,11 +31,12 @@ public class OutputView {
     }
 
     private static void printResult(Rank rank, Map<Rank, Integer> statistics) {
-        if(rank.getMatchCount() == 5 && rank.getBonusMatchCount() == 1) {
+        if (rank.getMatchCount() == 5 && rank.getBonusMatchCount() == 1) {
             System.out.print(String.format("%d 개 일치, 보너스 볼 일치 (%d원)", rank.getMatchCount(), rank.getReward()));
-        } else {
+            System.out.println(" - " + statistics.get(rank) + "개");
+        } else if (rank.getMatchCount() >= 3) {
             System.out.print(String.format("%d 개 일치 (%d원)", rank.getMatchCount(), rank.getReward()));
+            System.out.println(" - " + statistics.get(rank) + "개");
         }
-        System.out.println(" - " + statistics.get(rank) + "개");
     }
 }
