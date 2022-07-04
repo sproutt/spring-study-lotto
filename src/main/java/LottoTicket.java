@@ -19,8 +19,8 @@ public class LottoTicket {
     public Map<Rank, Integer> compareWithWinningLotto(Map<Rank, Integer> statistics, WinningLotto winningLotto) {
         for (Lotto lotto : lottos) {
             int matchCount = lotto.match(winningLotto);
-            int bonusMatchCount = lotto.bonusMatchCount(winningLotto);
-            Rank rank = Rank.of(matchCount, bonusMatchCount);
+            boolean isBonusMatch = lotto.isBonusMatch(winningLotto);
+            Rank rank = Rank.of(matchCount, isBonusMatch);
             statistics.put(rank, statistics.getOrDefault(rank, 0) + 1);
         }
         return statistics;

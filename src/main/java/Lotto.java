@@ -43,8 +43,8 @@ public class Lotto {
         return matchCount;
     }
 
-    public int bonusMatchCount(WinningLotto winningLotto) {
-        return lotto.contains(winningLotto.getBonusNumber()) ? 1 : 0;
+    public boolean isBonusMatch(WinningLotto winningLotto) {
+        return lotto.contains(winningLotto.getBonusNumber());
     }
 
     public boolean contains(LottoNumber lottoNumber) {
