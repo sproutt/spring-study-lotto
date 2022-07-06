@@ -28,14 +28,12 @@ public class InputView {
 
          System.out.println(MANUAL_LOTTO_NUMBER_MESSAGE);
 
-        for (int i = 0; i < manualLottoCount; i++) {
-            String inputs = scanner.nextLine();
-//            if (i != manualLottoCount - 1) {scanner.nextLine();}
-            System.out.println(inputs);
-            List<LottoNumber> lottoNumbers = StringParsingUtils.parseToLottoNumber(inputs);
-            manualLotto.add(new Lotto(lottoNumbers));
+        String inputs = scanner.nextLine();
+        if (i != manualLottoCount - 1) {
+            scanner.nextLine();
         }
-        return manualLotto;
+
+        return StringParsingUtils.parseToLottoNumber(inputs);
     }
 
     public static BonusNumber inputBonusNumber() {

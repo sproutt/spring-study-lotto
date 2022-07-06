@@ -13,11 +13,11 @@ public class LottoGame {
         return lottoCount = money / Lotto.LOTTO_PRICE;
     }
 
-    public LottoTicket generateLottoTicket(List<Lotto> manualLotto) {
+    public LottoTicket generateLottoTicket(int manualLottoCount) {
         List<Lotto> lottos = new ArrayList<>();
 
-        for (int i = 0; i < manualLotto.size(); i++) {
-            lottos.add(manualLotto.get(i));
+        for (int i = 0; i < manualLottoCount; i++) {
+            lottos.add(ManualLottoGenerator.generate(i, manualLottoCount));
         }
 
         for(int i = manualLotto.size(); i < lottoCount; i++) {
