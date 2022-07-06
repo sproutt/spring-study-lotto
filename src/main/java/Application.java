@@ -1,5 +1,4 @@
 import exception.*;
-
 import java.util.List;
 
 public class Application {
@@ -8,12 +7,13 @@ public class Application {
         while (true) {
             try {
                 OutputView.printLottoCount(game.inputMoney(new Money(InputView.inputMoney()).getMoney()));
-                int lottoCount = InputView.manualLottoCount();
-                List<Lotto> lottos = InputView.manualLotto(lottoCount);
-                OutputView.printLottoTicket(game.generateLottoTicket(lottos));
+                int manualLottoCount = InputView.manualLottoCount();
+
+                OutputView.printLottoTicket(game.generateLottoTicket(manualLottoCount));
                 List<LottoNumber> lottoNumbers = StringParsingUtils.parseToLottoNumber(InputView.inputWinningLottoNumber());
                 BonusNumber bonusNumber = InputView.inputBonusNumber();
                 WinningLotto winningLotto = new WinningLotto(lottoNumbers, bonusNumber);
+
                 OutputView.printStatistics(game.calculateRankStatistics(winningLotto));
                 OutputView.printEarningRate(game.calculateEarningRatio());
                 break;

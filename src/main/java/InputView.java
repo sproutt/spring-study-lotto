@@ -1,4 +1,3 @@
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -23,10 +22,10 @@ public class InputView {
         return Integer.parseInt(scanner.nextLine());
     }
 
-    public static List<Lotto> manualLotto(int manualLottoCount) {
-        List<Lotto> manualLotto = new ArrayList<>();
-
-         System.out.println(MANUAL_LOTTO_NUMBER_MESSAGE);
+    public static List<LottoNumber> manualLotto(int i, int manualLottoCount) {
+        if (i == 0) {
+            System.out.println(MANUAL_LOTTO_NUMBER_MESSAGE);
+        }
 
         String inputs = scanner.nextLine();
         if (i != manualLottoCount - 1) {

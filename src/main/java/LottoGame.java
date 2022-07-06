@@ -20,7 +20,7 @@ public class LottoGame {
             lottos.add(ManualLottoGenerator.generate(i, manualLottoCount));
         }
 
-        for(int i = manualLotto.size(); i < lottoCount; i++) {
+        for(int i = manualLottoCount; i < lottoCount; i++) {
             lottos.add(AutoLottoGenerator.generate());
         }
         return makeLottoTicket(lottos);
