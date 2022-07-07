@@ -20,6 +20,6 @@ public class StringParsingUtils {
     }
 
     public static String removeBlank(String input) {
-        return input.replaceAll(BLANK, EMPTY);
+        return input.replace(BLANK, EMPTY);
     }
 }

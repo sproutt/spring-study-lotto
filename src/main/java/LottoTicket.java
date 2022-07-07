@@ -8,22 +8,15 @@ public class LottoTicket {
         this.lottos = lottos;
     }
 
-    public void add(Lotto lotto) {
-        lottos.add(lotto);
-    }
-
     public List<Lotto> getLottoTicket() {
         return lottos;
-    }
-
-    public int getLottoCount() {
-        return lottos.size();
     }
 
     public Map<Rank, Integer> compareWithWinningLotto(Map<Rank, Integer> statistics, WinningLotto winningLotto) {
         for (Lotto lotto : lottos) {
             int matchCount = lotto.match(winningLotto);
-            Rank rank = Rank.of(matchCount);
+            boolean isBonusMatch = lotto.isBonusMatch(winningLotto);
+            Rank rank = Rank.of(matchCount, isBonusMatch);
             statistics.put(rank, statistics.getOrDefault(rank, 0) + 1);
         }
         return statistics;

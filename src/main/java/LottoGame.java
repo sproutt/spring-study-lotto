@@ -9,19 +9,24 @@ public class LottoGame {
         statistics = new TreeMap<>();
     }
 
-    public int inputMoney(int money) {
+    public int calculateLottoCount(int money) {
         return lottoCount = money / Lotto.LOTTO_PRICE;
     }
 
-    public LottoTicket generateAutoLottoTicket() {
+    public LottoTicket generateLottoTicket(int manualLottoCount) {
         List<Lotto> lottos = new ArrayList<>();
-        for(int i = 0; i < lottoCount; i++) {
+
+        for (int i = 0; i < manualLottoCount; i++) {
+            lottos.add(ManualLottoGenerator.generate(i, manualLottoCount));
+        }
+
+        for(int i = manualLottoCount; i < lottoCount; i++) {
             lottos.add(AutoLottoGenerator.generate());
         }
-        return generateLottoTicket(lottos);
+        return makeLottoTicket(lottos);
     }
 
-    private LottoTicket generateLottoTicket(List<Lotto> lottos) {
+    private LottoTicket makeLottoTicket(List<Lotto> lottos) {
         return lottoTicket = new LottoTicket(lottos);
     }
 
