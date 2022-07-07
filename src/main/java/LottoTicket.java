@@ -8,10 +8,6 @@ public class LottoTicket {
         this.lottos = lottos;
     }
 
-    public void add(Lotto lotto) {
-        lottos.add(lotto);
-    }
-
     public List<Lotto> getLottoTicket() {
         return lottos;
     }
