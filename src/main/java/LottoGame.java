@@ -9,7 +9,7 @@ public class LottoGame {
         statistics = new TreeMap<>();
     }
 
-    public int inputMoney(int money) {
+    public int calculateLottoCount(int money) {
         return lottoCount = money / Lotto.LOTTO_PRICE;
     }
 

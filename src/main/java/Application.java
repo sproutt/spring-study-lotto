@@ -6,7 +6,7 @@ public class Application {
         LottoGame game = new LottoGame();
         while (true) {
             try {
-                OutputView.printLottoCount(game.inputMoney(new Money(InputView.inputMoney()).getMoney()));
+                OutputView.printLottoCount(game.calculateLottoCount(new Money(InputView.inputMoney()).getMoney()));
                 int manualLottoCount = InputView.manualLottoCount();
 
                 OutputView.printLottoTicket(game.generateLottoTicket(manualLottoCount));
