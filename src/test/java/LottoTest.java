@@ -105,7 +105,7 @@ public class LottoTest {
         WinningLotto winningLotto = new WinningLotto(testWinningLotto, new BonusNumber(new LottoNumber(7)));
 
         // when
-        int bonusMatchCount = lotto.bonusMatchCount(winningLotto);
+        boolean isBonusMatch = lotto.isBonusMatch(winningLotto);
 
         // then
         assertThat(bonusMatchCount).isEqualTo(1);
