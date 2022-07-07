@@ -108,6 +108,6 @@ public class LottoTest {
         boolean isBonusMatch = lotto.isBonusMatch(winningLotto);
 
         // then
-        assertThat(bonusMatchCount).isEqualTo(1);
+        assertThat(isBonusMatch).isTrue();
     }
 }
